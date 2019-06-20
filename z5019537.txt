@@ -1,0 +1,10 @@
+Week1: 
+- For this week nothing much has been done but to decide what project we need to do. Our group initially wanted to create our own app which revolves around the idea of
+karaoke on the web. Unfortunately, this wasn't possible after we have sent an email to Ali for confirmation and lead us to deciding on picking project two. Because all project is 
+webapp based, we agreed on picking django as the framework to use and learn for the rest of the week. That is what i have done for the rest of the week, I found a django tutorial on
+youtube created by freecodecamp.com and spent a couple of days watching it just grasp the concept and syntax. 
+
+Week2:
+- Met up with group mates on Tuesday in tutorial and discussed on a couple of things: proposal, allocate possible task/roles for each individual.
+- For the rest of the week, I spent time researching on how to draw a good software diagram/system module flow. 
+
