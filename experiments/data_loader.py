@@ -9,6 +9,9 @@ import sys
 import os
 import io
 
+def rename_column(df: pd.DataFrame, orig: str, to: str):
+    df.columns = [to if x == orig else x for x in df.columns]
+
 class DataLoader:
     def read(self, directory: str) -> pd.DataFrame:
         print(os.path.realpath(os.path.join(directory, "assessments.json")))
@@ -16,8 +19,14 @@ class DataLoader:
         learning_outcomes = self.load_file(os.path.join(directory, "learning_outcomes.json"))
         as_map_lo = self.load_file(os.path.join(directory, "as_map_lo.json"))
 
-        assessments.columns = ["assessment" if x == "id" else x for x in assessments.columns]
-        learning_outcomes.columns = ["learning_outcome" if x == "id" else x for x in learning_outcomes.columns]
+        rename_column(assessments, "id", "assessment")
+        rename_column(assessments, "title", "assessment_title")
+        rename_column(assessments, "description", "assessment_description")
+        rename_column(assessments, "weight", "assessment_weight")
+
+        rename_column(learning_outcomes, "id", "learning_outcome")
+        rename_column(learning_outcomes, "description", "learning_outcome_description")
+        rename_column(learning_outcomes, "clone_of", "learning_outcome_clone_of")
 
         # Merge them
 
