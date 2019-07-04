@@ -2,3 +2,15 @@ Week 1
 I was still away on a family holiday, so I missed the first week of 19T2. 
 Thankfully, I had already arranged with some friends beforehand to be a part of their group. 
 I was told that by the end of the first lab, we had successfully found a 4th person to complete our group. 
+
+Week 2
+First tutorial where I'm actually in class so I was able to meet the group as well as our tutor for the first time. Needless to say, I'm quite happy with my group members because we all seem to have the same goals in mind when it comes to the execution of our project (the learning outcomes generator). An advantage to us deciding on this project lies within our own tutor's area of research in education, giving us someone to refer to. We decided on our technology stack (Being predominantly Python/Django) and that I would be the Project Manager.
+
+Week 3 
+No tutorial this week but we still decided to show up to uni to discuss progress on our project and work on our proposal. Aside from that, nothing else was done since we're still within the early stages of the project.
+
+Week 4 
+This week, we were given early feedback on our proposal and it was really positive. We were able to clarify with the tutor our intentions and goals for the project and what outcomes he was expecting. Although, there were a few parts of the proposal where we and our tutor were a bit misaligned in our understanding, overall, the proposal seemed adequate in his eyes. I plan to spend the rest of the week brushing up on Python/Django as well as creating a wireframe UI to show to our tutor the next time we have a tutorial. 
+
+
+ 
