@@ -1,0 +1,5 @@
+"""
+NOTE: path('', include(...)). What it does is, if the first arguement is empty '',
+it go the the path of main.urls, returned by include("path") and search for urlpatterns in that file
+"""
+ 
