@@ -8,4 +8,9 @@ First tutorial where I'm actually in class so I was able to meet the group as we
 
 Week 3 
 No tutorial this week but we still decided to show up to uni to discuss progress on our project and work on our proposal. Aside from that, nothing else was done since we're still within the early stages of the project.
+
+Week 4 
+This week, we were given early feedback on our proposal and it was really positive. We were able to clarify with the tutor our intentions and goals for the project and what outcomes he was expecting. Although, there were a few parts of the proposal where we and our tutor were a bit misaligned in our understanding, overall, the proposal seemed adequate in his eyes. I plan to spend the rest of the week brushing up on Python/Django as well as creating a wireframe UI to show to our tutor the next time we have a tutorial. 
+
+
  
