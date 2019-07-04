@@ -8,3 +8,9 @@ Week2:
 - Met up with group mates on Tuesday in tutorial and discussed on a couple of things: proposal, allocate possible task/roles for each individual.
 - For the rest of the week, I spent time researching on how to draw a good software diagram/system module flow. 
 
+Week3:
+- For this week, we received feedback on our project proposal where we received some positive feedback as well as tips from our tutor on where and how we could improve the proposal.
+- After our feedback, Me and michael agreed on getting down a basic working interface and draw up a wireframe to further improve the frontend down the line
+
+Week4:
+- This week minimum work was done due to assignment for other courses were about to be due. However, I did watch some front end youtube video that can be applied to the project (E.g. F-Patter)
