@@ -7,4 +7,9 @@
 
 {% block content_1 %}
     <p> Dashboard </p>
+    <div id='classes' name'classes'>
+        {% for class in classes %}
+            <li> {{class.class_name}} </li>
+        {% endfor %}
+    </div>
 {% endblock %}
