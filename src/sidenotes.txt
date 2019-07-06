@@ -6,3 +6,9 @@ it go the the path of main.urls, returned by include("path") and search for urlp
 """
 The models.py in main folder allows us to create relation tables in django/python form
 """
+
+"""
+templates contains html templates
+templates/main - for main application
+Jinja2 syntax and template rendering to make web page dynamic
+"""
