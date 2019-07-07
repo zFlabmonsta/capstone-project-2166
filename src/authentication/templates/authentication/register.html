@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+
+{% block content_1 %}
+    
+    <div id='register-form' class='register-form'>
+        <form method="POST">
+            {% csrf_token %}
+            <legend> Register Now </legend>
+            {{ form }}
+            <button type='submit'> Sign up </button>
+        </form>
+    </div>
+
+{% endblock %}

@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
 from main.models import Dashboard, MyClass
 from .forms import Class_form
 
@@ -23,10 +24,10 @@ TODO:
 NOTE:
     Currently load dashboard(id=1)
 """
-def dashboard(response):
-    classes = MyClass.objects.filter(dashboard__id = 1)
-    if response.method == 'POST':
-        print("hello")
+@login_required(login_url='/login')
+def dashboard(response, id):
+    dashboard = get_object_or_404(Dashboard, id=id)
+    classes = MyClass.objects.filter(dashboard__id = id)
     return render(response, "main/dashboard.html", {"classes":classes})
 
 """
@@ -34,6 +35,7 @@ This method allows the user to fill in a form to create a class holding
 the evaluated learning outcomes, then redirect the user to the dashboard
 once the form is completed succesfully
 """
+@login_required(login_url='/login')
 def create_class(response):
     if response.method == 'POST':
         form = Class_form(response.POST)
@@ -53,6 +55,7 @@ def create_class(response):
 When this method is called, the class, given the id, will be removed from the database.
 Once pressed it will redirect the user to the dashboard
 """
+@login_required(login_url='/login')
 def delete_class(response, id):
     if response.method == 'POST':
         MyClass.objects.get(id=id).delete()
