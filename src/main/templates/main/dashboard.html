@@ -7,9 +7,26 @@
 
 {% block content_1 %}
     <p> Dashboard </p>
-    <div id='classes' name'classes'>
+
+    <div id='classes' name='classes'>
+
         {% for class in classes %}
-            <li> {{class.class_name}} </li>
+            <li> {{class.class_name}} 
+
+                <form action="dashboard/delete-class/{{class.id}}" method='POST'>
+                    {% csrf_token %}
+                    <button type='submit'> delete </button> 
+                </form>
+
+            </li>
         {% endfor %}
+
     </div>
+
+    <div id='add-button' name='add-button'>
+        <form action='create_class' method='GET'>
+            <button type='submit'> add class </button>
+        </form>
+    </div>
+
 {% endblock %}

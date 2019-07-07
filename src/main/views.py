@@ -19,14 +19,21 @@ def howto(response):
 TODO:
     Display Dashboard's Classes [x]
     Link Dashboard to Registered User [ ]
-    Redirect add class button to create class to dashboard [ ]
+    Redirect add class button to create class to dashboard [x]
 NOTE:
     Currently load dashboard(id=1)
 """
 def dashboard(response):
     classes = MyClass.objects.filter(dashboard__id = 1)
+    if response.method == 'POST':
+        print("hello")
     return render(response, "main/dashboard.html", {"classes":classes})
 
+"""
+This method allows the user to fill in a form to create a class holding 
+the evaluated learning outcomes, then redirect the user to the dashboard
+once the form is completed succesfully
+"""
 def create_class(response):
     if response.method == 'POST':
         form = Class_form(response.POST)
@@ -37,7 +44,16 @@ def create_class(response):
             d = Dashboard.objects.get(id=1)
             c = MyClass(dashboard = d, class_name = course_code)
             c.save()
-            return HttpResponseRedirect('dashboard')
+            return HttpResponseRedirect('/dashboard')
     else:
         form = Class_form()
     return render(response, "main/class_form.html", {'form':form})
+
+"""
+When this method is called, the class, given the id, will be removed from the database.
+Once pressed it will redirect the user to the dashboard
+"""
+def delete_class(response, id):
+    if response.method == 'POST':
+        MyClass.objects.get(id=id).delete()
+    return HttpResponseRedirect('/dashboard')

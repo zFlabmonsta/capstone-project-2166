@@ -7,4 +7,5 @@ urlpatterns=[
     path("howto", views.howto, name="howto"),
     path("dashboard", views.dashboard, name="dashboard"),
     path("create_class", views.create_class, name="create class"),
+    path("dashboard/delete-class/<int:id>", views.delete_class, name="delete class"),
 ]
