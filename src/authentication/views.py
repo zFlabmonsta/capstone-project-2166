@@ -27,7 +27,7 @@ def login(request):
         if user is not None:
             auth_login(request, user)
             dashboard_id = Dashboard.objects.get(user=user.id).id
-            return HttpResponseRedirect("dashboard/"+str(dashboard_id))
+            return HttpResponseRedirect("dashboard")
         else:
             return HttpResponseRedirect('/')
     else:

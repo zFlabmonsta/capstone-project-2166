@@ -5,7 +5,7 @@ urlpatterns=[
     path("", views.index, name="index"),        
     path("about", views.about, name="about"),
     path("howto", views.howto, name="howto"),
-    path("dashboard/<int:id>", views.dashboard, name="dashboard"),
+    path("dashboard", views.dashboard, name="dashboard"),
     path("create_class", views.create_class, name="create class"),
-    path("dashboard/<int:id/delete-class/<int:id>", views.delete_class, name="delete class"),
+    path("dashboard/delete-class/<int:id>", views.delete_class, name="delete class"),
 ]
