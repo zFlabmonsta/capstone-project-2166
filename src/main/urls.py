@@ -6,6 +6,6 @@ urlpatterns=[
     path("about", views.about, name="about"),
     path("howto", views.howto, name="howto"),
     path("dashboard", views.dashboard, name="dashboard"),
-    path("create_class", views.create_class, name="create class"),
-    path("dashboard/delete-class/<int:id>", views.delete_class, name="delete class"),
+    path("create_property", views.create_property, name="create property"),
+    path("dashboard/delete-property/<int:id>", views.delete_property, name="delete property"),
 ]

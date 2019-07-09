@@ -5,24 +5,20 @@ from django.contrib.auth.models import User
 class Dashboard(models.Model):
     """
     Each user that signs up will be assigned their on Dashboard
-    to hold and save their classes, where each class will 
-    save the lecturer's evaluated learning outcome 
+    containing their property they have announced for rent
     """
     dashboard_name = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
-class MyClass(models.Model):
+class Location(models.Model):
+    street = models.CharField(max_length=100)
+    post_code = models.CharField(max_length=4)
+    suburb = models.CharField(max_length=100)
+
+class Property(models.Model):
     """
-    MyClass is created by the lecturer and stores learning outcomes
-    that are evaluated and wanted.
+    Links Location of the property and dashboard
     """
     dashboard = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
-    class_name = models.CharField(max_length=20)
-
-class Learning_outcome(models.Model):
-    """
-    contains learning outcomes
-    """
-    my_class = models.ForeignKey(MyClass, on_delete=models.CASCADE)
-    learning_outcome = models.CharField(max_length=1000)
-
+    location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    # image

@@ -1,19 +1,14 @@
 {% extends 'main/base.html' %}
 
-<!-- User's Dashboard
-    List of created class [ ]
-    Add Class Button [ ]
--->
-
 {% block content_1 %}
     <p> Dashboard </p>
 
-    <div id='classes' name='classes'>
+    <div id='properties' name='properties'>
 
-        {% for class in classes %}
-            <li> {{class.class_name}} 
+        {% for property in properties%}
+        <li> street: {{property.location.street}}, suburb: {{property.location.suburb}}, postcode: {{property.location.post_code}}
 
-                <form action="dashboard/delete-class/{{class.id}}" method='POST'>
+                <form action="dashboard/delete-property/{{property.id}}" method='POST'>
                     {% csrf_token %}
                     <button type='submit'> delete </button> 
                 </form>
@@ -25,8 +20,8 @@
 
     <div id='add-button' name='add-button'>
 
-        <form action='/create_class' method='GET'>
-            <button type='submit'> add class </button>
+        <form action='/create_property' method='GET'>
+            <button type='submit'> add property</button>
         </form>
 
     </div>
