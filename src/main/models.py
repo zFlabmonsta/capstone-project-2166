@@ -12,9 +12,10 @@ class Dashboard(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Location(models.Model):
-    street = models.CharField(max_length=100)
-    post_code = models.CharField(max_length=4)
-    suburb = models.CharField(max_length=100)
+    num = models.IntegerField(null=True, blank=True, default=None)
+    address = models.CharField(max_length=200)
+    latitude = models.FloatField(null=True, blank=True, default=None)
+    longitude = models.FloatField(null=True, blank=True, default=None)
 
 class Property(models.Model):
     """

@@ -6,7 +6,7 @@
     <div id='properties' name='properties'>
 
         {% for property in properties%}
-        <li> street: {{property.location.street}}, suburb: {{property.location.suburb}}, postcode: {{property.location.post_code}}
+        <li> Number/Unit: {{property.location.num}} Address: {{property.location.address}}, longitude: {{property.location.longitude}}, latitude: {{property.location.latitude}}
 
                 <form action="dashboard/delete-property/{{property.id}}" method='POST'>
                     {% csrf_token %}

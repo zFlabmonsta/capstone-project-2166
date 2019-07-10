@@ -2,8 +2,9 @@ from django import forms
 from datetime import datetime, date, time
 
 class Property_form (forms.Form):
+    num = forms.IntegerField(label="Number/Unit")
     street = forms.CharField(label='Street', max_length=50)
-    post_code = forms.CharField(label='Post Code', max_length=20)
+    post_code = forms.IntegerField(label='Post Code', max_value=9999)
     suburb = forms.CharField(label='Suburb', max_length=50)
     # images = 
 
