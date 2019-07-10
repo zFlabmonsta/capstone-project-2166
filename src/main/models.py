@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from datetime import datetime
 
 # Create your models here.
 class Dashboard(models.Model):
@@ -22,3 +23,9 @@ class Property(models.Model):
     dashboard = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     # image
+
+class Booking(models.Model):
+    property_id = models.ForeignKey(Property, on_delete=models.CASCADE)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    start_date = models.DateTimeField(default=datetime.now)
+    end_date = models.DateTimeField(default=datetime.now)
