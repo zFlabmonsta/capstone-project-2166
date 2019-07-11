@@ -4,8 +4,11 @@
     <p> Home Page </p>
     <div id='search-form' class='search-form'>
         <form method='POST'>
+            {% csrf_token %}
             {{search_form}}
             <button type='submit'>Search</button>
         </form>
     </div>
+    
+
 {% endblock %}
