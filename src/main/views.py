@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
-from main.models import Dashboard, Property, Location
+from main.models import Dashboard, Property, Location, Booking
 from .forms import Property_form, Search_property_form
 
 # Create your views here.
@@ -41,7 +41,7 @@ def index(request):
            #DEBUG
             for p in in_radius:
                 print(p.location.address)
-            return render(request, "main/search_list.html", {'searched_property': in_radius})
+            return render(request, "main/search_list.html", {'searched_property':in_radius, 'start_date':check_in, 'end_date':check_out})
 
     return render(request, "main/index.html", {'search_form': search_form})
 
@@ -59,5 +59,6 @@ def dashboard(request):
     current_user = request.user
     dashboard = Dashboard.objects.get(user=current_user.id)
     properties = Property.objects.filter(dashboard__id = dashboard.id)
-    return render(request, "main/dashboard.html", {"properties": properties})
+    bookings = Booking.objects.filter(dashboard__id=dashboard.id)
+    return render(request, "main/dashboard.html", {"properties":properties, "bookings":bookings})
 
