@@ -3,8 +3,8 @@
 {% block content_1 %}
     <p> Dashboard </p>
 
+    <p> Property Listing <p>
     <div id='properties' name='properties'>
-
         {% for property in properties%}
         <li> Number/Unit: {{property.location.num}} Address: {{property.location.address}}, longitude: {{property.location.longitude}}, latitude: {{property.location.latitude}}
 
@@ -15,15 +15,26 @@
 
             </li>
         {% endfor %}
-
     </div>
 
     <div id='add-button' name='add-button'>
-
         <form action='/create_property' method='GET'>
             <button type='submit'> add property</button>
         </form>
-
     </div>
+
+    <p> Bookings <p>
+    <div id='bookings' name='bookings'>
+        {% for booking in bookings %}
+
+            <li> {{booking.property.location.address}} <br>
+                check in: {{booking.start_date}}<br>
+                check out: {{booking.end_date}}<br>
+            </li>
+            <br>
+        {% endfor %}
+    </div>
+
+
 
 {% endblock %}

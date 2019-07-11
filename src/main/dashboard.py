@@ -16,13 +16,14 @@ def create_property(request):
     if request.method == 'POST':
         form = Property_form(request.POST)
         if form.is_valid():
+            # Change this to make it user specific
+            d = Dashboard.objects.get(user=current_user.id)
+
             # Enter property info on dashboard
             num = form.cleaned_data['num']
             street = form.cleaned_data['street']
             post_code = form.cleaned_data['post_code']
             suburb = form.cleaned_data['suburb']
-            # Change this to make it user specific
-            d = Dashboard.objects.get(user=current_user.id)
 
             # get full address, longitude and latitude 
             geo_location = Nominatim(user_agent=str(current_user.username) + "property")
@@ -30,8 +31,10 @@ def create_property(request):
             full_address = str(geo_location.address)
             longitude = float(geo_location.longitude)
             latitude = float(geo_location.latitude)
+
             l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
             l.save()
+
             p = Property(dashboard = d, location = l)
             p.save()
             return HttpResponseRedirect('/dashboard')
@@ -52,10 +55,3 @@ def delete_property(request, id):
         dashboard_id = Dashboard.objects.get(user=current_user.id).id
     return HttpResponseRedirect('/dashboard')
 
-"""
-To make booking we need to get the property the user wants to book. To this the will search for
-property that are available, filtering out (date, location, number of guest)
-"""
-@login_required(login_url='/login')
-def make_booking(request):
-    pass
