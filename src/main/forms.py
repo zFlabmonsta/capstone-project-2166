@@ -10,6 +10,6 @@ class Property_form (forms.Form):
 
 class Search_property_form (forms.Form):
     where = forms.CharField(label='Where', max_length=100)
-    check_in = forms.DateField(label='Check in', initial=datetime.now())
-    check_out = forms.DateField(label='Check out')
+    check_in = forms.DateTimeField(label='Check in', initial=datetime.now())
+    check_out = forms.DateTimeField(label='Check out')
     num_guests = forms.IntegerField(label='Guests')

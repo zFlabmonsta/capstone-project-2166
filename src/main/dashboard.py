@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
-from main.models import Dashboard, Property, Location
+from main.models import Dashboard, Property, Location, Booking
 from .forms import Property_form
 from geopy.geocoders import Nominatim
 
@@ -26,8 +26,9 @@ def create_property(request):
             suburb = form.cleaned_data['suburb']
 
             # get full address, longitude and latitude 
-            geo_location = Nominatim(user_agent=str(current_user.username) + "property")
-            geo_location = geo_location.geocode(str(num) + " "+ street + " " + suburb + " " + str(post_code))
+            geo_location = Nominatim(timeout=3)
+            geo_location = geo_location.geocode(str(num)+" "+street+" "+suburb+" "+str(post_code), "NSW")
+
             full_address = str(geo_location.address)
             longitude = float(geo_location.longitude)
             latitude = float(geo_location.latitude)
@@ -48,10 +49,19 @@ deletes the property from the database
 @login_required(login_url='/login')
 def delete_property(request, id):
     if request.method == 'POST':
-        # delete property
         Property.objects.get(id=id).delete()
-        # get current user to redirect to dashboard
         current_user = request.user
         dashboard_id = Dashboard.objects.get(user=current_user.id).id
     return HttpResponseRedirect('/dashboard')
 
+
+"""
+delete booking from the database
+"""
+@login_required(login_url='/login')
+def delete_booking(request, id):
+    if request.method =='POST':
+        Booking.objects.get(id=id).delete()
+        current_user = request.user
+        dashboard_id = Dashboard.objects.get(user=current_user.id).id
+    return HttpResponseRedirect('/dashboard')
