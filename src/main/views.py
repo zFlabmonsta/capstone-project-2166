@@ -23,7 +23,7 @@ def index(request):
             num_guest = form.cleaned_data['num_guests']
             
             # get the longitude and latitude of the where
-            where_geolocator = Nominatim(user_agent="")
+            where_geolocator = Nominatim(timeout=3)
             where_geolocator = where_geolocator.geocode(where + " " + "NSW, AU")
             where_lat_long = (where_geolocator.latitude, where_geolocator.longitude)
 
@@ -38,9 +38,24 @@ def index(request):
                 if (geodesic(where_lat_long, property_lat_long).meters < max_radius):
                     in_radius.append(property)
 
-           #DEBUG
-            for p in in_radius:
-                print(p.location.address)
+            # get all properties that are booked in given date
+            bookings = Booking.objects.all()
+            booked_properties = []
+            for b in bookings:
+                if (b.date_overlapping(check_in, check_out)):
+                   booked_properties.append(b.property.id) 
+
+            #DEBUG
+            for i in booked_properties:
+                print("item: "+ str(i))
+            
+            # remove property from list, if already booked at given date
+            for b in booked_properties:
+                for p in in_radius:
+                    if (p.id == b):
+                        in_radius.remove(p)
+
+
             return render(request, "main/search_list.html", {'searched_property':in_radius, 'start_date':check_in, 'end_date':check_out})
 
     return render(request, "main/index.html", {'search_form': search_form})
