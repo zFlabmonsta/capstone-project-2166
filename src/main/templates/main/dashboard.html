@@ -1,46 +1,57 @@
 {% extends 'main/base.html' %}
-
+{% load staticfiles %}
 {% block content_1 %}
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/dashboard.css' %}">
+    <script type="text/javascript" src="{% static 'js/dashboard.js' %}"></script>
     <p> Dashboard </p>
 
-    <p> Property Listing <p>
-    <div id='properties' name='properties'>
-        {% for property in properties%}
-        <li> Number/Unit: {{property.location.num}} Address: {{property.location.address}}, longitude: {{property.location.longitude}}, latitude: {{property.location.latitude}}
+    <button class="tablink" onclick="openPage('property-list-page', this, 'black')">Property Listing</button>
+    <button class="tablink" onclick="openPage('bookings-page', this, 'grey')">Bookings</button>
 
-                <form action="dashboard/delete-property/{{property.id}}" method='POST'>
-                    {% csrf_token %}
-                    <button type='submit'> delete </button> 
-                </form>
+    <!-- Page for Listed Property for others to accommodate --!>
+    <div id="property-list-page" class="tabcontent">
+        <div id='properties' name='properties'>
+            {% for property in properties%}
+            <li> Number/Unit: {{property.location.num}} Address: {{property.location.address}}, longitude: {{property.location.longitude}}, latitude: {{property.location.latitude}}
 
-            </li>
-        {% endfor %}
-    </div>
+                    <form action="dashboard/delete-property/{{property.id}}" method='POST'>
+                        {% csrf_token %}
+                        <button type='submit'> delete </button> 
+                    </form>
 
-    <div id='add-button' name='add-button'>
-        <form action='/create_property' method='GET'>
-            <button type='submit'> add property</button>
-        </form>
-    </div>
+                </li>
+            {% endfor %}
+        </div>
 
-    <p> Bookings <p>
-    <div id='bookings' name='bookings'>
-        {% for booking in bookings %}
-
-            <li> {{booking.property.location.address}} <br>
-                check in: {{booking.start_date}}<br>
-                check out: {{booking.end_date}}<br>
-
-                <form action="dashboard/delete-booking/{{booking.id}}" method='POST'>
-                    {% csrf_token %}
-                    <button type='submit'> delete </button>
-                </form>
-
-            </li>
-            <br>
-        {% endfor %}
+        <div id='add-button' name='add-button'>
+            <form action='/create_property' method='GET'>
+                <button type='submit'> add property</button>
+            </form>
+        </div>
     </div>
 
 
+    <!-- Page for booked, bookings -->
+    <div id="bookings-page" class="tabcontent">
+        <h3> TESTING BOOKINGS </h3>
+        <div id='bookings' name='bookings'>
+            {% for booking in bookings %}
+
+                <li> {{booking.property.location.address}} <br>
+                    check in: {{booking.start_date}}<br>
+                    check out: {{booking.end_date}}<br>
+
+                    <form action="dashboard/delete-booking/{{booking.id}}" method='POST'>
+                        {% csrf_token %}
+                        <button type='submit'> delete </button>
+                    </form>
+
+                </li>
+                <br>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}
