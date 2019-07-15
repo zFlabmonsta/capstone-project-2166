@@ -18,3 +18,4 @@ function openPage(pageName, elmnt, color) {
     // Add the specific color to the button used to open the tab content
     elmnt.style.backgroundColor = color;
 }
+
