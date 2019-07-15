@@ -122,4 +122,3 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-SPATIALITE_LIBRARY_PATH = 'mod_spatialite'

@@ -1,14 +1,36 @@
+{% load staticfiles %}
 <html>
 <head>
     <title> Accommodation Web Portal </title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+    <script type="text/javascript" src="{% static 'js/off-canvas.js' %}"></script>
 </head>
 
-<body>
-    <h1> Accomodation Web Portal </h1>
 
-    <div id="content_1", name="content_1"> 
-        {% block content_1 %}
-        {% endblock %}
+<body>
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+      <a href="/">Home</a>
+      <a href="#">Services</a>
+      <a href="#">Clients</a>
+      <a href="/login">Login</a>
+    </div>
+
+    <!-- Use any element to open the sidenav -->
+
+    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
+    <div id="main">
+        <h1> Accomodation Web Portal </h1>
+        <span onclick="openNav()">
+            <div class="container">
+              <button class="btn">Menu</button>
+            </div>
+        </span>
+        <div id="content_1", class="content_1"> 
+            {% block content_1 %}
+            {% endblock %}
+        </div>
     </div>
 
 </body>
