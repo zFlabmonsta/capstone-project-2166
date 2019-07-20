@@ -51,13 +51,13 @@
 
 /********** Menu Button to open sidebar **************/
 /* Container needed to position the button. Adjust the width as needed */
-.container {
+.container-menu {
     position: relative;
     width: 50%;
 }
 
 /* Style the button and place it in the middle of the container/image */
-.container .btn {
+.container-menu .btn {
     position: absolute;
     top: 0%;
     left: 100%;
@@ -73,7 +73,7 @@
     border-radius: 5px;
 }
 
-.container .btn:hover {
+.container-menu .btn:hover {
     background-color: black;
 }
 

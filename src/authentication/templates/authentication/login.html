@@ -1,28 +1,66 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
+{% load widget_tweaks %}
 {% block content_1 %}
 
-<link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-<form method="POST">
-    <div class="container-login">
-        <h1>Login</h1>
-        <p>Please fill in this form to login.</p>
-        <hr>
+<div class="theme-page-section _pt-100 theme-page-section-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="theme-login theme-login-white">
 
-        <label for="username"><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="username" required>
+          <div class="theme-login-header">
+            <h1 class="theme-login-title">Sign In</h1>
+            <p class="theme-login-subtitle">Login into your SOMENAME account</p>
+          </div>
+          
+          <div class="theme-login-box">
+            <div class="theme-login-box-inner">
 
-        <label for="psw"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <hr>
+              <form method='POST' class="theme-login-form">
+                <div class="form-group theme-login-form-group">
+                  <input name="username" class="form-control" type="text" placeholder="Username"/>
+                </div>
 
-        {% csrf_token %}
-        <button type="submit" class="loginbtn">Login</button>
+                <div class="form-group theme-login-form-group">
+                  <input name="password" class="form-control" type="password" placeholder="Password"/>
+                  <p class="help-block">
+                    <a href="pwd-reset-2.html">Forgot password?</a>
+                  </p>
+                </div>
+                <div class="form-group">
+                  <div class="theme-login-checkbox">
+                    <label class="icheck-label">
+                      <input class="icheck" type="checkbox"/>
+                      <span class="icheck-title">Keep me logged in</span>
+                    </label>
+                  </div>
+                </div>
+                {% csrf_token %}
+                <button class="btn btn-uc btn-dark btn-block btn-lg" type='submit'>Sign In</button>
+              </form>
+
+            </div>
+
+            <div class="theme-login-box-alt">
+              <p>Don't have an account? &nbsp;
+                <a href="/register">Sign up.</a>
+              </p>
+            </div>
+
+          </div>
+
+          <p class="theme-login-terms">By logging in you accept our
+            <a href="#">terms of use</a>
+            <br/>and
+            <a href="#">privacy policy</a>.
+          </p>
+
+        </div>
+      </div>
     </div>
+  </div>
+</div>
 
-    <div class="container-login register">
-    <p>Don't have an account? <a href="#">Sign Up</a>.</p>
-    </div>
-</form> 
 
 {% endblock %}

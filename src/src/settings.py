@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.gis',
     'main.apps.MainConfig', 
     'authentication.apps.AuthenticationConfig',
+
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

@@ -1,12 +1,114 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
+{% load widget_tweaks %}
 
 {% block content_1 %}
-    <div id='container-search' class='container-search'>
-        <form method='POST' class='search-form'>
-            {% csrf_token %}
-            {{search_form}}
-            <button type='submit'>Search</button>
-        </form>
+<div class="container">
+  <div class="row _pt-150 _pv-mob-50" data-gutter="60">
+    <div class="col-md-5 ">
+      <form method='POST' class='search-form'>
+        <div class="theme-search-area-tabs">
+          <div class="tabbable">
+            <div class="tab-content _p-25 _bg-b-04 _br-4">
+              <div class="tab-pane active" id="SearchAreaTabs-1" role="tab-panel">
+                <div class="theme-search-area theme-search-area-vert theme-search-area-white">
+                  <div class="theme-search-area-form">
+                    <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-border-light">
+                      <label class="theme-search-area-section-label _c-w _op-04">Where</label>
+                      <div class="theme-search-area-section-inner">
+                        <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+
+                        {% render_field search_form.where class="theme-search-area-section-input typeahead" placeholder="Location" data-provide="typeahead" %}
+
+                      </div>
+                    </div>
+                    <div class="row" data-gutter="20">
+                      <div class="col-md-6 ">
+                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-border-light">
+                          <label class="theme-search-area-section-label _c-w _op-04">Check In</label>
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-calendar"></i>
+
+                            {% render_field search_form.check_in class="theme-search-area-section-input" %}
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-border-light">
+                          <label class="theme-search-area-section-label _c-w _op-04">Check Out</label>
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-calendar"></i>
+
+                            {% render_field search_form.check_out class="theme-search-area-section-input"%}
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" data-gutter="20">
+                      <div class="col-md-6 ">
+                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-border-light quantity-selector" data-increment="Rooms">
+                          <label class="theme-search-area-section-label _c-w _op-04">Rooms</label>
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-tag"></i>
+                              
+                            <input class="theme-search-area-section-input" value="1 Room" type="text"/>
+
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 ">
+                        <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-border-light quantity-selector" data-increment="Guests">
+                          <label class="theme-search-area-section-label _c-w _op-04">Guests</label>
+                          <div class="theme-search-area-section-inner">
+                            <i class="theme-search-area-section-icon lin lin-people"></i>
+                            {% render_field search_form.num_guests class="theme-search-area-section-input" value="2" %}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" data-gutter="20">
+                      <div class="col-md-6 ">
+                        {% csrf_token %}
+                        <button type="submit" class="theme-search-area-submit _mt-10 theme-search-area-submit-curved">Search</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
     </div>
+
+   <!-- live scrolling testimonials -->
+    <div class="col-md-6 ">
+      <div class="owl-carousel _mt-50" data-items="1" data-loop="true" data-nav="false" data-autoplay="3000">
+        <div class="theme-testimonial _c-w">
+          <div class="theme-testimonial-body">
+            <blockquote>The holiday of a life time - our gulet adventure in the Dodecanese Greek Islands. Swimming in the most gorgeous coves, kayaking on crystal blue waters, hiking around ruins and into small remote villages and relaxing on the boat... it was the best trip ever.</blockquote>
+          </div>
+          <img class="theme-testimonial-img" src={%static "img/70x70.png"%} alt="Image Alternative text" title="Image Title"/>
+          <p class="theme-testimonial-author">Olivia Slater</p>
+        </div>
+        <div class="theme-testimonial _c-w">
+          <div class="theme-testimonial-body">
+            <blockquote>Our trip from Kos to Patmos was everything and more than expected. It was all one could hope for and a strong inducement to do another adventure very soon.</blockquote>
+          </div>
+          <img class="theme-testimonial-img" src={%static "img/70x70.png"%} alt="Image Alternative text" title="Image Title"/>
+          <p class="theme-testimonial-author">Alison Mackenzie</p>
+        </div>
+        <div class="theme-testimonial _c-w">
+          <div class="theme-testimonial-body">
+            <blockquote>What a wonderful experience! The two tour leaders who were archaeologists enthralled us with the history of the Islands. The food was bountiful. The staff was lovely and attentive. Excellent.</blockquote>
+          </div>
+          <img class="theme-testimonial-img" src={%static "img/70x70.png" %} alt="Image Alternative text" title="Image Title"/>
+          <p class="theme-testimonial-author">Carl Butler</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

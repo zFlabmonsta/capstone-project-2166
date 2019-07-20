@@ -1,45 +1,76 @@
 {% load staticfiles %}
-<html>
-<head>
-    <title> Accommodation Web Portal </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
-    <script type="text/javascript" src="{% static 'js/off-canvas.js' %}"></script>
-</head>
+{% load widget_tweaks %}
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <title>Travel Mate - Index 10</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"/>
+    <link rel="stylesheet" href= {% static "css/font-awesome.css" %}>
+    <link rel="stylesheet" href= {% static "css/lineicons.css" %}>
+    <link rel="stylesheet" href= {% static "css/weather-icons.css"%}>
+    <link rel="stylesheet" href= {% static "css/bootstrap.css"%}>
+    <link rel="stylesheet" href= {% static "css/styles.css"%}>
+  </head>
+  <body>
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-default navbar-inverse navbar-theme navbar-theme-abs navbar-theme-transparent navbar-theme-border" id="main-nav">
+      <div class="container">
+        <div class="navbar-inner nav">
+          <div class="navbar-header">
+            <button class="navbar-toggle collapsed" data-target="#navbar-main" data-toggle="collapse" type="button" area-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">
+              <img src="http://www.clker.com/cliparts/D/7/H/F/m/L/house-outline-hi.png" alt="Image Alternative text" title="Image Title"/>
+            </a>
+          </div>
 
+          <div class="collapse navbar-collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+              <li class="dropdown"> <a class="dropdown-toggle" href="/dashboard">Dashboard</a> </li>
+            </ul>
 
-<body>
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="/">Home</a>
-        <a href="/dashboard">Dashboard</a>
-        {% if not user.is_authenticated %}
-            <a href="/login">Login</a>
-            <a href="/register">Register</a>
-        {% else %}
-            <a href="/logout">Logout</a>
-        {% endif %} 
-    </div>
-
-    <!-- Use any element to open the sidenav -->
-
-    <!-- Add all page content inside this div if you want the side nav to push page content to the right (not used if you only want the sidenav to sit on top of the page -->
-    <div id="main">
-        <h1> Accomodation Web Portal </h1>
-        <span onclick="openNav()">
-            <div class="container">
-                {% if user.is_authenticated %}
-                    <button class="btn">Menu | Logout </button>
-                {% else %}
-                    <button class="btn">Menu | Login | Register</button>
-                {% endif %}
-            </div>
-        </span>
-        <div id="content_1", class="content_1"> 
-            {% block content_1 %}
-            {% endblock %}
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                  {% if not user.is_authenticated %}
+                      <li class="dropdown"> <a class="dropdown-toggle" href="/login"> Login </a></li>
+                      <li class="dropdown"> <a class="dropdown-toggle" href="/register"> Register </a></li>
+                  {% else %}
+                      <li class="dropdown"> <a class="dropdown-toggle" href="/logout">Logout</a></li>
+                  {% endif %}
+            </ul>
+          </div>
         </div>
+      </div>
+    </nav>
+
+    <! -- Middle of the page -->
+    <div class="_pos-r">
+      <div class="theme-hero-area _h-desk-100vh">
+        <div class="theme-hero-area-bg-wrap">
+            <div class="theme-hero-area-bg" style="background-image:url({%static "img/1500x800.png" %});"></div>
+          <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
+          <div class="theme-hero-area-inner-shadow"></div>
+        </div>
+
+        <div class="theme-hero-area-body">
+          {% block content_1 %}
+          {% endblock %}
+        </div>
+      </div>
     </div>
 
-</body>
+    <script src={% static "js/jquery.js"%}></script>
+    <script src={% static "js/bootstrap.js"%}></script>
+    <script src={% static "js/owl-carousel.js"%}></script>
+    <script src={% static "js/bs-datepicker.js"%}></script>
+    <script src={% static "js/typeahead.js"%}></script>
+    <script src={% static "js/custom.js"%}></script>
+  </body>
 </html>

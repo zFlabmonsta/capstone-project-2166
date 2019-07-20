@@ -16,6 +16,8 @@ def index(request):
     search_form = Search_property_form()
     if (request.method == 'POST'):
         form = Search_property_form(request.POST)
+        print(form)
+        print(form.is_valid())
         if form.is_valid():
             where = form.cleaned_data['where']
             check_in = form.cleaned_data['check_in']
@@ -23,9 +25,11 @@ def index(request):
             num_guest = form.cleaned_data['num_guests']
             
             # get the longitude and latitude of the where
-            where_geolocator = Nominatim(timeout=3)
+            where_geolocator = Nominatim(timeout=20)
             where_geolocator = where_geolocator.geocode(where + " " + "NSW, AU")
             where_lat_long = (where_geolocator.latitude, where_geolocator.longitude)
+
+            print(where_lat_long)
 
             # find property that is within 5km radius of "where" and list it
             # make query to get list of properties
@@ -55,8 +59,13 @@ def index(request):
                     if (p.id == b):
                         in_radius.remove(p)
 
+            context = {
+                'searched_property': in_radius,
+                'start_date': check_in,
+                'end_date': check_out
+            }
 
-            return render(request, "main/search_list.html", {'searched_property':in_radius, 'start_date':check_in, 'end_date':check_out})
+            return render(request, "main/search_list.html", context)
 
     return render(request, "main/index.html", {'search_form': search_form})
 
@@ -75,5 +84,9 @@ def dashboard(request):
     dashboard = Dashboard.objects.get(user=current_user.id)
     properties = Property.objects.filter(dashboard__id = dashboard.id)
     bookings = Booking.objects.filter(dashboard__id=dashboard.id)
+    context = {
+        'properties': properties,
+        'bookings': bookings
+    }
     return render(request, "main/dashboard.html", {"properties":properties, "bookings":bookings})
 
