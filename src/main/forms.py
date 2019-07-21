@@ -9,6 +9,7 @@ class Property_form (forms.Form):
     price = forms.IntegerField(label='Price')
     num_guests = forms.IntegerField(label='Guests')
     num_rooms = forms.IntegerField(label='Rooms')
+    description = forms.CharField(label='description', widget=forms.Textarea, max_length=1000000000)
     # images = 
 
 class Search_property_form (forms.Form):

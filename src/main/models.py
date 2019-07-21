@@ -26,7 +26,8 @@ class Property(models.Model):
     price = models.IntegerField(null=True, blank=True)
     num_guests = models.IntegerField(null=True, blank=True)
     num_rooms = models.IntegerField(null=True, blank=True)
-    time_booked = models.IntegerField(default=2)
+    time_booked = models.IntegerField(default=0)
+    description = models.CharField(null=True, blank=True, max_length=10000000000)
     # image
 
     def is_matching_num_rooms(self, _num_rooms):
