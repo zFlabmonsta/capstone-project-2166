@@ -2,18 +2,6 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 {% block content_1 %}
-<!-----------------------------------------------
-    {% for property in searched_property %}
-
-    <li> Number/Unit: {{property.location.num}} Address: {{property.location.address}}, longitude: {{property.location.longitude}}, latitude: {{property.location.latitude}} </li>
-
-    <form action="make-booking/{{property.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
-        {% csrf_token %}
-        <button type='submit'> Book </button>
-    </form>
-    {% endfor %}
-    ----------------------------------------------->
-
     <div class="theme-hero-area front">
       <div class="theme-hero-area-body">
         <div class="container">
