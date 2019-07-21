@@ -17,9 +17,7 @@
                       <label class="theme-search-area-section-label _c-w _op-04">Where</label>
                       <div class="theme-search-area-section-inner">
                         <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-
                         {% render_field search_form.where class="theme-search-area-section-input typeahead" placeholder="Location" data-provide="typeahead" %}
-
                       </div>
                     </div>
                     <div class="row" data-gutter="20">
@@ -28,9 +26,7 @@
                           <label class="theme-search-area-section-label _c-w _op-04">Check In</label>
                           <div class="theme-search-area-section-inner">
                             <i class="theme-search-area-section-icon lin lin-calendar"></i>
-
                             {% render_field search_form.check_in class="theme-search-area-section-input" %}
-
                           </div>
                         </div>
                       </div>
@@ -39,9 +35,7 @@
                           <label class="theme-search-area-section-label _c-w _op-04">Check Out</label>
                           <div class="theme-search-area-section-inner">
                             <i class="theme-search-area-section-icon lin lin-calendar"></i>
-
                             {% render_field search_form.check_out class="theme-search-area-section-input"%}
-
                           </div>
                         </div>
                       </div>
@@ -52,9 +46,7 @@
                           <label class="theme-search-area-section-label _c-w _op-04">Rooms</label>
                           <div class="theme-search-area-section-inner">
                             <i class="theme-search-area-section-icon lin lin-tag"></i>
-                              
-                            <input class="theme-search-area-section-input" value="1 Room" type="text"/>
-
+                            {% render_field search_form.num_rooms class="theme-search-area-section-input" value="2" %}
                           </div>
                         </div>
                       </div>

@@ -1,5 +1,6 @@
 {% extends 'main/base.html' %}
-
+{% load staticfiles %}
+{% load widget_tweaks %}
 {% block content_1 %}
 <!-----------------------------------------------
     {% for property in searched_property %}
@@ -13,7 +14,6 @@
     {% endfor %}
     ----------------------------------------------->
 
-<!DOCTYPE HTML>
     <div class="theme-hero-area front">
       <div class="theme-hero-area-body">
         <div class="container">
@@ -21,26 +21,30 @@
             <div class="col-md-10 col-md-offset-1">
               <div class="theme-search-area _mob-h theme-search-area-stacked">
                 <div class="theme-search-area-header _mb-30 _ta-c _c-w">
-                  <h1 class="theme-search-area-title theme-search-area-title-sm">Number of Results </h1>
+                  <h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
                 </div>
+
+                <form method="POST" class='search-form'>
+                {% csrf_token %}
                 <div class="theme-search-area-form _bsh-xxl _bsh-light" id="hero-search-form">
                   <div class="row" data-gutter="none">
+
                     <div class="col-md-3 ">
                       <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
                         <div class="theme-search-area-section-inner">
                           <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          <input class="theme-search-area-section-input typeahead" value="New York" type="text" placeholder="Hotel Location" data-provide="typeahead"/>
+                          {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
                         </div>
                       </div>
                     </div>
+
                     <div class="col-md-4 ">
                       <div class="row" data-gutter="none">
                         <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                              {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
                             </div>
                           </div>
                         </div>
@@ -48,54 +52,37 @@
                           <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
+                              {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div class="col-md-4 ">
                       <div class="row" data-gutter="none">
                         <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-tag"></i>
-                              <input class="theme-search-area-section-input" value="1 Room" type="text"/>
+                              {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
                               <div class="quantity-selector-box" id="HotelSearchRooms">
                                 <div class="quantity-selector-inner">
                                   <p class="quantity-selector-title">Rooms</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
+
                         <div class="col-md-6 ">
                           <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
                             <div class="theme-search-area-section-inner">
                               <i class="theme-search-area-section-icon lin lin-people"></i>
-                              <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                              {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
                               <div class="quantity-selector-box" id="HotelSearchGuests">
                                 <div class="quantity-selector-inner">
                                   <p class="quantity-selector-title">Guests</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
                                 </div>
                               </div>
                             </div>
@@ -103,105 +90,12 @@
                         </div>
                       </div>
                     </div>
+
                     <div class="col-md-1 ">
-                      <button class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
+                      <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="theme-search-area-inline _desk-h theme-search-area-inline-white">
-                <h4 class="theme-search-area-inline-title">New York Hotels</h4>
-                <p class="theme-search-area-inline-details">June 27 &rarr; July 02, 1 Room</p>
-                <a class="theme-search-area-inline-link magnific-inline" href="#searchEditModal">
-                  <i class="fa fa-pencil"></i>Edit
-                </a>
-                <div class="magnific-popup magnific-popup-sm mfp-hide" id="searchEditModal">
-                  <div class="theme-search-area theme-search-area-vert">
-                    <div class="theme-search-area-header">
-                      <h1 class="theme-search-area-title theme-search-area-title-sm">Edit your Search</h1>
-                      <p class="theme-search-area-subtitle">Prices might be different from current results</p>
-                    </div>
-                    <div class="theme-search-area-form">
-                      <div class="theme-search-area-section first theme-search-area-section-curved">
-                        <label class="theme-search-area-section-label">Where</label>
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          <input class="theme-search-area-section-input typeahead" value="New York" type="text" placeholder="Hotel Location" data-provide="typeahead"/>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved">
-                            <label class="theme-search-area-section-label">Check In</label>
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerStart _mob-h" value="Wed 06/27" type="text" placeholder="Check-in"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved">
-                            <label class="theme-search-area-section-label">Check Out</label>
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              <input class="theme-search-area-section-input datePickerEnd _mob-h" value="Mon 07/02" type="text" placeholder="Check-out"/>
-                              <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-07-02" type="date"/>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved quantity-selector" data-increment="Rooms">
-                            <label class="theme-search-area-section-label">Rooms</label>
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-tag"></i>
-                              <input class="theme-search-area-section-input" value="1 Room" type="text"/>
-                              <div class="quantity-selector-box" id="mobile-HotelSearchRooms">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Rooms</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved quantity-selector" data-increment="Guests">
-                            <label class="theme-search-area-section-label">Guests</label>
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-people"></i>
-                              <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
-                              <div class="quantity-selector-box" id="mobile-HotelSearchGuests">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Guests</p>
-                                  <ul class="quantity-selector-controls">
-                                    <li class="quantity-selector-decrement">
-                                      <a href="#">&#45;</a>
-                                    </li>
-                                    <li class="quantity-selector-current">1</li>
-                                    <li class="quantity-selector-increment">
-                                      <a href="#">&#43;</a>
-                                    </li>
-                                  </ul>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Change</button>
-                    </div>
-                  </div>
+                  </form>
                 </div>
               </div>
             </div>
@@ -212,11 +106,12 @@
     <div class="theme-page-section theme-page-section-dark theme-page-section-lg">
       <div class="container">
         <div class="row row-col-static" id="sticky-parent" data-gutter="20">
+
+          <form method="POST">
           <div class="col-md-3 ">
             <div class="sticky-col _mob-h">
               <div class="theme-search-results-sidebar">
                 <div class="theme-search-results-sidebar-sections _mb-20 _br-2 _b-n theme-search-results-sidebar-sections-white-wrap">
-
                   <div class="theme-search-results-sidebar-section">
                     <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
                     <div class="theme-search-results-sidebar-section-checkbox-list">
@@ -266,12 +161,12 @@
                       <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
                     </div>
                   </div>
-
                 </div>
-
               </div>
             </div>
+          <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Filter</button>
           </div>
+          </form>
 
           <div class="col-md-6-5 ">
             <div class="theme-search-results">
@@ -325,25 +220,14 @@
                             <b>8.5 Excellent</b>&nbsp;(8903 reviews)
                           </p>
                         </div>
-                        <p class="theme-search-results-item-location">
-                          <i class="fa fa-map-marker"></i>Midtown East
-                        </p>
-                        <p class="theme-search-results-item-hotel-book-count">Booked
-                          <b>20</b>times today
-                        </p>
-                        <ul class="theme-search-results-item-hotel-features">
-                          <li>
-                            <span>!</span>
-                            <b>FREE</b>cancellation - no prepayment
-                          </li>
-                        </ul>
+                        <p class="theme-search-results-item-hotel-book-count">Booked: {{property.time_booked}}</p>
                       </div>
 
                       <div class="col-md-2 ">
                         <div class="theme-search-results-item-book">
                           <div class="theme-search-results-item-price">
-                            <p class="theme-search-results-item-price-tag">$315</p>
-                            <p class="theme-search-results-item-price-sign">avg/night</p>
+                            <p class="theme-search-results-item-price-tag">${{property.price}}</p>
+                            <p class="theme-search-results-item-price-sign">/night</p>
                           </div>
 
                           <form action="make-booking/{{property.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
@@ -802,27 +686,4 @@
       </div>
     </div>
 
-    <script src="js/jquery.js"></script>
-    <script src="js/moment.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYeBBmgAkyAN_QKjAVOiP_kWZ_eQdadeI&callback=initMap&libraries=places"></script>
-    <script src="js/owl-carousel.js"></script>
-    <script src="js/blur-area.js"></script>
-    <script src="js/icheck.js"></script>
-    <script src="js/gmap.js"></script>
-    <script src="js/magnific-popup.js"></script>
-    <script src="js/ion-range-slider.js"></script>
-    <script src="js/sticky-kit.js"></script>
-    <script src="js/smooth-scroll.js"></script>
-    <script src="js/fotorama.js"></script>
-    <script src="js/bs-datepicker.js"></script>
-    <script src="js/typeahead.js"></script>
-    <script src="js/quantity-selector.js"></script>
-    <script src="js/countdown.js"></script>
-    <script src="js/window-scroll-action.js"></script>
-    <script src="js/fitvid.js"></script>
-    <script src="js/youtube-bg.js"></script>
-    <script src="js/custom.js"></script>
-  </body>
-</html>
 {% endblock %}

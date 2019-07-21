@@ -1,10 +1,59 @@
 {% extends 'main/base.html' %}
-
+{% load staticfiles %}
+{% load widget_tweaks %}
 {% block content_1 %}
-<form method='POST'>
-    {% csrf_token %}
-    {{ form }}
-    <input type='submit' value='create'>
-</form>
 
+<div class="theme-hero-area-body">
+<div class="theme-page-section _pt-100 theme-page-section-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 col-md-offset-4">
+        <div class="theme-login theme-login-white">
+          <div class="theme-login-header">
+            <h1 class="theme-login-title">List a Home</h1>
+          </div>
+
+          <div class="theme-login-box">
+            <div class="theme-login-box-inner">
+              <form class="theme-login-form" method="POST">
+                {% csrf_token %}
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.num class="form-control" placeholder="Property Number/Unit" %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.street class="form-control" placeholder="Street" %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.post_code class="form-control" placeholder="Post Code" %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.suburb class="form-control" placeholder="Suburb" %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.price class="form-control" placeholder="Price" %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.num_guests class="form-control" placeholder="Guests" %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.num_rooms class="form-control" placeholder="Rooms" %}
+                </div>
+
+                <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Add Property</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
 {% endblock %}

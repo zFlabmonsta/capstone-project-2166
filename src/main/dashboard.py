@@ -24,11 +24,13 @@ def create_property(request):
             street = form.cleaned_data['street']
             post_code = form.cleaned_data['post_code']
             suburb = form.cleaned_data['suburb']
+            price = form.cleaned_data['price']
+            num_guests = form.cleaned_data['num_guests']
+            num_rooms = form.cleaned_data['num_rooms']
 
             # get full address, longitude and latitude 
             geo_location = Nominatim(timeout=3)
             geo_location = geo_location.geocode(str(num)+" "+street+" "+suburb+" "+str(post_code), "NSW")
-
             full_address = str(geo_location.address)
             longitude = float(geo_location.longitude)
             latitude = float(geo_location.latitude)
@@ -36,7 +38,7 @@ def create_property(request):
             l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
             l.save()
 
-            p = Property(dashboard = d, location = l)
+            p = Property(dashboard = d, location = l, price=price, num_guests=num_guests, num_rooms=num_rooms)
             p.save()
             return HttpResponseRedirect('/dashboard')
     else:

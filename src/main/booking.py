@@ -21,6 +21,7 @@ def make_booking(request, property_id, i_year, i_month, i_day, o_year, o_month, 
         # create booking object
         d = Dashboard.objects.get(user=current_user.id)
         p = Property.objects.get(id=property_id)
+        p.time_booked_incr()
         b = Booking(property=p, dashboard=d, start_date=check_in, end_date=check_out)
         b.save()
         return HttpResponseRedirect('/dashboard')

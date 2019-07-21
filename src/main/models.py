@@ -23,7 +23,25 @@ class Property(models.Model):
     """
     dashboard = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
+    price = models.IntegerField(null=True, blank=True)
+    num_guests = models.IntegerField(null=True, blank=True)
+    num_rooms = models.IntegerField(null=True, blank=True)
+    time_booked = models.IntegerField(default=2)
     # image
+
+    def is_matching_num_rooms(self, _num_rooms):
+        if (self.num_rooms == _num_rooms):
+            return True
+        return False
+
+    def is_more_than_guests(self, _num_guests):
+        if (self.num_guests < _num_guests):
+            return False
+        return True
+
+    def time_booked_incr(self):
+        self.time_booked += 1
+        self.save()
 
 class Booking(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
@@ -32,4 +50,4 @@ class Booking(models.Model):
     end_date = models.DateTimeField(default=datetime.now)
 
     def date_overlapping(self, check_in, check_out):
-        return (self.start_date < check_out or self.end_date > check_in)
+        return (self.start_date <= check_out and self.end_date >= check_in)
