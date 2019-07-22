@@ -3,7 +3,6 @@
 {% load widget_tweaks %}
 {% block content_1 %}
 
-<div class="theme-hero-area-body">
 <div class="theme-page-section _pt-100 theme-page-section-xl">
   <div class="container">
     <div class="row">
@@ -15,7 +14,7 @@
 
           <div class="theme-login-box">
             <div class="theme-login-box-inner">
-              <form class="theme-login-form" method="POST">
+              <form class="theme-login-form" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 <div class="form-group theme-login-form-group">
                   {% render_field form.num class="form-control" placeholder="Property Number/Unit" %}
@@ -49,6 +48,8 @@
                     {% render_field form.description class="form-control" placeholder="Description" %}
                 </div>
 
+                {% render_field form.image %}
+                <br>
                 <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Add Property</button>
               </form>
 
@@ -58,6 +59,5 @@
       </div>
     </div>
   </div>
-</div>
 </div>
 {% endblock %}

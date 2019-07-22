@@ -28,7 +28,6 @@ class Property(models.Model):
     num_rooms = models.IntegerField(null=True, blank=True)
     time_booked = models.IntegerField(default=0)
     description = models.CharField(null=True, blank=True, max_length=10000000000)
-    # image
 
     def is_matching_num_rooms(self, _num_rooms):
         if (self.num_rooms == _num_rooms):
@@ -52,3 +51,10 @@ class Booking(models.Model):
 
     def date_overlapping(self, check_in, check_out):
         return (self.start_date <= check_out and self.end_date >= check_in)
+
+def image_directory_path(instance, filename):
+    return 'property_{0}/{1}'.format(instance.property.id, filename)
+
+class image(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to=image_directory_path)

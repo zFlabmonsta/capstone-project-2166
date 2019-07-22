@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login as auth_login
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
-from main.models import Dashboard, Property, Location, Booking
+from main.models import Dashboard, Property, Location, Booking, image
 from .forms import Property_form, Search_property_form
 
 # Create your views here.
@@ -92,5 +92,38 @@ def dashboard(request):
         'properties': properties,
         'bookings': bookings
     }
-    return render(request, "main/dashboard.html", {"properties":properties, "bookings":bookings})
+    return render(request, "main/dashboard.html", context)
+
+def moreinfo(request, property_id):
+    # get property id 
+    property = Property.objects.get(id=property_id)
+    images = image.objects.filter(property__id=property_id)
+    print(images)
+    context = {
+        'property': property,
+        'images': images,
+    }
+    return render(request, "main/moreinfo.html", context)
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

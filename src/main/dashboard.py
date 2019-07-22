@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
-from main.models import Dashboard, Property, Location, Booking
+from main.models import Dashboard, Property, Location, Booking, image
 from .forms import Property_form
 from geopy.geocoders import Nominatim
 
@@ -14,7 +14,7 @@ list the property for accommodation
 def create_property(request):
     current_user = request.user
     if request.method == 'POST':
-        form = Property_form(request.POST)
+        form = Property_form(request.POST, request.FILES)
         if form.is_valid():
             # Change this to make it user specific
             d = Dashboard.objects.get(user=current_user.id)
@@ -27,10 +27,12 @@ def create_property(request):
             price = form.cleaned_data['price']
             num_guests = form.cleaned_data['num_guests']
             num_rooms = form.cleaned_data['num_rooms']
+            desc = form.cleaned_data['description']
 
             # get full address, longitude and latitude 
             geo_location = Nominatim(timeout=3)
-            geo_location = geo_location.geocode(str(num)+" "+street+" "+suburb+" "+str(post_code), "NSW")
+            geo_location = geo_location.geocode(str(num)+" "+street+" "
+                    +suburb+" "+str(post_code), "NSW")
             full_address = str(geo_location.address)
             longitude = float(geo_location.longitude)
             latitude = float(geo_location.latitude)
@@ -38,8 +40,15 @@ def create_property(request):
             l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
             l.save()
 
-            p = Property(dashboard = d, location = l, price=price, num_guests=num_guests, num_rooms=num_rooms)
+            p = Property(dashboard = d, location = l, price=price, num_guests=num_guests, 
+                    num_rooms=num_rooms, description=desc)
             p.save()
+
+            # create image models and save them to db
+            for f in request.FILES.getlist('image'):
+                img = image(property=p, image=f)
+                img.save()
+
             return HttpResponseRedirect('/dashboard')
     else:
         form = Property_form()

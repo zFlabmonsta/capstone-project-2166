@@ -1,0 +1,449 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block content_1 %}
+
+    <div class="theme-hero-area">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url(./img/1500x800.png);"></div>
+        <div class="theme-hero-area-mask"></div>
+        <div class="theme-hero-area-inner-shadow"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="row _pv-100">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="theme-search-area _mob-h theme-search-area-stacked">
+                <div class="theme-search-area-header _mb-30 _ta-c _c-w">
+                  <h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
+                </div>
+                <form method="POST" class='search-form'>
+                {% csrf_token %}
+                <div class="theme-search-area-form _bsh-xxl _bsh-light" id="hero-search-form">
+                  <div class="row" data-gutter="none">
+                    <div class="col-md-3 ">
+                      <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                          {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 ">
+                      <div class="row" data-gutter="none">
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                              {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                              {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4 ">
+                      <div class="row" data-gutter="none">
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-tag"></i>
+                              {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
+                              <div class="quantity-selector-box" id="HotelSearchRooms">
+                                <div class="quantity-selector-inner">
+                                  <p class="quantity-selector-title">Rooms</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
+                            <div class="theme-search-area-section-inner">
+                              <i class="theme-search-area-section-icon lin lin-people"></i>
+                              {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
+                              <div class="quantity-selector-box" id="HotelSearchGuests">
+                                <div class="quantity-selector-inner">
+                                  <p class="quantity-selector-title">Guests</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-1 ">
+                      <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
+                    </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theme-page-section" style="background-color: white">
+      <div class="container">
+        <div class="row row-col-static" id="sticky-parent" data-gutter="60">
+          <div class="col-md-8 ">
+            <div class="theme-search-area _desk-h _mb-30 theme-search-area-vert">
+              <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                <h1 class="theme-search-area-title">Book Event</h1>
+                <p class="theme-search-area-subtitle">Arcu risus malesuada penatibus a</p>
+              </div>
+              <div class="theme-search-area-form">
+                <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                  <div class="theme-search-area-section-inner">
+                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                    <input class="theme-search-area-section-input datePickerSingle _mob-h" value="Wed 06/27" type="text"/>
+                    <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                  </div>
+                </div>
+                <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                  <div class="theme-search-area-section-inner">
+                    <i class="theme-search-area-section-icon lin lin-people"></i>
+                    <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                    <div class="quantity-selector-box" id="mobile-ExpSearchGuests">
+                      <div class="quantity-selector-inner">
+                        <p class="quantity-selector-title">Guests</p>
+                        <ul class="quantity-selector-controls">
+                          <li class="quantity-selector-decrement">
+                            <a href="#">&#45;</a>
+                          </li>
+                          <li class="quantity-selector-current">1</li>
+                          <li class="quantity-selector-increment">
+                            <a href="#">&#43;</a>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="theme-item-page-summary-price _mb-20">
+                  <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapseMobile" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapseMobile">Show summary</a>
+                  <div class="collapse" id="summaryPriceCollapseMobile">
+                    <ul class="theme-item-page-summary-price-list">
+                      <li class="theme-item-page-summary-price-item">
+                        <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
+                        <p class="theme-item-page-summary-price-item-subtitle"></p>
+                        <p class="theme-item-page-summary-price-item-price">$184.00</p>
+                      </li>
+                      <li class="theme-item-page-summary-price-item">
+                        <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                        <p class="theme-item-page-summary-price-item-subtitle"></p>
+                        <p class="theme-item-page-summary-price-item-price">$7.00</p>
+                      </li>
+                    </ul>
+                  </div>
+                  <p class="theme-item-page-summary-price-total">Total
+                    <span>$191.00</span>
+                  </p>
+                </div>
+                <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+              </div>
+            </div>
+            <div class="theme-item-page-tabs _mb-desk-30">
+              <div class="tabbable">
+                <ul class="nav nav-tabs nav-default nav-sqr" role="tablist">
+                  <li class="active" role="presentation">
+                    <a aria-controls="HotelPageTabs-1" role="tab" data-toggle="tab" href="#HotelPageTabs-1">Overview</a>
+                  </li>
+                  <li role="presentation">
+                    <a aria-controls="HotelPageTabs-2" role="tab" data-toggle="tab" href="#HotelPageTabs-2">Map</a>
+                  </li>
+                  <li role="presentation">
+                    <a aria-controls="HotelPageTabs-3" role="tab" data-toggle="tab" href="#HotelPageTabs-3">Reviews</a>
+                  </li>
+                </ul>
+                <div class="tab-content _pt-30">
+                  <div class="tab-pane active" id="HotelPageTabs-1" role="tab-panel">
+                    <div class="theme-item-page-overview">
+                      <div class="row row-col-mob-gap">
+                        <div class="col-md-6 ">
+                          <div class="row magnific-gallery row-col-gap" data-gutter="10">
+
+                            {% for img in images %}
+                            <div class="col-xs-3 ">
+                              <div class="banner banner-sqr banner-">
+                                  <div class="banner-bg" style="background-image:url({{ img.image.url }});"></div>
+                                <a class="banner-link" href="{{ img.image.url }}"></a>
+                              </div>
+                            </div>
+                            {% endfor %}
+
+                          </div>
+                        </div>
+                        <div class="col-md-6 ">
+                          <div class="theme-item-page-desc">
+                            <p>{{property.description}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="HotelPageTabs-2" role="tab-panel">
+                    <div class="theme-item-page-map google-map" data-lat="40.7483624" data-lng="-73.9900896"></div>
+                  </div>
+                  <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
+                    <div class="theme-reviews">
+                      <div class="theme-reviews-list">
+                        <article class="theme-reviews-item">
+                          <div class="row" data-gutter="10">
+                            <div class="col-md-3 ">
+                              <div class="theme-reviews-item-info">
+                                <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                <p class="theme-reviews-item-date">Reviewed Tue, Jun 26</p>
+                                <p class="theme-reviews-item-author">by Ava McDonald</p>
+                              </div>
+                            </div>
+                            <div class="col-md-9 ">
+                              <div class="theme-reviews-rating">
+                                <ul class="theme-reviews-rating-stars">
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-half-o"></i>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="theme-reviews-item-body">
+                                <p class="theme-reviews-item-text">Netus gravida etiam sit et sapien pulvinar posuere gravida mollis laoreet sit eu sodales tristique condimentum cum sapien enim pharetra semper risus dui lorem habitasse quisque auctor dictum</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="theme-reviews-item">
+                          <div class="row" data-gutter="10">
+                            <div class="col-md-3 ">
+                              <div class="theme-reviews-item-info">
+                                <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                <p class="theme-reviews-item-date">Reviewed Sat, Jun 23</p>
+                                <p class="theme-reviews-item-author">by Minnie Aviles</p>
+                              </div>
+                            </div>
+                            <div class="col-md-9 ">
+                              <div class="theme-reviews-rating">
+                                <ul class="theme-reviews-rating-stars">
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="theme-reviews-item-body">
+                                <p class="theme-reviews-item-text">Risus molestie iaculis nullam lectus maecenas ridiculus eleifend proin libero aptent mattis penatibus mi tellus lacus nisl aptent senectus nostra gravida sed vivamus turpis nostra nostra et dapibus velit vivamus eros pulvinar mauris odio hendrerit venenatis consequat cubilia dis suspendisse</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="theme-reviews-item">
+                          <div class="row" data-gutter="10">
+                            <div class="col-md-3 ">
+                              <div class="theme-reviews-item-info">
+                                <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                <p class="theme-reviews-item-date">Reviewed Tue, Jun 19</p>
+                                <p class="theme-reviews-item-author">by Joseph Watson</p>
+                              </div>
+                            </div>
+                            <div class="col-md-9 ">
+                              <div class="theme-reviews-rating">
+                                <ul class="theme-reviews-rating-stars">
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="theme-reviews-item-body">
+                                <p class="theme-reviews-item-text">Per facilisi cubilia sem magnis a interdum quis id per mollis nullam hac urna urna tempus ut nec donec ultricies convallis cum metus venenatis est blandit risus orci imperdiet consectetur penatibus arcu ipsum sed tempor ullamcorper sem eu</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="theme-reviews-item">
+                          <div class="row" data-gutter="10">
+                            <div class="col-md-3 ">
+                              <div class="theme-reviews-item-info">
+                                <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                <p class="theme-reviews-item-date">Reviewed Mon, Jun 18</p>
+                                <p class="theme-reviews-item-author">by Olivia Slater</p>
+                              </div>
+                            </div>
+                            <div class="col-md-9 ">
+                              <div class="theme-reviews-rating">
+                                <ul class="theme-reviews-rating-stars">
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-half-o"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="theme-reviews-item-body">
+                                <p class="theme-reviews-item-text">Fringilla cras auctor purus vehicula vel pellentesque quisque elementum fringilla velit dis montes risus metus placerat molestie pretium rhoncus taciti cras ridiculus fringilla porta fames rhoncus mi ultricies viverra ac ut felis cubilia accumsan arcu class</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <article class="theme-reviews-item">
+                          <div class="row" data-gutter="10">
+                            <div class="col-md-3 ">
+                              <div class="theme-reviews-item-info">
+                                <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                <p class="theme-reviews-item-date">Reviewed Mon, Jun 11</p>
+                                <p class="theme-reviews-item-author">by Keith Churchill</p>
+                              </div>
+                            </div>
+                            <div class="col-md-9 ">
+                              <div class="theme-reviews-rating">
+                                <ul class="theme-reviews-rating-stars">
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                  <li>
+                                    <i class="fa fa-star-o"></i>
+                                  </li>
+                                </ul>
+                              </div>
+                              <div class="theme-reviews-item-body">
+                                <p class="theme-reviews-item-text">Sagittis sodales fringilla magna curabitur condimentum ad augue blandit adipiscing ad integer dapibus aliquam lobortis est vulputate dis conubia donec erat vehicula non suspendisse mollis mollis curae pharetra dignissim egestas pharetra viverra auctor accumsan lorem egestas</p>
+                              </div>
+                            </div>
+                          </div>
+                        </article>
+                        <div class="row">
+                          <div class="col-md-9 col-md-offset-3">
+                            <a class="theme-reviews-more" href="#">&#x2b; More Reviews</a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 ">
+            <div class="sticky-col _mob-h">
+              <div class="theme-search-area theme-search-area-vert">
+                <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
+                  <h1 class="theme-search-area-title">Book Event</h1>
+                  <p class="theme-search-area-subtitle">Consectetur magnis facilisis donec metus</p>
+                </div>
+                <div class="theme-search-area-form">
+                  <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                      <input class="theme-search-area-section-input datePickerSingle _mob-h" value="Wed 06/27" type="text"/>
+                      <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
+                    </div>
+                  </div>
+                  <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-people"></i>
+                      <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
+                      <div class="quantity-selector-box" id="ExpSearchGuests">
+                        <div class="quantity-selector-inner">
+                          <p class="quantity-selector-title">Guests</p>
+                          <ul class="quantity-selector-controls">
+                            <li class="quantity-selector-decrement">
+                              <a href="#">&#45;</a>
+                            </li>
+                            <li class="quantity-selector-current">1</li>
+                            <li class="quantity-selector-increment">
+                              <a href="#">&#43;</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="theme-item-page-summary-price _mb-20">
+                    <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapse">Show summary</a>
+                    <div class="collapse" id="summaryPriceCollapse">
+                      <ul class="theme-item-page-summary-price-list">
+                        <li class="theme-item-page-summary-price-item">
+                          <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
+                          <p class="theme-item-page-summary-price-item-subtitle"></p>
+                          <p class="theme-item-page-summary-price-item-price">$184.00</p>
+                        </li>
+                        <li class="theme-item-page-summary-price-item">
+                          <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
+                          <p class="theme-item-page-summary-price-item-subtitle"></p>
+                          <p class="theme-item-page-summary-price-item-price">$7.00</p>
+                        </li>
+                      </ul>
+                    </div>
+                    <p class="theme-item-page-summary-price-total">Total
+                      <span>$191.00</span>
+                    </p>
+                  </div>
+                  <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+{% endblock %}

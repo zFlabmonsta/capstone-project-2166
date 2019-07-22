@@ -10,7 +10,7 @@ class Property_form (forms.Form):
     num_guests = forms.IntegerField(label='Guests')
     num_rooms = forms.IntegerField(label='Rooms')
     description = forms.CharField(label='description', widget=forms.Textarea, max_length=1000000000)
-    # images = 
+    image = forms.FileField(required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
 class Search_property_form (forms.Form):
     where = forms.CharField(label='Where', max_length=100)

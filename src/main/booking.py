@@ -2,10 +2,11 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
+
 from main.models import Dashboard, Property, Location, Booking
 from .forms import Property_form
-from geopy.geocoders import Nominatim
 
+from geopy.geocoders import Nominatim
 from datetime import datetime, date, time
 
 """
