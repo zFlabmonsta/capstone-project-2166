@@ -1,233 +1,234 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
 {% load widget_tweaks %}
-{% block content_1 %}
-    <div class="theme-hero-area front">
-      <div class="theme-hero-area-body">
-        <div class="container">
-          <div class="row _pv-100">
-            <div class="col-md-10 col-md-offset-1">
-              <div class="theme-search-area _mob-h theme-search-area-stacked">
-                <div class="theme-search-area-header _mb-30 _ta-c _c-w">
-                  <h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
+{% block middle_page %}{% endblock %}
+{% block content_2 %}
+<div class="theme-hero-area front">
+  <div class="theme-hero-area-body">
+    <div class="container">
+      <div class="row _pv-100">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="theme-search-area _mob-h theme-search-area-stacked">
+            <div class="theme-search-area-header _mb-30 _ta-c _c-w">
+              <h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
+            </div>
+
+            <form method="POST" class='search-form'>
+            {% csrf_token %}
+            <div class="theme-search-area-form _bsh-xxl _bsh-light" id="hero-search-form">
+              <div class="row" data-gutter="none">
+
+                <div class="col-md-3 ">
+                  <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                      {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
+                    </div>
+                  </div>
                 </div>
 
-                <form method="POST" class='search-form'>
-                {% csrf_token %}
-                <div class="theme-search-area-form _bsh-xxl _bsh-light" id="hero-search-form">
+                <div class="col-md-4 ">
                   <div class="row" data-gutter="none">
-
-                    <div class="col-md-3 ">
-                      <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                    <div class="col-md-6 ">
+                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
                         <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                          {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
+                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                          {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
                         </div>
                       </div>
                     </div>
-
-                    <div class="col-md-4 ">
-                      <div class="row" data-gutter="none">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                              {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
-                            </div>
-                          </div>
+                    <div class="col-md-6 ">
+                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                          {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
                         </div>
                       </div>
-                    </div>
-
-                    <div class="col-md-4 ">
-                      <div class="row" data-gutter="none">
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-tag"></i>
-                              {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
-                              <div class="quantity-selector-box" id="HotelSearchRooms">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Rooms</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div class="col-md-6 ">
-                          <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
-                            <div class="theme-search-area-section-inner">
-                              <i class="theme-search-area-section-icon lin lin-people"></i>
-                              {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
-                              <div class="quantity-selector-box" id="HotelSearchGuests">
-                                <div class="quantity-selector-inner">
-                                  <p class="quantity-selector-title">Guests</p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-1 ">
-                      <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
                     </div>
                   </div>
-                  </form>
+                </div>
+
+                <div class="col-md-4 ">
+                  <div class="row" data-gutter="none">
+                    <div class="col-md-6 ">
+                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-tag"></i>
+                          {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
+                          <div class="quantity-selector-box" id="HotelSearchRooms">
+                            <div class="quantity-selector-inner">
+                              <p class="quantity-selector-title">Rooms</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6 ">
+                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
+                        <div class="theme-search-area-section-inner">
+                          <i class="theme-search-area-section-icon lin lin-people"></i>
+                          {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
+                          <div class="quantity-selector-box" id="HotelSearchGuests">
+                            <div class="quantity-selector-inner">
+                              <p class="quantity-selector-title">Guests</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-1 ">
+                  <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
                 </div>
               </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="theme-page-section theme-page-section-dark theme-page-section-lg">
-      <div class="container">
-        <div class="row row-col-static" id="sticky-parent" data-gutter="20">
+  </div>
+</div>
+<div class="theme-page-section theme-page-section-dark theme-page-section-lg">
+  <div class="container">
+    <div class="row row-col-static" id="sticky-parent" data-gutter="20">
 
-          <form method="POST">
-          <div class="col-md-3 ">
-            <div class="sticky-col _mob-h">
-              <div class="theme-search-results-sidebar">
-                <div class="theme-search-results-sidebar-sections _mb-20 _br-2 _b-n theme-search-results-sidebar-sections-white-wrap">
-                  <div class="theme-search-results-sidebar-section">
-                    <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
-                    <div class="theme-search-results-sidebar-section-checkbox-list">
-                      <div class="theme-search-results-sidebar-section-checkbox-list-items">
-                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                          <label class="icheck-label">
-                            <input class="icheck" type="checkbox"/>
-                            <span class="icheck-title">Excellent</span>
-                          </label>
-                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">314</span>
-                        </div>
-                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                          <label class="icheck-label">
-                            <input class="icheck" type="checkbox"/>
-                            <span class="icheck-title">Good</span>
-                          </label>
-                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">132</span>
-                        </div>
-                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                          <label class="icheck-label">
-                            <input class="icheck" type="checkbox"/>
-                            <span class="icheck-title">Okay</span>
-                          </label>
-                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">360</span>
-                        </div>
-                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                          <label class="icheck-label">
-                            <input class="icheck" type="checkbox"/>
-                            <span class="icheck-title">Mediocre</span>
-                          </label>
-                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">418</span>
-                        </div>
-                        <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                          <label class="icheck-label">
-                            <input class="icheck" type="checkbox"/>
-                            <span class="icheck-title">Poor</span>
-                          </label>
-                          <span class="theme-search-results-sidebar-section-checkbox-list-amount">389</span>
-                        </div>
-                      </div>
+      <form method="POST">
+      <div class="col-md-3 ">
+        <div class="sticky-col _mob-h">
+          <div class="theme-search-results-sidebar">
+            <div class="theme-search-results-sidebar-sections _mb-20 _br-2 _b-n theme-search-results-sidebar-sections-white-wrap">
+              <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
+                <div class="theme-search-results-sidebar-section-checkbox-list">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Excellent</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">314</span>
                     </div>
-                  </div>
-
-                  <div class="theme-search-results-sidebar-section">
-                    <h5 class="theme-search-results-sidebar-section-title">Price</h5>
-                    <div class="theme-search-results-sidebar-section-price">
-                      <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Good</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">132</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Okay</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">360</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Mediocre</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">418</span>
+                    </div>
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">Poor</span>
+                      </label>
+                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">389</span>
                     </div>
                   </div>
                 </div>
               </div>
+
+              <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Price</h5>
+                <div class="theme-search-results-sidebar-section-price">
+                  <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
+                </div>
+              </div>
             </div>
+          </div>
           <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Filter</button>
-          </div>
-          </form>
+        </div>
+      </div>
+      </form>
 
-          <div class="col-md-6-5 ">
-            <div class="theme-search-results">
-              <div class="_mob-h">
-                {% for property in searched_property %}
-                <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
-                  <div class="theme-search-results-item-preview">
-                    <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/{{property.id}}')" role="button"></a>
-                    <a class="theme-search-results-item-bookmark theme-search-results-item-bookmark-top" href="#">
-                      <i class="fa fa-bookmark"></i>
-                      <span>Watch</span>
-                    </a>
+      <div class="col-md-6-5 ">
+        <div class="theme-search-results">
+          <div class="_mob-h">
+            {% for property in searched_property %}
+            <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
+              <div class="theme-search-results-item-preview">
+                <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/{{property.id}}')" role="button"></a>
+                <a class="theme-search-results-item-bookmark theme-search-results-item-bookmark-top" href="#">
+                  <i class="fa fa-bookmark"></i>
+                  <span>Watch</span>
+                </a>
 
-                    <div class="row" data-gutter="20">
-                      <div class="col-md-5 ">
-                        <div class="theme-search-results-item-img-wrap">
-                          <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
-                        </div>
+                <div class="row" data-gutter="20">
+                  <div class="col-md-5 ">
+                    <div class="theme-search-results-item-img-wrap">
+                      <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                    </div>
+                  </div>
+
+                  <div class="col-md-5 ">
+                    <ul class="theme-search-results-item-hotel-stars">
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                      <li>
+                        <i class="fa fa-star"></i>
+                      </li>
+                    </ul>
+
+                    <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.location.num}} {{property.location.address}}</h5>
+                    <div class="theme-search-results-item-hotel-rating">
+                      <p class="theme-search-results-item-hotel-rating-title">
+                        <b>8.5 Excellent</b>&nbsp;(8903 reviews)
+                      </p>
+                    </div>
+                    <p class="theme-search-results-item-hotel-book-count">Booked: {{property.time_booked}}</p>
+                  </div>
+
+                  <div class="col-md-2 ">
+                    <div class="theme-search-results-item-book">
+                      <div class="theme-search-results-item-price">
+                        <p class="theme-search-results-item-price-tag">${{property.price}}</p>
+                        <p class="theme-search-results-item-price-sign">/night</p>
                       </div>
 
-                      <div class="col-md-5 ">
-                        <ul class="theme-search-results-item-hotel-stars">
-                          <li>
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li>
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li>
-                            <i class="fa fa-star"></i>
-                          </li>
-                          <li>
-                            <i class="fa fa-star"></i>
-                          </li>
-                        </ul>
+                      <form action="make-booking/{{property.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
+                          {% csrf_token %}
+                         <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Book Now</button>
+                      </form>
 
-                        <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.location.num}} {{property.location.address}}</h5>
-                        <div class="theme-search-results-item-hotel-rating">
-                          <p class="theme-search-results-item-hotel-rating-title">
-                            <b>8.5 Excellent</b>&nbsp;(8903 reviews)
-                          </p>
-                        </div>
-                        <p class="theme-search-results-item-hotel-book-count">Booked: {{property.time_booked}}</p>
-                      </div>
-
-                      <div class="col-md-2 ">
-                        <div class="theme-search-results-item-book">
-                          <div class="theme-search-results-item-price">
-                            <p class="theme-search-results-item-price-tag">${{property.price}}</p>
-                            <p class="theme-search-results-item-price-sign">/night</p>
-                          </div>
-
-                          <form action="make-booking/{{property.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
-                              {% csrf_token %}
-                             <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Book Now</button>
-                          </form>
-
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
-                {% endfor %}
-
               </div>
             </div>
-
-            <!-- pagination -->
-            <a class="btn _tt-uc _fs-sm btn-white btn-block btn-lg" href="#">Load More Results</a>
+            {% endfor %}
 
           </div>
         </div>
+
+        <!-- pagination -->
+        <a class="btn _tt-uc _fs-sm btn-white btn-block btn-lg" href="#">Load More Results</a>
+
       </div>
     </div>
+  </div>
+</div>
 
 {% endblock %}
