@@ -8,8 +8,7 @@ from geopy.distance import geodesic
 
 from main.models import Dashboard, Property, Location, Booking, image
 from .forms import Property_form, Search_property_form
-
-# Create your views here.
+from .filter_help import facilities, amenities, property_type, disability_access, reviews
 
 # Home Page
 def index(request):
@@ -67,6 +66,11 @@ def index(request):
                 'start_date': check_in,
                 'end_date': check_out,
                 'search_property_form': form,
+                'facilities': facilities,
+                'property_type': property_type,
+                'disability_access': disability_access,
+                'amenities': amenities,
+                'reviews': reviews
             }
 
             return render(request, "main/search_list.html", context)

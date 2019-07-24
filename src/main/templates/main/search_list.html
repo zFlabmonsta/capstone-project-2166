@@ -101,47 +101,22 @@
         <div class="sticky-col _mob-h">
           <div class="theme-search-results-sidebar">
             <div class="theme-search-results-sidebar-sections _mb-20 _br-2 _b-n theme-search-results-sidebar-sections-white-wrap">
+
               <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
+                {% for review in reviews %}
                 <div class="theme-search-results-sidebar-section-checkbox-list">
                   <div class="theme-search-results-sidebar-section-checkbox-list-items">
                     <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                       <label class="icheck-label">
                         <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">Excellent</span>
+                        <span class="icheck-title">{{review}}</span>
                       </label>
                       <span class="theme-search-results-sidebar-section-checkbox-list-amount">314</span>
                     </div>
-                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                      <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">Good</span>
-                      </label>
-                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">132</span>
-                    </div>
-                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                      <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">Okay</span>
-                      </label>
-                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">360</span>
-                    </div>
-                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                      <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">Mediocre</span>
-                      </label>
-                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">418</span>
-                    </div>
-                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                      <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">Poor</span>
-                      </label>
-                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">389</span>
-                    </div>
                   </div>
                 </div>
+                {% endfor %}
               </div>
 
               <div class="theme-search-results-sidebar-section">
@@ -150,6 +125,72 @@
                   <input id="price-slider" name="price-slider" data-min="100" data-max="500"/>
                 </div>
               </div>
+
+
+              <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Disability Access</h5>
+                {% for access in disability_access%}
+                <div class="theme-search-results-sidebar-section-checkbox-list">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">{{access}}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Facilities</h5>
+                {% for facility in facilities %}
+                <div class="theme-search-results-sidebar-section-checkbox-list">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">{{facility}}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Property Type</h5>
+                {% for type in property_type %}
+                <div class="theme-search-results-sidebar-section-checkbox-list">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">{{type}}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Amenities</h5>
+                {% for amenity in amenities%}
+                <div class="theme-search-results-sidebar-section-checkbox-list">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        <input class="icheck" type="checkbox"/>
+                        <span class="icheck-title">{{amenity}}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
             </div>
           </div>
           <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Filter</button>
