@@ -41,7 +41,8 @@ def create_property(request):
             l.save()
 
             p = Property(dashboard = d, location = l, price=price, num_guests=num_guests, 
-                    num_rooms=num_rooms, description=desc)
+                    num_rooms=num_rooms, description=desc, 
+                    display_image=request.FILES.getlist('image')[0])
             p.save()
 
             # create image models and save them to db

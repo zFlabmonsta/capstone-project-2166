@@ -1,7 +1,7 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
+{% block middle_page_2 %}{% endblock %}
 {% block content_1 %}
-
 <link rel="stylesheet" type="text/css" href="{% static 'backup/css/dashboard.css' %}">
 <script type="text/javascript" src="{% static 'backup/js/dashboard.js' %}"></script>
 
@@ -23,7 +23,9 @@
                   <div class="col-md-5 ">
                     <div class="theme-search-results-item-img-wrap">
                       <!-- image here do image slide show thing -->
-                      <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                      {% if property.display_image %}
+                      <img class="theme-search-results-item-img" src="{{property.display_image.url}}" style="width: 300px; height: 150px"/>
+                      {% endif %}
                     </div>
                   </div>
 

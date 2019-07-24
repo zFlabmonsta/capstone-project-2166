@@ -56,7 +56,7 @@
     <div class="_pos-r">
       <div class="theme-hero-area _h-desk-120vh">
         <div class="theme-hero-area-bg-wrap">
-            <div class="theme-hero-area-bg" style="background-image:url({%static "img/1500x800.png" %});"></div>
+            <div class="theme-hero-area-bg" style="background-image:url('https://i.pinimg.com/originals/1e/81/f5/1e81f5c8c63276f398943e2e9c40e650.jpg');"></div>
           <div class="theme-hero-area-mask theme-hero-area-mask-half"></div>
           <div class="theme-hero-area-inner-shadow"></div>
         </div>
@@ -67,6 +67,29 @@
       </div>
     </div>
     {% endblock %}
+
+	{% block middle_page_2 %}
+	<div class="theme-hero-area front">
+      <div class="theme-hero-area-bg-wrap">
+        <div class="theme-hero-area-bg" style="background-image:url('https://wallpapershome.com/images/pages/pic_h/5312.jpg');" id="hero-banner"></div>
+        <div class="theme-hero-area-mask theme-hero-area-mask-strong"></div>
+      </div>
+      <div class="theme-hero-area-body">
+        <div class="container">
+          <div class="row _pv-100">
+            <div class="col-md-10 col-md-offset-1">
+              <div class="theme-search-area _mob-h theme-search-area-stacked">
+                <div class="theme-search-area-header _mb-30 _ta-c _c-w">
+				{% block content_3 %}
+				{% endblock %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+	{% endblock %}
 
     {% block content_2 %}
     {% endblock %}

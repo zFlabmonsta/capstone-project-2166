@@ -1,106 +1,66 @@
 {% extends 'main/base.html' %}
 {% load staticfiles %}
 {% load widget_tweaks %}
+
 {% block middle_page %}{% endblock %}
+
+{% block content_3 %}
+<h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
+{% endblock %}
+
 {% block content_2 %}
-<div class="theme-hero-area front">
-  <div class="theme-hero-area-body">
-    <div class="container">
-      <div class="row _pv-100">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="theme-search-area _mob-h theme-search-area-stacked">
-            <div class="theme-search-area-header _mb-30 _ta-c _c-w">
-              <h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
-            </div>
-
-            <form method="POST" class='search-form'>
-            {% csrf_token %}
-            <div class="theme-search-area-form _bsh-xxl _bsh-light" id="hero-search-form">
-              <div class="row" data-gutter="none">
-
-                <div class="col-md-3 ">
-                  <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                    <div class="theme-search-area-section-inner">
-                      <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                      {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 ">
-                  <div class="row" data-gutter="none">
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                          {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                          {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-4 ">
-                  <div class="row" data-gutter="none">
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-tag"></i>
-                          {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
-                          <div class="quantity-selector-box" id="HotelSearchRooms">
-                            <div class="quantity-selector-inner">
-                              <p class="quantity-selector-title">Rooms</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-people"></i>
-                          {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
-                          <div class="quantity-selector-box" id="HotelSearchGuests">
-                            <div class="quantity-selector-inner">
-                              <p class="quantity-selector-title">Guests</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-1 ">
-                  <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
-                </div>
-              </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 <div class="theme-page-section theme-page-section-dark theme-page-section-lg">
   <div class="container">
     <div class="row row-col-static" id="sticky-parent" data-gutter="20">
 
       <form method="POST">
+      {% csrf_token %}
       <div class="col-md-3 ">
         <div class="sticky-col _mob-h">
           <div class="theme-search-results-sidebar">
             <div class="theme-search-results-sidebar-sections _mb-20 _br-2 _b-n theme-search-results-sidebar-sections-white-wrap">
+
+              <div class="theme-search-results-sidebar-section">
+                <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
+                  <div class="theme-search-area-section-inner">
+                    <i class="theme-search-area-section-icon lin lin-location-pin"></i>
+                    {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
+                  </div>
+
+                  <div class="theme-search-area-section-inner">
+                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                    {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
+                  </div>
+
+                  <div class="theme-search-area-section-inner">
+                    <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                    {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
+                  </div>
+
+                  <div class="theme-search-area-section-inner">
+                   <i class="theme-search-area-section-icon lin lin-tag"></i>
+                   {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
+                   <div class="quantity-selector-box" id="HotelSearchRooms">
+                     <div class="quantity-selector-inner">
+                       <p class="quantity-selector-title">Rooms</p>
+                     </div>
+                   </div>
+
+                    
+                   <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
+                     <div class="theme-search-area-section-inner">
+                       <i class="theme-search-area-section-icon lin lin-people"></i>
+                       {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
+                       <div class="quantity-selector-box" id="HotelSearchGuests">
+                         <div class="quantity-selector-inner">
+                           <p class="quantity-selector-title">Guests</p>
+                         </div>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                </div>
+              </div>
 
               <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
@@ -213,7 +173,9 @@
                 <div class="row" data-gutter="20">
                   <div class="col-md-5 ">
                     <div class="theme-search-results-item-img-wrap">
-                      <img class="theme-search-results-item-img" src="./img/315x225.png" alt="Image Alternative text" title="Image Title"/>
+                      {% if property.display_image %}
+                      <img class="theme-search-results-item-img" src="{{property.display_image.url}}" alt="Image Alternative text" title="Image Title"/>
+                      {% endif %}
                     </div>
                   </div>
 
