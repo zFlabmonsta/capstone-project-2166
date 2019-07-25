@@ -105,13 +105,13 @@
 
               <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Facilities</h5>
-                {% for facility in facilities %}
+                {% for facility in filter_facilities %}
                 <div class="theme-search-results-sidebar-section-checkbox-list">
                   <div class="theme-search-results-sidebar-section-checkbox-list-items">
                     <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                       <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">{{facility}}</span>
+                        {% render_field facility class="icheck" %}
+                        <span class="icheck-title">{{facility.field.label}}</span>
                       </label>
                     </div>
                   </div>

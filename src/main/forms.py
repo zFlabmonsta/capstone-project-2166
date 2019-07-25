@@ -11,6 +11,11 @@ class Property_form (forms.Form):
     num_rooms = forms.IntegerField(label='Rooms')
     description = forms.CharField(label='description', widget=forms.Textarea, max_length=1000000000)
     image = forms.FileField(required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    #facilities
+    free_parking = forms.BooleanField(required=False, initial=False)
+    pool = forms.BooleanField(required=False, initial=False)
+    gym = forms.BooleanField(required=False, initial=False)
+    spa = forms.BooleanField(required=False, initial=False)
 
 class Search_property_form (forms.Form):
     where = forms.CharField(label='Where', max_length=100)
@@ -18,3 +23,9 @@ class Search_property_form (forms.Form):
     check_out = forms.DateTimeField(label='Check out', initial=datetime.now().date)
     num_guests = forms.IntegerField(label='Guests')
     num_rooms = forms.IntegerField(label='Rooms')
+
+class Filter_facilities(forms.Form):
+    free_parking = forms.BooleanField(label="Free Parking", required=False, initial=False, widget=forms.CheckboxInput())
+    pool = forms.BooleanField(label="Pool", required=False, initial=False, widget=forms.CheckboxInput())
+    gym = forms.BooleanField(label="Gym", required=False, initial=False, widget=forms.CheckboxInput())
+    spa = forms.BooleanField(label="Spa", required=False, initial=False, widget=forms.CheckboxInput())

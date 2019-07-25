@@ -7,15 +7,27 @@ from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
 from main.models import Dashboard, Property, Location, Booking, image
-from .forms import Property_form, Search_property_form
-from .filter_help import facilities, amenities, property_type, disability_access, reviews
+from .forms import Property_form, Search_property_form, Filter_facilities
+from .filter_help import facilities, amenities, property_type, disability_access, reviews, filter_by_facilities
 
 # Home Page
 def index(request):
+    # forms
     search_form = Search_property_form()
+    filter_facilities_form = Filter_facilities()
+
+    context = {
+        'search_property_form': search_form, 
+        'filter_facilities': filter_facilities_form
+    }
+
     if (request.method == 'POST'):
+
+        # forms
         form = Search_property_form(request.POST)
-        if form.is_valid():
+        filter_facilities_form = Filter_facilities(request.POST)
+
+        if form.is_valid() and filter_facilities_form.is_valid() :
             where = form.cleaned_data['where']
             check_in = form.cleaned_data['check_in']
             check_out = form.cleaned_data['check_out']
@@ -61,6 +73,8 @@ def index(request):
                 if (not p.is_more_than_guests(num_guest)):
                     searching.remove(p)
 
+            searching = filter_by_facilities(filter_facilities_form, searching)
+
             context = {
                 'searched_property': searching,
                 'start_date': check_in,
@@ -70,12 +84,13 @@ def index(request):
                 'property_type': property_type,
                 'disability_access': disability_access,
                 'amenities': amenities,
-                'reviews': reviews
+                'reviews': reviews,
+                'filter_facilities': filter_facilities_form
             }
 
             return render(request, "main/search_list.html", context)
 
-    return render(request, "main/index.html", {'search_form': search_form})
+    return render(request, "main/index.html", context)
 
 def about(response):
     return HttpResponse("<h1> About! </h1>")

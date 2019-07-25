@@ -48,6 +48,17 @@
                     {% render_field form.description class="form-control" placeholder="Description" %}
                 </div>
 
+                <div class="form-group theme-login-form-group">
+                    <label> Free parking </label>
+                    {% render_field form.free_parking %}
+                    <label> Pool </label>
+                    {% render_field form.pool %}
+                    <label> Gym </label>
+                    {% render_field form.gym %}
+                    <label> Spa </label>
+                    {% render_field form.spa %}
+                </div>
+
                 {% render_field form.image %}
                 <br>
                 <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Add Property</button>

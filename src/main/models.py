@@ -32,7 +32,12 @@ class Property(models.Model):
     time_booked = models.IntegerField(default=0)
     description = models.CharField(null=True, blank=True, max_length=10000000000)
     display_image = models.ImageField(null=True, blank=True, upload_to=image_directory_path)
-    # image
+    # facilities
+    free_parking = models.BooleanField(null=True, blank=True, default=False)
+    pool = models.BooleanField(null=True, blank=True, default=False)
+    gym = models.BooleanField(null=True, blank=True, default=False)
+    spa = models.BooleanField(null=True, blank=True, default=False)
+
 
     def is_matching_num_rooms(self, _num_rooms):
         if (self.num_rooms == _num_rooms):

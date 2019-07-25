@@ -39,10 +39,26 @@ def create_property(request):
 
             l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
             l.save()
+            
+            if (request.FILES.getlist('image')):
+                display_image = request.FILES.getlist('image')[0]
+            else:
+                display_image = None
 
-            p = Property(dashboard = d, location = l, price=price, num_guests=num_guests, 
-                    num_rooms=num_rooms, description=desc, 
-                    display_image=request.FILES.getlist('image')[0])
+            print(form.cleaned_data['free_parking'])
+
+            p = Property(dashboard = d, 
+                    location = l, 
+                    price=price, 
+                    num_guests=num_guests, 
+                    num_rooms=num_rooms, 
+                    description=desc, 
+                    display_image=display_image,
+                    free_parking=form.cleaned_data['free_parking'],
+                    pool = form.cleaned_data['pool'],
+                    gym = form.cleaned_data['gym'],
+                    spa = form.cleaned_data['spa']
+                )
             p.save()
 
             # create image models and save them to db
