@@ -16,6 +16,20 @@
             <div class="theme-login-box-inner">
               <form class="theme-login-form" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
+                <!-- Property Type-->
+                <div class="form-group theme-login-form-group">
+                    <label> Apartment </label>
+                    {% render_field property_type_form.apartment %}
+                    <label> Hotel </label>
+                    {% render_field property_type_form.hotel %}
+                    <label> House </label>
+                    {% render_field property_type_form.house %}
+                    <label> Resort </label>
+                    {% render_field property_type_form.resort %}
+                    <label> Townhouse </label>
+                    {% render_field property_type_form.townhouse %}
+                </div>
+
                 <div class="form-group theme-login-form-group">
                   {% render_field form.num class="form-control" placeholder="Property Number/Unit" %}
                 </div>
@@ -47,7 +61,8 @@
                 <div class="form-group">
                     {% render_field form.description class="form-control" placeholder="Description" %}
                 </div>
-
+                
+                <!-- Facility Filtering -->
                 <div class="form-group theme-login-form-group">
                     <label> Free parking </label>
                     {% render_field form.free_parking %}
@@ -57,6 +72,27 @@
                     {% render_field form.gym %}
                     <label> Spa </label>
                     {% render_field form.spa %}
+                </div>
+
+                <!-- Disability Access -->
+                <div class="form-group theme-login-form-group">
+                    <label> Ramp </label>
+                    {% render_field form.ramp %}
+                    <label> Travelator </label>
+                    {% render_field form.travelator %}
+                    <label> Elevator </label>
+                    {% render_field form.elevator %}
+                </div>
+
+                <div class="form-group theme-login-form-group">
+                    <label> Ramp </label>
+                    {% render_field form.tv%}
+                    <label> Travelator </label>
+                    {% render_field form.airconditioning%}
+                    <label> Elevator </label>
+                    {% render_field form.bathroom%}
+                    <label> Elevator </label>
+                    {% render_field form.kitchen%}
                 </div>
 
                 {% render_field form.image %}

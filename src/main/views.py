@@ -7,18 +7,24 @@ from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
 from main.models import Dashboard, Property, Location, Booking, image
-from .forms import Property_form, Search_property_form, Filter_facilities
-from .filter_help import facilities, amenities, property_type, disability_access, reviews, filter_by_facilities
+from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
+from .filter_help import filter_by_amenities, filter_by_disability_access, reviews, filter_by_facilities, filter_by_property_type
 
 # Home Page
 def index(request):
     # forms
     search_form = Search_property_form()
     filter_facilities_form = Filter_facilities()
+    disability_access_form = Filter_disability_access()
+    property_type_form = Filter_property_type()
+    amenities_form = Filter_amenities()
 
     context = {
         'search_property_form': search_form, 
-        'filter_facilities': filter_facilities_form
+        'filter_facilities': filter_facilities_form,
+        'disability_access_form': disability_access_form,
+        'property_type_form': property_type_form,
+        'amenities_form': amenities_form
     }
 
     if (request.method == 'POST'):
@@ -26,8 +32,11 @@ def index(request):
         # forms
         form = Search_property_form(request.POST)
         filter_facilities_form = Filter_facilities(request.POST)
+        disability_access_form = Filter_disability_access(request.POST)
+        property_type_form = Filter_property_type(request.POST)
+        amenities_form = Filter_amenities(request.POST)
 
-        if form.is_valid() and filter_facilities_form.is_valid() :
+        if form.is_valid():
             where = form.cleaned_data['where']
             check_in = form.cleaned_data['check_in']
             check_out = form.cleaned_data['check_out']
@@ -74,18 +83,20 @@ def index(request):
                     searching.remove(p)
 
             searching = filter_by_facilities(filter_facilities_form, searching)
+            searching = filter_by_disability_access(disability_access_form, searching)
+            searching = filter_by_property_type(property_type_form, searching)
+            searching = filter_by_amenities(amenities_form, searching)
 
             context = {
                 'searched_property': searching,
                 'start_date': check_in,
                 'end_date': check_out,
                 'search_property_form': form,
-                'facilities': facilities,
-                'property_type': property_type,
-                'disability_access': disability_access,
-                'amenities': amenities,
-                'reviews': reviews,
-                'filter_facilities': filter_facilities_form
+                'property_type_form': property_type_form,
+                'disability_access_form': disability_access_form,
+                'filter_facilities': filter_facilities_form,
+                'amenities_form': amenities_form,
+                'reviews': reviews
             }
 
             return render(request, "main/search_list.html", context)

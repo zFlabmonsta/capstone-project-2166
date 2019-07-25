@@ -37,7 +37,22 @@ class Property(models.Model):
     pool = models.BooleanField(null=True, blank=True, default=False)
     gym = models.BooleanField(null=True, blank=True, default=False)
     spa = models.BooleanField(null=True, blank=True, default=False)
-
+    # disability access
+    ramp = models.BooleanField(null=True, blank=True, default=False)
+    travelator = models.BooleanField(null=True, blank=True, default=False)
+    elevator = models.BooleanField(null=True, blank=True, default=False)
+    # property Type
+    apartment = models.BooleanField(null=True, blank=True, default=False)
+    hotel = models.BooleanField(null=True, blank=True, default=False)
+    house = models.BooleanField(null=True, blank=True, default=False)
+    resort = models.BooleanField(null=True, blank=True, default=False)
+    townhouse = models.BooleanField(null=True, blank=True, default=False)
+    # amenities
+    kitchen = models.BooleanField(null=True, blank=True, default=False)
+    airconditioning = models.BooleanField(null=True, blank=True, default=False)
+    bathroom = models.BooleanField(null=True, blank=True, default=False)
+    tv = models.BooleanField(null=True, blank=True, default=False)
+    
 
     def is_matching_num_rooms(self, _num_rooms):
         if (self.num_rooms == _num_rooms):

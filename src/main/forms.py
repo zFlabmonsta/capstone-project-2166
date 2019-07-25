@@ -16,6 +16,21 @@ class Property_form (forms.Form):
     pool = forms.BooleanField(required=False, initial=False)
     gym = forms.BooleanField(required=False, initial=False)
     spa = forms.BooleanField(required=False, initial=False)
+    #disability access
+    ramp = forms.BooleanField(required=False, initial=False)
+    travelator = forms.BooleanField(required=False, initial=False)
+    elevator = forms.BooleanField(required=False, initial=False)
+    #Property Type
+    apartment = forms.BooleanField(required=False, initial=False)
+    hotel = forms.BooleanField(required=False, initial=False)
+    house = forms.BooleanField(required=False, initial=False)
+    resort = forms.BooleanField(required=False, initial=False)
+    townhouse = forms.BooleanField(required=False, initial=False)
+    #amenities    
+    kitchn = forms.BooleanField(required=False, initial=False)
+    tv = forms.BooleanField(required=False, initial=False)
+    bathroom = forms.BooleanField(required=False, initial=False)
+    airconditioning = forms.BooleanField(required=False, initial=False)
 
 class Search_property_form (forms.Form):
     where = forms.CharField(label='Where', max_length=100)
@@ -29,3 +44,21 @@ class Filter_facilities(forms.Form):
     pool = forms.BooleanField(label="Pool", required=False, initial=False, widget=forms.CheckboxInput())
     gym = forms.BooleanField(label="Gym", required=False, initial=False, widget=forms.CheckboxInput())
     spa = forms.BooleanField(label="Spa", required=False, initial=False, widget=forms.CheckboxInput())
+
+class Filter_disability_access(forms.Form):
+    ramp = forms.BooleanField(label="Ramp", required=False, initial=False, widget=forms.CheckboxInput())
+    travelator = forms.BooleanField(label="Travelator", required=False, initial=False, widget=forms.CheckboxInput())
+    elevator = forms.BooleanField(label="Elevator", required=False, initial=False, widget=forms.CheckboxInput())
+
+class Filter_property_type(forms.Form):
+    apartment = forms.BooleanField(label="Apartment", required=False, initial=False, widget=forms.CheckboxInput())
+    hotel = forms.BooleanField(label="Hotel", required=False, initial=False, widget=forms.CheckboxInput())
+    house = forms.BooleanField(label="House", required=False, initial=False, widget=forms.CheckboxInput())
+    resort = forms.BooleanField(label="Resort", required=False, initial=False, widget=forms.CheckboxInput())
+    townhouse = forms.BooleanField(label="Townhouse", required=False, initial=False, widget=forms.CheckboxInput())
+
+class Filter_amenities(forms.Form):
+    tv = forms.BooleanField(label="TV", required=False, initial=False, widget=forms.CheckboxInput())
+    bathroom = forms.BooleanField(label="Bathroom", required=False, initial=False, widget=forms.CheckboxInput())
+    kitchen = forms.BooleanField(label="Kitchen", required=False, initial=False, widget=forms.CheckboxInput())
+    airconditioning = forms.BooleanField(label="Air Conditioning", required=False, initial=False, widget=forms.CheckboxInput())

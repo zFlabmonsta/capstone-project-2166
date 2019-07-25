@@ -19,7 +19,6 @@
         <div class="sticky-col _mob-h">
           <div class="theme-search-results-sidebar">
             <div class="theme-search-results-sidebar-sections _mb-20 _br-2 _b-n theme-search-results-sidebar-sections-white-wrap">
-
               <div class="theme-search-results-sidebar-section">
                 <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
                   <div class="theme-search-area-section-inner">
@@ -63,6 +62,22 @@
               </div>
 
               <div class="theme-search-results-sidebar-section">
+                <h5 class="theme-search-results-sidebar-section-title">Property Type</h5>
+                {% for type in property_type_form %}
+                <div class="theme-search-results-sidebar-section-checkbox-list">
+                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
+                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
+                      <label class="icheck-label">
+                        {% render_field type class="icheck" %}
+                        <span class="icheck-title">{{type.field.label}}</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+
+              <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
                 {% for review in reviews %}
                 <div class="theme-search-results-sidebar-section-checkbox-list">
@@ -89,13 +104,13 @@
 
               <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Disability Access</h5>
-                {% for access in disability_access%}
+                {% for access in disability_access_form %}
                 <div class="theme-search-results-sidebar-section-checkbox-list">
                   <div class="theme-search-results-sidebar-section-checkbox-list-items">
                     <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                       <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">{{access}}</span>
+                        {% render_field access class="icheck" %}
+                        <span class="icheck-title">{{access.field.label}}</span>
                       </label>
                     </div>
                   </div>
@@ -119,31 +134,16 @@
                 {% endfor %}
               </div>
 
-              <div class="theme-search-results-sidebar-section">
-                <h5 class="theme-search-results-sidebar-section-title">Property Type</h5>
-                {% for type in property_type %}
-                <div class="theme-search-results-sidebar-section-checkbox-list">
-                  <div class="theme-search-results-sidebar-section-checkbox-list-items">
-                    <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
-                      <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">{{type}}</span>
-                      </label>
-                    </div>
-                  </div>
-                </div>
-                {% endfor %}
-              </div>
 
               <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Amenities</h5>
-                {% for amenity in amenities%}
+                {% for amenity in amenities_form %}
                 <div class="theme-search-results-sidebar-section-checkbox-list">
                   <div class="theme-search-results-sidebar-section-checkbox-list-items">
                     <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                       <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">{{amenity}}</span>
+                        {% render_field amenity class="icheck" %}
+                        <span class="icheck-title">{{amenity.field.label}}</span>
                       </label>
                     </div>
                   </div>
