@@ -27,7 +27,7 @@ class Property_form (forms.Form):
     resort = forms.BooleanField(required=False, initial=False)
     townhouse = forms.BooleanField(required=False, initial=False)
     #amenities    
-    kitchn = forms.BooleanField(required=False, initial=False)
+    kitchen = forms.BooleanField(required=False, initial=False)
     tv = forms.BooleanField(required=False, initial=False)
     bathroom = forms.BooleanField(required=False, initial=False)
     airconditioning = forms.BooleanField(required=False, initial=False)

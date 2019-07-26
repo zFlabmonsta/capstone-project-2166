@@ -6,57 +6,76 @@
 <div class="theme-page-section _pt-100 theme-page-section-xl">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 col-md-offset-4">
+      <div class="col-md-5 col-md-offset-2">
         <div class="theme-login theme-login-white">
           <div class="theme-login-header">
             <h1 class="theme-login-title">List a Home</h1>
           </div>
 
-          <div class="theme-login-box">
+          <div class="theme-add-property-box">
             <div class="theme-login-box-inner">
               <form class="theme-login-form" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 <!-- Property Type-->
                 <div class="form-group theme-login-form-group">
+                    <h4>Property Type</h4><hr>
+                    {% render_field form.apartment %}
                     <label> Apartment </label>
-                    {% render_field property_type_form.apartment %}
+                    {% render_field form.hotel %}
                     <label> Hotel </label>
-                    {% render_field property_type_form.hotel %}
+                    {% render_field form.house %}
                     <label> House </label>
-                    {% render_field property_type_form.house %}
+                    {% render_field form.resort %}
                     <label> Resort </label>
-                    {% render_field property_type_form.resort %}
+                    {% render_field form.townhouse %}
                     <label> Townhouse </label>
-                    {% render_field property_type_form.townhouse %}
                 </div>
 
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.num class="form-control" placeholder="Property Number/Unit" %}
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.num class="form-control" placeholder="Number/Unit" %}
+                    </div>
+                  </div>
+                  <div class="col-md-9">   
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.street class="form-control" placeholder="Street" %}
+                    </div>
+                  </div>
                 </div>
 
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.street class="form-control" placeholder="Street" %}
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.post_code class="form-control" placeholder="Post Code" %}
+                    </div>
+                  </div>
+                  <div class="col-md-7">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.suburb class="form-control" placeholder="Suburb" %}
+                    </div>
+                  </div>
                 </div>
 
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.post_code class="form-control" placeholder="Post Code" %}
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.price class="form-control" placeholder="Price" %}
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.num_guests class="form-control" placeholder="Guests" %}
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.num_rooms class="form-control" placeholder="Rooms" %}
+                    </div>
+                  </div>
                 </div>
 
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.suburb class="form-control" placeholder="Suburb" %}
-                </div>
 
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.price class="form-control" placeholder="Price" %}
-                </div>
-
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.num_guests class="form-control" placeholder="Guests" %}
-                </div>
-
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.num_rooms class="form-control" placeholder="Rooms" %}
-                </div>
 
                 <div class="form-group">
                     {% render_field form.description class="form-control" placeholder="Description" %}
@@ -64,35 +83,38 @@
                 
                 <!-- Facility Filtering -->
                 <div class="form-group theme-login-form-group">
-                    <label> Free parking </label>
+                    <h4>Facilities</h4><hr>
                     {% render_field form.free_parking %}
-                    <label> Pool </label>
+                    <label> Free parking </label>
                     {% render_field form.pool %}
-                    <label> Gym </label>
+                    <label> Pool </label>
                     {% render_field form.gym %}
-                    <label> Spa </label>
+                    <label> Gym </label>
                     {% render_field form.spa %}
+                    <label> Spa </label>
                 </div>
 
                 <!-- Disability Access -->
                 <div class="form-group theme-login-form-group">
-                    <label> Ramp </label>
+                    <h4>Disability Access</h4><hr>
                     {% render_field form.ramp %}
-                    <label> Travelator </label>
+                    <label> Ramp </label>
                     {% render_field form.travelator %}
-                    <label> Elevator </label>
+                    <label> Travelator </label>
                     {% render_field form.elevator %}
+                    <label> Elevator </label>
                 </div>
 
                 <div class="form-group theme-login-form-group">
-                    <label> Ramp </label>
+                    <h4>Amenities</h4><hr>
                     {% render_field form.tv%}
-                    <label> Travelator </label>
+                    <label> TV </label>
                     {% render_field form.airconditioning%}
-                    <label> Elevator </label>
+                    <label> Air Conditioning </label>
                     {% render_field form.bathroom%}
-                    <label> Elevator </label>
+                    <label> Bathroom </label>
                     {% render_field form.kitchen%}
+                    <label> Kitchen </label>
                 </div>
 
                 {% render_field form.image %}
