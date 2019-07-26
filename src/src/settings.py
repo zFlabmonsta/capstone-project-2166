@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'authentication.apps.AuthenticationConfig',
 
     'widget_tweaks',
+    'gmapify',
 ]
 
 MIDDLEWARE = [

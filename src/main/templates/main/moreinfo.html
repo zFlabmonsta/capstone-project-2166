@@ -55,7 +55,9 @@
                 </div>
               </div>
               <div class="tab-pane" id="HotelPageTabs-2" role="tab-panel">
-                <div id="map" data-lat="40.7483624" data-lng="-73.9900895" style="height: 200px; width: 100%;"></div>
+                <script src={% static "js/googlemap.js"%}></script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmpqPu7DWaGqcqOIujMncyb9YCWV7a4ds&callback=initMap"> </script>
+                <div id="map" data-lat={{property.location.latitude}} data-lng={{property.location.longitude}} style="height: 500px; width: 100%;"></div>
               </div>
               <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
                 <div class="theme-reviews">
@@ -256,10 +258,10 @@
             </div>
 
             <div class="theme-search-results-sidebar-map-view _mb-10 theme-search-results-sidebar-map-view-primary">
-              <a class="theme-search-results-sidebar-map-view-link" href="map/{{property.location.latitude}}/{{property.location.longitude}}"></a>
+              <a class="theme-search-results-sidebar-map-view-link" href="https://www.google.com.au/maps/dir//"></a>
               <div class="theme-search-results-sidebar-map-view-body">
                 <i class="fa fa-map-marker theme-search-results-sidebar-map-view-icon"></i>
-                <p class="theme-search-results-sidebar-map-view-sign">Map View</p>
+                <p class="theme-search-results-sidebar-map-view-sign">Official Google Maps</p>
               </div>
               <div class="theme-search-results-sidebar-map-view-mask"></div>
             </div>
