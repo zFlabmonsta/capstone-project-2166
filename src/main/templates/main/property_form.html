@@ -45,24 +45,19 @@
                 </div>
 
                 <div class="row">
-                  <div class="col-md-3">
-                    <div class="form-group theme-login-form-group">
-                      {% render_field form.post_code class="form-control" placeholder="Post Code" %}
-                    </div>
-                  </div>
                   <div class="col-md-7">
                     <div class="form-group theme-login-form-group">
                       {% render_field form.suburb class="form-control" placeholder="Suburb" %}
                     </div>
                   </div>
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.post_code class="form-control" placeholder="Post Code" %}
+                    </div>
+                  </div>
                 </div>
 
                 <div class="row">
-                  <div class="col-md-3">
-                    <div class="form-group theme-login-form-group">
-                      {% render_field form.price class="form-control" placeholder="Price" %}
-                    </div>
-                  </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
                       {% render_field form.num_guests class="form-control" placeholder="Guests" %}
@@ -71,6 +66,11 @@
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
                       {% render_field form.num_rooms class="form-control" placeholder="Rooms" %}
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="form-group theme-login-form-group">
+                      {% render_field form.price class="form-control" placeholder="Price" %}
                     </div>
                   </div>
                 </div>
@@ -115,6 +115,10 @@
                     <label> Bathroom </label>
                     {% render_field form.kitchen%}
                     <label> Kitchen </label>
+                    {% render_field form.kitchen%}
+                    <label> Wifi</label>
+                    {% render_field form.kitchen%}
+                    <label> Laundry</label>
                 </div>
 
                 {% render_field form.image %}
