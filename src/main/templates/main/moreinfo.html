@@ -2,97 +2,9 @@
 {% load staticfiles %}
 {% load widget_tweaks %}
 
-{% block middle_page_2%}{% endblock %}
+{% block middle_page%}{% endblock %}
 
-{% block content_1 %}
-<div class="theme-hero-area">
-  <div class="theme-hero-area-bg-wrap">
-    <div class="theme-hero-area-bg" style="background-image:url(./img/1500x800.png);"></div>
-    <div class="theme-hero-area-mask"></div>
-    <div class="theme-hero-area-inner-shadow"></div>
-  </div>
-  <div class="theme-hero-area-body">
-    <div class="container">
-      <div class="row _pv-100">
-        <div class="col-md-10 col-md-offset-1">
-          <div class="theme-search-area _mob-h theme-search-area-stacked">
-            <div class="theme-search-area-header _mb-30 _ta-c _c-w">
-              <h1 class="theme-search-area-title theme-search-area-title-sm">Results: {{searched_property|length}} </h1>
-            </div>
-            <form method="POST" class='search-form'>
-            {% csrf_token %}
-            <div class="theme-search-area-form _bsh-xxl _bsh-light" id="hero-search-form">
-              <div class="row" data-gutter="none">
-                <div class="col-md-3 ">
-                  <div class="theme-search-area-section first theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                    <div class="theme-search-area-section-inner">
-                      <i class="theme-search-area-section-icon lin lin-location-pin"></i>
-                      {% render_field search_property_form.where class="theme-search-area-section-input typeahead" data-provide="typeahead" %}
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 ">
-                  <div class="row" data-gutter="none">
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                          {% render_field search_property_form.check_in class="theme-search-area-section-input" %}
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                          {% render_field search_property_form.check_out class="theme-search-area-section-input"%}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-4 ">
-                  <div class="row" data-gutter="none">
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Rooms">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-tag"></i>
-                          {% render_field search_property_form.num_rooms class="theme-search-area-section-input" value="2" %}
-                          <div class="quantity-selector-box" id="HotelSearchRooms">
-                            <div class="quantity-selector-inner">
-                              <p class="quantity-selector-title">Rooms</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6 ">
-                      <div class="theme-search-area-section theme-search-area-section-curved theme-search-area-section-sm theme-search-area-section-bg-white theme-search-area-section-no-border theme-search-area-section-mr quantity-selector" data-increment="Guests">
-                        <div class="theme-search-area-section-inner">
-                          <i class="theme-search-area-section-icon lin lin-people"></i>
-                          {% render_field search_property_form.num_guests class="theme-search-area-section-input" value="2" %}
-                          <div class="quantity-selector-box" id="HotelSearchGuests">
-                            <div class="quantity-selector-inner">
-                              <p class="quantity-selector-title">Guests</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-1 ">
-                  <button type="submit" class="theme-search-area-submit _mt-0 theme-search-area-submit-curved theme-search-area-submit-sm theme-search-area-submit-no-border">Change</button>
-                </div>
-              </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+{% block content_2 %}
 <div class="theme-page-section" style="background-color: white">
   <div class="container">
     <div class="row row-col-static" id="sticky-parent" data-gutter="60">
@@ -101,56 +13,6 @@
           <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
             <h1 class="theme-search-area-title">Book Event</h1>
             <p class="theme-search-area-subtitle">Arcu risus malesuada penatibus a</p>
-          </div>
-          <div class="theme-search-area-form">
-            <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
-              <div class="theme-search-area-section-inner">
-                <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                <input class="theme-search-area-section-input datePickerSingle _mob-h" value="Wed 06/27" type="text"/>
-                <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-              </div>
-            </div>
-            <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
-              <div class="theme-search-area-section-inner">
-                <i class="theme-search-area-section-icon lin lin-people"></i>
-                <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
-                <div class="quantity-selector-box" id="mobile-ExpSearchGuests">
-                  <div class="quantity-selector-inner">
-                    <p class="quantity-selector-title">Guests</p>
-                    <ul class="quantity-selector-controls">
-                      <li class="quantity-selector-decrement">
-                        <a href="#">&#45;</a>
-                      </li>
-                      <li class="quantity-selector-current">1</li>
-                      <li class="quantity-selector-increment">
-                        <a href="#">&#43;</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="theme-item-page-summary-price _mb-20">
-              <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapseMobile" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapseMobile">Show summary</a>
-              <div class="collapse" id="summaryPriceCollapseMobile">
-                <ul class="theme-item-page-summary-price-list">
-                  <li class="theme-item-page-summary-price-item">
-                    <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
-                    <p class="theme-item-page-summary-price-item-subtitle"></p>
-                    <p class="theme-item-page-summary-price-item-price">$184.00</p>
-                  </li>
-                  <li class="theme-item-page-summary-price-item">
-                    <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
-                    <p class="theme-item-page-summary-price-item-subtitle"></p>
-                    <p class="theme-item-page-summary-price-item-price">$7.00</p>
-                  </li>
-                </ul>
-              </div>
-              <p class="theme-item-page-summary-price-total">Total
-                <span>$191.00</span>
-              </p>
-            </div>
-            <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
           </div>
         </div>
         <div class="theme-item-page-tabs _mb-desk-30">
@@ -193,7 +55,7 @@
                 </div>
               </div>
               <div class="tab-pane" id="HotelPageTabs-2" role="tab-panel">
-                <div class="theme-item-page-map google-map" data-lat="40.7483624" data-lng="-73.9900896"></div>
+                <div id="map" data-lat="40.7483624" data-lng="-73.9900895" style="height: 200px; width: 100%;"></div>
               </div>
               <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
                 <div class="theme-reviews">
@@ -392,54 +254,17 @@
               <h1 class="theme-search-area-title">Book Event</h1>
               <p class="theme-search-area-subtitle">Consectetur magnis facilisis donec metus</p>
             </div>
+
+            <div class="theme-search-results-sidebar-map-view _mb-10 theme-search-results-sidebar-map-view-primary">
+              <a class="theme-search-results-sidebar-map-view-link" href="map/{{property.location.latitude}}/{{property.location.longitude}}"></a>
+              <div class="theme-search-results-sidebar-map-view-body">
+                <i class="fa fa-map-marker theme-search-results-sidebar-map-view-icon"></i>
+                <p class="theme-search-results-sidebar-map-view-sign">Map View</p>
+              </div>
+              <div class="theme-search-results-sidebar-map-view-mask"></div>
+            </div>
+
             <div class="theme-search-area-form">
-              <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved">
-                <div class="theme-search-area-section-inner">
-                  <i class="theme-search-area-section-icon lin lin-calendar"></i>
-                  <input class="theme-search-area-section-input datePickerSingle _mob-h" value="Wed 06/27" type="text"/>
-                  <input class="theme-search-area-section-input _desk-h mobile-picker" value="2018-06-27" type="date"/>
-                </div>
-              </div>
-              <div class="theme-search-area-section theme-search-area-section-sm theme-search-area-section-curved quantity-selector" data-increment="Guests">
-                <div class="theme-search-area-section-inner">
-                  <i class="theme-search-area-section-icon lin lin-people"></i>
-                  <input class="theme-search-area-section-input" value="2 Guests" type="text"/>
-                  <div class="quantity-selector-box" id="ExpSearchGuests">
-                    <div class="quantity-selector-inner">
-                      <p class="quantity-selector-title">Guests</p>
-                      <ul class="quantity-selector-controls">
-                        <li class="quantity-selector-decrement">
-                          <a href="#">&#45;</a>
-                        </li>
-                        <li class="quantity-selector-current">1</li>
-                        <li class="quantity-selector-increment">
-                          <a href="#">&#43;</a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="theme-item-page-summary-price _mb-20">
-                <a class="theme-item-page-summary-price-link" href="#summaryPriceCollapse" data-toggle="collapse" aria-expanded="false" aria-controls="summaryPriceCollapse">Show summary</a>
-                <div class="collapse" id="summaryPriceCollapse">
-                  <ul class="theme-item-page-summary-price-list">
-                    <li class="theme-item-page-summary-price-item">
-                      <h5 class="theme-item-page-summary-price-item-title">2 Guests</h5>
-                      <p class="theme-item-page-summary-price-item-subtitle"></p>
-                      <p class="theme-item-page-summary-price-item-price">$184.00</p>
-                    </li>
-                    <li class="theme-item-page-summary-price-item">
-                      <h5 class="theme-item-page-summary-price-item-title">Service fee</h5>
-                      <p class="theme-item-page-summary-price-item-subtitle"></p>
-                      <p class="theme-item-page-summary-price-item-price">$7.00</p>
-                    </li>
-                  </ul>
-                </div>
-                <p class="theme-item-page-summary-price-total">Total
-                  <span>$191.00</span>
-                </p>
-              </div>
               <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
             </div>
           </div>

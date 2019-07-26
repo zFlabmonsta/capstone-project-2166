@@ -106,8 +106,8 @@ def index(request):
 def about(response):
     return HttpResponse("<h1> About! </h1>")
 
-def howto(response):
-    return HttpResponse("<h1> Howto !</h1>")
+def map(request, lat, lng):
+    return render(request, "main/googlemap.html", {"lat":lat, "lng":lng})
 
 """
 direct the user to their dashboard
@@ -126,12 +126,14 @@ def dashboard(request):
 
 def moreinfo(request, property_id):
     # get property id 
+    search_property_form = Search_property_form()
     property = Property.objects.get(id=property_id)
     images = image.objects.filter(property__id=property_id)
     print(images)
     context = {
         'property': property,
         'images': images,
+        'search_property_form': search_property_form
     }
     return render(request, "main/moreinfo.html", context)
      

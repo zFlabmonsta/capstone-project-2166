@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% block middle_page_2%}{% endblock %}
+{% block content_1 %}
+<html>
+    <!--The div element for the map -->
+    <div id="map" data-lat={{lat}} data-lng={{lng}} style="height: 1200px; width: 100%;"></div>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmpqPu7DWaGqcqOIujMncyb9YCWV7a4ds&callback=initMap">
+    </script>
+    <script src={% static "js/googlemap.js" %}></script>
+</html>
+{% endblock %}
