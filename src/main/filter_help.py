@@ -185,3 +185,16 @@ def filter_by_amenities(amenities_form, searching):
             continue
     return filtered
 
+
+from main.models import image
+
+def get_display_images(searching):
+    display = []
+    for _property in searching:
+        img = image.objects.filter(property__id=_property.id)
+        if (img.exists()):
+            display.append(img[0])
+        else:
+            display.append(None)
+
+    return display

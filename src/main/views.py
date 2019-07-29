@@ -8,7 +8,9 @@ from geopy.distance import geodesic
 
 from main.models import Dashboard, Property, Location, Booking, image
 from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
-from .filter_help import filter_by_amenities, filter_by_disability_access, reviews, filter_by_facilities, filter_by_property_type
+from .filter_help import filter_by_amenities, filter_by_disability_access, reviews, filter_by_facilities, filter_by_property_type, get_display_images
+
+from datetime import datetime, date, time
 
 # Home Page
 def index(request):
@@ -87,6 +89,10 @@ def index(request):
             searching = filter_by_property_type(property_type_form, searching)
             searching = filter_by_amenities(amenities_form, searching)
 
+            # get display images for each property 
+            display = get_display_images(searching)
+            searching = zip(searching, display)
+
             context = {
                 'searched_property': searching,
                 'start_date': check_in,
@@ -116,21 +122,35 @@ direct the user to their dashboard
 def dashboard(request):
     current_user = request.user
     dashboard = Dashboard.objects.get(user=current_user.id)
+
     properties = Property.objects.filter(dashboard__id = dashboard.id)
+    display = get_display_images(Property.objects.filter(dashboard__id = dashboard.id))
+    properties = zip(properties, display)
+
     bookings = Booking.objects.filter(dashboard__id=dashboard.id)
+    display = []
+    for b in bookings:
+        display.append(b.property)
+    display = get_display_images(display)
+    bookings = zip(bookings, display)
+
     context = {
         'properties': properties,
         'bookings': bookings
     }
     return render(request, "main/dashboard.html", context)
 
-def moreinfo(request, property_id):
+def moreinfo(request, property_id, i_year, i_month, i_day, o_year, o_month, o_day):
     # get property id 
+    check_in = datetime(i_year, i_month, i_day)
+    check_out = datetime(o_year, o_month, o_day)
     search_property_form = Search_property_form()
     property = Property.objects.get(id=property_id)
     images = image.objects.filter(property__id=property_id)
     print(images)
     context = {
+        'start_date': check_in,
+        'end_date': check_out,
         'property': property,
         'images': images,
         'search_property_form': search_property_form

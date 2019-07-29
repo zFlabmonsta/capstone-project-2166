@@ -164,7 +164,7 @@
             {% for property in searched_property %}
             <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
               <div class="theme-search-results-item-preview">
-                <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/{{property.id}}')" role="button"></a>
+                <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/{{property.0.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}')" role="button"></a>
                 <a class="theme-search-results-item-bookmark theme-search-results-item-bookmark-top" href="#">
                   <i class="fa fa-bookmark"></i>
                   <span>Watch</span>
@@ -173,8 +173,8 @@
                 <div class="row" data-gutter="20">
                   <div class="col-md-5 ">
                     <div class="theme-search-results-item-img-wrap">
-                      {% if property.display_image %}
-                      <img class="theme-search-results-item-img" src="{{property.display_image.url}}" alt="Image Alternative text" title="Image Title"/>
+                      {% if property.1.image.url%}
+                      <img class="theme-search-results-item-img" src="{{property.1.image.url}}" alt="Image Alternative text" title="Image Title"/>
                       {% endif %}
                     </div>
                   </div>
@@ -195,23 +195,23 @@
                       </li>
                     </ul>
 
-                    <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.location.num}} {{property.location.address}}</h5>
+                    <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
                     <div class="theme-search-results-item-hotel-rating">
                       <p class="theme-search-results-item-hotel-rating-title">
                         <b>8.5 Excellent</b>&nbsp;(8903 reviews)
                       </p>
                     </div>
-                    <p class="theme-search-results-item-hotel-book-count">Booked: {{property.time_booked}}</p>
+                    <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
                   </div>
 
                   <div class="col-md-2 ">
                     <div class="theme-search-results-item-book">
                       <div class="theme-search-results-item-price">
-                        <p class="theme-search-results-item-price-tag">${{property.price}}</p>
+                        <p class="theme-search-results-item-price-tag">${{property.0.price}}</p>
                         <p class="theme-search-results-item-price-sign">/night</p>
                       </div>
 
-                      <form action="make-booking/{{property.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
+                      <form action="make-booking/{{property.0.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
                           {% csrf_token %}
                          <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Book Now</button>
                       </form>

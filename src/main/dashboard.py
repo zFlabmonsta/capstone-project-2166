@@ -40,10 +40,6 @@ def create_property(request):
             l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
             l.save()
             
-            if (request.FILES.getlist('image')):
-                display_image = request.FILES.getlist('image')[0]
-            else:
-                display_image = None
 
             print(form.cleaned_data['free_parking'])
 
@@ -53,15 +49,29 @@ def create_property(request):
                     num_guests=num_guests, 
                     num_rooms=num_rooms, 
                     description=desc, 
-                    display_image=display_image,
                     free_parking=form.cleaned_data['free_parking'],
                     pool = form.cleaned_data['pool'],
                     gym = form.cleaned_data['gym'],
-                    spa = form.cleaned_data['spa']
+                    spa = form.cleaned_data['spa'],
+                    ramp = form.cleaned_data['ramp'],
+                    travelator = form.cleaned_data['travelator'],
+                    elevator = form.cleaned_data['elevator'],
+                    # property Type
+                    apartment = form.cleaned_data['apartment'],
+                    hotel = form.cleaned_data['hotel'],
+                    house = form.cleaned_data['house'],
+                    resort = form.cleaned_data['resort'],
+                    townhouse = form.cleaned_data['townhouse'],
+                    # amenities
+                    kitchen = form.cleaned_data['kitchen'],
+                    airconditioning = form.cleaned_data['airconditioning'],
+                    bathroom = form.cleaned_data['bathroom'],
+                    tv = form.cleaned_data['tv']
                 )
             p.save()
 
             # create image models and save them to db
+            first_image = False 
             for f in request.FILES.getlist('image'):
                 img = image(property=p, image=f)
                 img.save()

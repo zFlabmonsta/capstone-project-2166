@@ -5,6 +5,9 @@ from datetime import datetime
 def image_directory_path(instance, filename):
     return 'property_{0}/{1}'.format(instance.property.id, filename)
 
+def image_directory_path_display(instance, filename):
+    return 'display_property_{0}/{1}'.format(instance.id, filename)
+
 # Create your models here.
 class Dashboard(models.Model):
     """
@@ -31,7 +34,6 @@ class Property(models.Model):
     num_rooms = models.IntegerField(null=True, blank=True)
     time_booked = models.IntegerField(default=0)
     description = models.CharField(null=True, blank=True, max_length=10000000000)
-    display_image = models.ImageField(null=True, blank=True, upload_to=image_directory_path)
     # facilities
     free_parking = models.BooleanField(null=True, blank=True, default=False)
     pool = models.BooleanField(null=True, blank=True, default=False)
