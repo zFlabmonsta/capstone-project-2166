@@ -39,6 +39,9 @@ class Search_property_form (forms.Form):
     num_guests = forms.IntegerField(label='Guests')
     num_rooms = forms.IntegerField(label='Rooms')
 
+class Review_form(forms.Form):
+    review = forms.CharField(label='review', widget=forms.Textarea, max_length=1000000000)
+
 class Filter_facilities(forms.Form):
     free_parking = forms.BooleanField(label="Free Parking", required=False, initial=False, widget=forms.CheckboxInput())
     pool = forms.BooleanField(label="Pool", required=False, initial=False, widget=forms.CheckboxInput())
@@ -62,3 +65,4 @@ class Filter_amenities(forms.Form):
     bathroom = forms.BooleanField(label="Bathroom", required=False, initial=False, widget=forms.CheckboxInput())
     kitchen = forms.BooleanField(label="Kitchen", required=False, initial=False, widget=forms.CheckboxInput())
     airconditioning = forms.BooleanField(label="Air Conditioning", required=False, initial=False, widget=forms.CheckboxInput())
+

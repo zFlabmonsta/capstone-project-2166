@@ -116,7 +116,9 @@
                                <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Cancel </button>
                             </form>
                             <br>
-                            <button class="btn primary-inverse btn-block btn-primary" href="/give-review/{{property.0.id}}">Give Review</a>
+                            <form action="dashboard/give-review/{{booking.0.id}}" method='GET'>
+                              <button class="btn btn-primary btn-block theme-search-results-item-price-btn" type='submit'>Give Review</a>
+                            </form>
                           </div>
                         </div>
                       </div>

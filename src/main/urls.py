@@ -16,5 +16,6 @@ urlpatterns += [
     path("make-booking/<int:property_id>/<int:i_year>/<int:i_month>/<int:i_day>/<int:o_year>/<int:o_month>/<int:o_day>", 
         booking.make_booking, name="make booking"),
     path("dashboard/delete-booking/<int:id>", dashboard.delete_booking, name="delete property"),
+    path("dashboard/give-review/<int:id>", dashboard.give_review, name="give review"),
 ]
 

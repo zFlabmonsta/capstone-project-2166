@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load staticfiles %}
+{% load widget_tweaks %}
+{% block middle_page_2 %}{% endblock %}
+{% block content_1 %}
+<div class="theme-page-section _pt-100 theme-page-section-xl">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5 col-md-offset-2">
+        <div class="theme-login theme-login-white">
+          <div class="theme-login-header">
+            <h2 class="theme-login-title">Give Property Your Review</h2>
+          </div>
+          <div class="theme-add-property-box" style="height: 500px">
+            <div class="theme-login-box-inner">
+              <form class="theme-login-form" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    {% render_field form.review class="form-control" placeholder="Write your review on this property" %}
+                </div>
+                <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Submit</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
 from main.models import Dashboard, Property, Location, Booking, image
-from .forms import Property_form
+from .forms import Property_form, Review_form
 from geopy.geocoders import Nominatim
 
 """
@@ -103,3 +103,17 @@ def delete_booking(request, id):
         current_user = request.user
         dashboard_id = Dashboard.objects.get(user=current_user.id).id
     return HttpResponseRedirect('/dashboard')
+
+@login_required(login_url='/login')
+def give_review(request, id):
+    current_user = request.user
+    dashboard_id = Dashboard.objects.get(user=current_user.id).id
+    booking = Booking.objects.get(id=id)
+    review_form = Review_form()
+    context = {
+        "form": review_form
+    }
+    if (booking.dashboard.id == dashboard_id):
+        return render(request, "main/give_review.html", context)
+    return HttpResponseRedirect('/dashboard')
+

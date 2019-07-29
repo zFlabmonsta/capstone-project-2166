@@ -83,3 +83,7 @@ class Booking(models.Model):
 class image(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     image = models.ImageField(upload_to=image_directory_path)
+
+class Property_review(models.Model):
+    property = models.ForeignKey(Property, on_delete=models.CASCADE)
+    review = models.CharField(max_length=10000000000)
