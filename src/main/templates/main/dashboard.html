@@ -115,18 +115,17 @@
                                 {% csrf_token %}
                                <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Cancel </button>
                             </form>
-
+                            <br>
+                            <button class="btn primary-inverse btn-block btn-primary" href="/give-review/{{property.0.id}}">Give Review</a>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
                   {% endfor %}
-
                 </div>
               </div>
         </div>
-
     </div>
   </div>
 </div>
