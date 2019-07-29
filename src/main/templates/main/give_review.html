@@ -1,8 +1,14 @@
 {% extends 'main/base.html' %}
+
 {% load staticfiles %}
 {% load widget_tweaks %}
+
 {% block middle_page_2 %}{% endblock %}
+
 {% block content_1 %}
+<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
+<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
+
 <div class="theme-page-section _pt-100 theme-page-section-xl">
   <div class="container">
     <div class="row">
@@ -18,9 +24,12 @@
                 <div class="form-group">
                     {% render_field form.review class="form-control" placeholder="Write your review on this property" %}
                 </div>
+                <div class="form-group">
+                    <h5>{%render_field form.rating.field.label %}</h5>
+                    {% render_field form.rating class="form-control" %}
+                </div>
                 <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Submit</button>
               </form>
-
             </div>
           </div>
         </div>

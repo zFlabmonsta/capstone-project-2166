@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
-from main.models import Dashboard, Property, Location, Booking, image
+from main.models import Dashboard, Property, Location, Booking, image, Property_review
 from .forms import Property_form, Review_form
 from geopy.geocoders import Nominatim
 
@@ -111,8 +111,17 @@ def give_review(request, id):
     booking = Booking.objects.get(id=id)
     review_form = Review_form()
     context = {
-        "form": review_form
+        "form": review_form,
     }
+    if (request.method == 'POST'):
+        form = Review_form(request.POST)
+        if form.is_valid():
+            _review = form.cleaned_data['review']
+            _rating = form.cleaned_data['rating']
+            obj = Property_review(property=booking.property, review=_review, rating=_rating)
+            obj.save()
+            return HttpResponseRedirect('/dashboard')
+
     if (booking.dashboard.id == dashboard_id):
         return render(request, "main/give_review.html", context)
     return HttpResponseRedirect('/dashboard')

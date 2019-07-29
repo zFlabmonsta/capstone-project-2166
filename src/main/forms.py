@@ -39,8 +39,16 @@ class Search_property_form (forms.Form):
     num_guests = forms.IntegerField(label='Guests')
     num_rooms = forms.IntegerField(label='Rooms')
 
+RATING = [
+    (1, 'Poor'),
+    (2, 'Mediocre'),
+    (3, 'Okay'),
+    (4, 'Good'),
+    (5, 'Execellent')
+]
 class Review_form(forms.Form):
-    review = forms.CharField(label='review', widget=forms.Textarea, max_length=1000000000)
+    review = forms.CharField(label='Review', widget=forms.Textarea, max_length=1000000000)
+    rating = forms.CharField(label='Rate your experience' , widget=forms.Select(choices=RATING))
 
 class Filter_facilities(forms.Form):
     free_parking = forms.BooleanField(label="Free Parking", required=False, initial=False, widget=forms.CheckboxInput())
