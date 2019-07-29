@@ -181,24 +181,17 @@
 
                   <div class="col-md-5 ">
                     <ul class="theme-search-results-item-hotel-stars">
+                      {% for n in property.0.range_avg_rating %}
                       <li>
                         <i class="fa fa-star"></i>
                       </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
+                      {% endfor %}
                     </ul>
 
                     <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
                     <div class="theme-search-results-item-hotel-rating">
                       <p class="theme-search-results-item-hotel-rating-title">
-                        <b>8.5 Excellent</b>&nbsp;(8903 reviews)
+                      <b>{{property.0.execellent_rating}} Excellent</b>&nbsp;({{property.0.times_reviewed}} reviews)
                       </p>
                     </div>
                     <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>

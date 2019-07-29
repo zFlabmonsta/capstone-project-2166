@@ -70,6 +70,23 @@ class Property(models.Model):
         self.time_booked += 1
         self.save()
 
+    def times_reviewed(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        return len(reviews)
+
+    def execellent_rating(self):
+        reviews = Property_review.objects.filter(property__id=self.id, rating=5)
+        return len(reviews)
+
+    def range_avg_rating(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        avg = 0
+        for r in reviews:
+            avg += r.rating
+        avg = avg/len(reviews)
+        return range(int(avg))
+            
+
 class Booking(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     dashboard = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
@@ -89,3 +106,6 @@ class Property_review(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     review = models.CharField(max_length=10000000000)
     rating = models.IntegerField(default=0)
+
+    def range_rating(self):
+        return range(self.rating)

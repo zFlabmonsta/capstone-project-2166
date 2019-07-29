@@ -62,6 +62,7 @@
               <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
                 <div class="theme-reviews">
                   <div class="theme-reviews-list">
+                    {% for review in reviews %}
                     <article class="theme-reviews-item">
                       <div class="row" data-gutter="10">
                         <div class="col-md-3 ">
@@ -74,169 +75,20 @@
                         <div class="col-md-9 ">
                           <div class="theme-reviews-rating">
                             <ul class="theme-reviews-rating-stars">
+                              {% for i in review.range_rating %}
                               <li>
                                 <i class="fa fa-star"></i>
                               </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-half-o"></i>
-                              </li>
+                              {% endfor %}
                             </ul>
                           </div>
                           <div class="theme-reviews-item-body">
-                            <p class="theme-reviews-item-text">Netus gravida etiam sit et sapien pulvinar posuere gravida mollis laoreet sit eu sodales tristique condimentum cum sapien enim pharetra semper risus dui lorem habitasse quisque auctor dictum</p>
+                            <p class="theme-reviews-item-text">{{review.review}}</p>
                           </div>
                         </div>
                       </div>
                     </article>
-                    <article class="theme-reviews-item">
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-3 ">
-                          <div class="theme-reviews-item-info">
-                            <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                            <p class="theme-reviews-item-date">Reviewed Sat, Jun 23</p>
-                            <p class="theme-reviews-item-author">by Minnie Aviles</p>
-                          </div>
-                        </div>
-                        <div class="col-md-9 ">
-                          <div class="theme-reviews-rating">
-                            <ul class="theme-reviews-rating-stars">
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="theme-reviews-item-body">
-                            <p class="theme-reviews-item-text">Risus molestie iaculis nullam lectus maecenas ridiculus eleifend proin libero aptent mattis penatibus mi tellus lacus nisl aptent senectus nostra gravida sed vivamus turpis nostra nostra et dapibus velit vivamus eros pulvinar mauris odio hendrerit venenatis consequat cubilia dis suspendisse</p>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="theme-reviews-item">
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-3 ">
-                          <div class="theme-reviews-item-info">
-                            <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                            <p class="theme-reviews-item-date">Reviewed Tue, Jun 19</p>
-                            <p class="theme-reviews-item-author">by Joseph Watson</p>
-                          </div>
-                        </div>
-                        <div class="col-md-9 ">
-                          <div class="theme-reviews-rating">
-                            <ul class="theme-reviews-rating-stars">
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="theme-reviews-item-body">
-                            <p class="theme-reviews-item-text">Per facilisi cubilia sem magnis a interdum quis id per mollis nullam hac urna urna tempus ut nec donec ultricies convallis cum metus venenatis est blandit risus orci imperdiet consectetur penatibus arcu ipsum sed tempor ullamcorper sem eu</p>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="theme-reviews-item">
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-3 ">
-                          <div class="theme-reviews-item-info">
-                            <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                            <p class="theme-reviews-item-date">Reviewed Mon, Jun 18</p>
-                            <p class="theme-reviews-item-author">by Olivia Slater</p>
-                          </div>
-                        </div>
-                        <div class="col-md-9 ">
-                          <div class="theme-reviews-rating">
-                            <ul class="theme-reviews-rating-stars">
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-half-o"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="theme-reviews-item-body">
-                            <p class="theme-reviews-item-text">Fringilla cras auctor purus vehicula vel pellentesque quisque elementum fringilla velit dis montes risus metus placerat molestie pretium rhoncus taciti cras ridiculus fringilla porta fames rhoncus mi ultricies viverra ac ut felis cubilia accumsan arcu class</p>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
-                    <article class="theme-reviews-item">
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-3 ">
-                          <div class="theme-reviews-item-info">
-                            <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                            <p class="theme-reviews-item-date">Reviewed Mon, Jun 11</p>
-                            <p class="theme-reviews-item-author">by Keith Churchill</p>
-                          </div>
-                        </div>
-                        <div class="col-md-9 ">
-                          <div class="theme-reviews-rating">
-                            <ul class="theme-reviews-rating-stars">
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                              <li>
-                                <i class="fa fa-star-o"></i>
-                              </li>
-                            </ul>
-                          </div>
-                          <div class="theme-reviews-item-body">
-                            <p class="theme-reviews-item-text">Sagittis sodales fringilla magna curabitur condimentum ad augue blandit adipiscing ad integer dapibus aliquam lobortis est vulputate dis conubia donec erat vehicula non suspendisse mollis mollis curae pharetra dignissim egestas pharetra viverra auctor accumsan lorem egestas</p>
-                          </div>
-                        </div>
-                      </div>
-                    </article>
+                    {% endfor %}
                     <div class="row">
                       <div class="col-md-9 col-md-offset-3">
                         <a class="theme-reviews-more" href="#">&#x2b; More Reviews</a>
