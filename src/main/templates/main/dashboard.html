@@ -41,7 +41,7 @@
                         <p class="theme-search-results-item-price-sign">/night</p>
                       </div>
 
-                      <form action="dashboard/delete-property.0/{{property.0.id}}" method='POST'>
+                      <form action="dashboard/delete-property/{{property.0.id}}" method='POST'>
                           {% csrf_token %}
                           <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'>Delete</button>
                       </form>
