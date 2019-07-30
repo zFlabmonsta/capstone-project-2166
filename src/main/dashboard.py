@@ -126,3 +126,24 @@ def give_review(request, id):
         return render(request, "main/give_review.html", context)
     return HttpResponseRedirect('/dashboard')
 
+def moreinfo(request, which, id):
+    if (which == 'p'):
+        property = Property.objects.get(id=id)
+        booking = None
+    elif (which == 'b'):
+        booking = Booking.objects.get(id=id)
+        property = Property.objects.get(id=booking.property.id)
+    images = image.objects.filter(property__id=property.id)
+    reviews = Property_review.objects.filter(property__id=property.id)
+
+    context = {
+        'which': which,
+        'property': property,
+        'booking': booking,
+        'images': images,
+        'reviews':reviews
+    }
+    return render(request, "main/moreinfo.html", context)
+     
+
+

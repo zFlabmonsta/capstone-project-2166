@@ -140,7 +140,7 @@ def dashboard(request):
     }
     return render(request, "main/dashboard.html", context)
 
-def moreinfo(request, property_id, i_year, i_month, i_day, o_year, o_month, o_day):
+def moreinfo(request, which, property_id, i_year, i_month, i_day, o_year, o_month, o_day):
     # get property id 
     check_in = datetime(i_year, i_month, i_day)
     check_out = datetime(o_year, o_month, o_day)
@@ -152,6 +152,7 @@ def moreinfo(request, property_id, i_year, i_month, i_day, o_year, o_month, o_da
     reviews = Property_review.objects.filter(property__id=property_id)
 
     context = {
+        'which': which,
         'search_property_form': search_property_form,
         'start_date': check_in,
         'end_date': check_out,

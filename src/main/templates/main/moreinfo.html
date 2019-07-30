@@ -118,12 +118,30 @@
               <div class="theme-search-results-sidebar-map-view-mask"></div>
             </div>
 
+            <!-- Booking, Remove Listing, Cancel -->
+            {% if which == 's' %}
             <form action="/make-booking/{{property.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
                 {% csrf_token %}
                 <div class="theme-search-area-form" >
                   <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Book Now</button>
                 </div>
             </form>
+            {% elif which == 'p' %}
+            <form action="/dashboard/delete-property/{{property.id}}" method='POST' >
+                {% csrf_token %}
+                <div class="theme-search-area-form" >
+                  <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Remove Listing</button>
+                </div>
+            </form>
+            {% elif which == 'b' %}
+            <form action="dashboard/delete-booking/{{booking.id}}" method='POST' >
+                {% csrf_token %}
+                <div class="theme-search-area-form" >
+                  <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Cancel</button>
+                </div>
+            </form>
+            {% endif %}
+
           </div>
         </div>
       </div>
