@@ -91,7 +91,7 @@ def index(request):
            
             # get display images for each property 
             display = get_display_images(searching)
-            searching = zip(searching, display)
+            searching = list(zip(searching, display))
 
             context = {
                 'searched_property': searching,
