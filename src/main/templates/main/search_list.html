@@ -159,72 +159,74 @@
       </form>
 
       <div class="col-md-6-5 ">
-        <div class="theme-search-results">
-          <div class="_mob-h">
-            {% for property in searched_property %}
-            <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
-              <div class="theme-search-results-item-preview">
-                <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/s/{{property.0.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}')" role="button"></a>
-                <a class="theme-search-results-item-bookmark theme-search-results-item-bookmark-top" href="#">
-                  <i class="fa fa-bookmark"></i>
-                  <span>Watch</span>
-                </a>
+        <div class="outer" id="page" data-n=72>
+          {% for property in searched_property %}
+          <div class="child">
+            <div class="theme-search-results">
+              <div class="_mob-h">
+                <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
+                  <div class="theme-search-results-item-preview">
+                    <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/s/{{property.0.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}')" role="button"></a>
+                    <a class="theme-search-results-item-bookmark theme-search-results-item-bookmark-top" href="#">
+                      <i class="fa fa-bookmark"></i>
+                      <span>Watch</span>
+                    </a>
 
-                <div class="row" data-gutter="20">
-                  <div class="col-md-5 ">
-                    <div class="theme-search-results-item-img-wrap">
-                      {% if property.1.image.url%}
-                      <img class="theme-search-results-item-img" src="{{property.1.image.url}}" alt="Image Alternative text" title="Image Title"/>
-                      {% endif %}
-                    </div>
-                  </div>
-
-                  <div class="col-md-5 ">
-                    <ul class="theme-search-results-item-hotel-stars">
-                      {% for n in property.0.range_avg_rating %}
-                      <li>
-                        <i class="fa fa-star"></i>
-                      </li>
-                      {% endfor %}
-                    </ul>
-
-                    <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
-                    <div class="theme-search-results-item-hotel-rating">
-                      <p class="theme-search-results-item-hotel-rating-title">
-                      <b>{{property.0.execellent_rating}} Excellent</b>&nbsp;({{property.0.times_reviewed}} reviews)
-                      </p>
-                    </div>
-                    <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
-                  </div>
-
-                  <div class="col-md-2 ">
-                    <div class="theme-search-results-item-book">
-                      <div class="theme-search-results-item-price">
-                        <p class="theme-search-results-item-price-tag">${{property.0.price}}</p>
-                        <p class="theme-search-results-item-price-sign">/night</p>
+                    <div class="row" data-gutter="20">
+                      <div class="col-md-5 ">
+                        <div class="theme-search-results-item-img-wrap">
+                          {% if property.1.image.url%}
+                          <img class="theme-search-results-item-img" src="{{property.1.image.url}}" alt="Image Alternative text" title="Image Title"/>
+                          {% endif %}
+                        </div>
                       </div>
 
-                      <form action="make-booking/{{property.0.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
-                          {% csrf_token %}
-                         <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Book Now</button>
-                      </form>
+                      <div class="col-md-5 ">
+                        <ul class="theme-search-results-item-hotel-stars">
+                          {% for n in property.0.range_avg_rating %}
+                          <li>
+                            <i class="fa fa-star"></i>
+                          </li>
+                          {% endfor %}
+                        </ul>
 
+                        <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
+                        <div class="theme-search-results-item-hotel-rating">
+                          <p class="theme-search-results-item-hotel-rating-title">
+                          <b>{{property.0.execellent_rating}} Excellent</b>&nbsp;({{property.0.times_reviewed}} reviews)
+                          </p>
+                        </div>
+                        <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
+                      </div>
+
+                      <div class="col-md-2 ">
+                        <div class="theme-search-results-item-book">
+                          <div class="theme-search-results-item-price">
+                            <p class="theme-search-results-item-price-tag">${{property.0.price}}</p>
+                            <p class="theme-search-results-item-price-sign">/night</p>
+                          </div>
+
+                          <form action="make-booking/{{property.0.id}}/{{start_date.year}}/{{start_date.month}}/{{start_date.day}}/{{end_date.year}}/{{end_date.month}}/{{end_date.day}}" method='POST' >
+                              {% csrf_token %}
+                             <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Book Now</button>
+                          </form>
+
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            {% endfor %}
-
           </div>
+          {% endfor %}
         </div>
-
         <!-- pagination -->
-        <a class="btn _tt-uc _fs-sm btn-white btn-block btn-lg" href="#">Load More Results</a>
-
+        <a id="showMore" class="btn _tt-uc _fs-sm btn-white btn-block btn-lg" href="#">Load More Results</a>
       </div>
     </div>
   </div>
 </div>
 
+<script src={% static "backup/js/pagination.js" %}></script>
 {% endblock %}

@@ -3,7 +3,6 @@
 {% block middle_page_2 %}{% endblock %}
 {% block content_1 %}
 <link rel="stylesheet" type="text/css" href="{% static 'backup/css/dashboard.css' %}">
-<script type="text/javascript" src="{% static 'backup/js/dashboard.js' %}"></script>
 
 <div class="theme-page-section theme-page-section=dark theme-page-section-lg"> 
   <br>
@@ -15,56 +14,60 @@
 
         <!-- Page for Listed Property for others to accommodate --!>
         <div style="background-color: grey" id="property-list-page" class="tabcontent">
-            {% for property in properties %}
-            <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
-            <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/p/{{property.0.id}}')" role="button"></a>
-              <div class="theme-search-results-item-preview">
-
-                <div class="row" data-gutter="20">
-                  <div class="col-md-5 ">
-                    <div class="theme-search-results-item-img-wrap">
-                      <!-- image here do image slide show thing -->
-                      {% if property.1.image.url %}
-                      <img class="theme-search-results-item-img" src="{{property.1.image.url}}" style="width: 300px; height: 150px"/>
-                      {% endif %}
-                    </div>
-                  </div>
-
-                  <div class="col-md-5 ">
-                    <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
-                    <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
-                  </div>
-
-                  <div class="col-md-2 ">
-                    <div class="theme-search-results-item-book">
-                      <div class="theme-search-results-item-price">
-                        <p class="theme-search-results-item-price-tag">${{property.0.price}}</p>
-                        <p class="theme-search-results-item-price-sign">/night</p>
+            <div class="outer" id="page" data-n=60>
+              {% for property in properties %}
+              <div class="inner"> 
+                <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
+                  <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/p/{{property.0.id}}')" role="button"></a>
+                  <div class="theme-search-results-item-preview">
+                    <div class="row" data-gutter="20">
+                      <div class="col-md-5 ">
+                        <div class="theme-search-results-item-img-wrap">
+                          <!-- image here do image slide show thing -->
+                          {% if property.1.image.url %}
+                          <img class="theme-search-results-item-img" src="{{property.1.image.url}}" style="width: 300px; height: 150px"/>
+                          {% endif %}
+                        </div>
                       </div>
 
-                      <form action="dashboard/delete-property/{{property.0.id}}" method='POST'>
-                          {% csrf_token %}
-                          <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'>Delete</button>
-                      </form>
+                      <div class="col-md-5 ">
+                        <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
+                        <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
+                      </div>
 
+                      <div class="col-md-2 ">
+                        <div class="theme-search-results-item-book">
+                          <div class="theme-search-results-item-price">
+                            <p class="theme-search-results-item-price-tag">${{property.0.price}}</p>
+                            <p class="theme-search-results-item-price-sign">/night</p>
+                          </div>
+                          <form action="dashboard/delete-property/{{property.0.id}}" method='POST'>
+                              {% csrf_token %}
+                              <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'>Delete</button>
+                          </form>
+                        </div>
+                      </div>
                     </div>
                   </div>
+
                 </div>
               </div>
-            </div>
             {% endfor %}
+            </div>
+            <a id="showMore" class="btn _tt-uc _fs-sm btn-white btn-block btn-lg" href="#">Load More Results</a>
         </div>
 
 
         <!-- Page for booked, bookings -->
         <div style="background-color: grey" id="bookings-page" class="tabcontent">
-
+          <div class="outerBooking" id="pageBooking" data-n=65>
+            {% for booking in bookings %}
+            <div class="innerBooking">
               <div class="theme-search-results">
                 <div class="_mob-h">
-                  {% for booking in bookings %}
                   <div class="theme-search-results-item _mb-10 _b-n theme-search-results-item-rounded theme-search-results-item-">
                     <div class="theme-search-results-item-preview">
-                      <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/b/{{booking.0.id}}')" role="button"></a>
+                      <a class="theme-search-results-item-mask-link" onclick="window.open('/moreinfo/{{property.0.id}}')" role="button"></a>
                       <a class="theme-search-results-item-bookmark theme-search-results-item-bookmark-top" href="#">
                         <i class="fa fa-bookmark"></i>
                         <span>Watch</span>
@@ -125,12 +128,19 @@
                       </div>
                     </div>
                   </div>
-                  {% endfor %}
                 </div>
               </div>
+            </div>
+            {% endfor %}
+          </div>
+          <a id="showMoreBooking" class="btn _tt-uc _fs-sm btn-white btn-block btn-lg" href="#">Load More Results</a>
         </div>
+
     </div>
   </div>
 </div>
 
+<script type="text/javascript" src="{% static 'backup/js/dashboard.js' %}"></script>
+<script type="text/javascript" src="{% static 'backup/js/pagination.js' %}"></script>
+<script type="text/javascript" src="{% static 'backup/js/pagination-booking.js' %}"></script>
 {% endblock %}
