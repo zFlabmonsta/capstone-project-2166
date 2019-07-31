@@ -13,4 +13,15 @@ Week3:
 - After our feedback, Me and michael agreed on getting down a basic working interface and draw up a wireframe to further improve the frontend down the line
 
 Week4:
-- This week minimum work was done due to assignment for other courses were about to be due. However, I did watch some front end youtube video that can be applied to the project (E.g. F-Patter)
+- This week, minimum work was done due to assignment for other courses were about to be due. However, I did watch some front end youtube video that can be applied to the project (E.g. F-Patter)
+
+Week 5:
+- Michael and I collaborated together to create a basic functional dashboard, where the lecturer could create a class to store their learning outcomes. 
+- To do this task, i started by designing an ER Model so that creating a database schema would become much simplier. 
+- Wrote up a basic schema for dashboard by editing models.py (django way of creating db schema)
+
+Week6:
+- Our team met up in the tutorial where we would need to demonstrate our current progress to our tutor. Unfortunately, our learning-outcome proposal is still under research and according our tutor, that idea was not enough to meet the requirements of our project. Ali's suggested more features to our project however it was beyond our ability to implement those suggested ideas. Due to fustration of the current project, we ask for permission to pivot to another project and as a group we agreed on picking the property rental system.
+- It was unfortunate that 2 of our team members dropped the course during this week due to fustrataion of our project, and with fear of  not being able to complete  the project with working features in time (4 week left)
+- Immediately change the dashboard feature to fit the context of our new project (property rental system)
+
