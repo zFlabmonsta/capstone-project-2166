@@ -1,4 +1,40 @@
+from geopy.distance import geodesic
+
 reviews = {'Excellent', 'Good', 'Okay', 'Mediocre', 'Poor'}
+
+def filter_by_distance(list_property, searching, where_lat_long):
+    for property in list_property:
+        max_radius = 5000
+        property_lat_long = (property.location.latitude, property.location.longitude)
+        # add the property if within 5km radius 
+        if (geodesic(where_lat_long, property_lat_long).meters < max_radius):
+            searching.append(property)
+    return searching
+
+def filter_by_date(bookings, searching):
+    booked_properties = []
+    for b in bookings:
+        if (b.date_overlapping(check_in, check_out)):
+           booked_properties.append(b.property.id) 
+
+    # remove property from list, if already booked at given date
+    for b in booked_properties:
+        for p in searching:
+            if (p.id == b):
+                searching.remove(p)
+    return searching
+
+def filter_by_room(num_room, searching):
+    for p in searching:
+        if (not p.is_matching_num_rooms(num_room)):
+            searching.remove(p)
+    return searching
+
+def filter_by_guest(num_guest, searching):
+    for p in searching:
+        if (not p.is_more_than_guests(num_guest)):
+            searching.remove(p)
+    return searching
 
 def filter_by_facilities(filter_facilities_form, searching):
     filter_facilities_form.is_valid()
@@ -187,7 +223,6 @@ def filter_by_amenities(amenities_form, searching):
 
 
 from main.models import image
-
 def get_display_images(searching):
     display = []
     for _property in searching:
@@ -198,3 +233,4 @@ def get_display_images(searching):
             display.append(None)
 
     return display
+

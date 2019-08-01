@@ -3,16 +3,15 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
 
+from main.models import Dashboard, Property, Location, Booking, image, Property_review
+from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
+
+from .filter_help import *
+
+from datetime import datetime, date, time
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
 
-from main.models import Dashboard, Property, Location, Booking, image, Property_review
-from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
-from .filter_help import filter_by_amenities, filter_by_disability_access, reviews, filter_by_facilities, filter_by_property_type, get_display_images
-
-from datetime import datetime, date, time
-
-# Home Page
 def index(request):
     # forms
     search_form = Search_property_form()
@@ -50,40 +49,17 @@ def index(request):
             where_geolocator = where_geolocator.geocode(where + " " + "NSW, AU")
             where_lat_long = (where_geolocator.latitude, where_geolocator.longitude)
 
-            # find property that is within 5km radius of "where" and list it
-            # make query to get list of properties
-            list_property = Property.objects.all()
             searching = []
-            for property in list_property:
-                max_radius = 2000
-                property_lat_long = (property.location.latitude, property.location.longitude)
-                # add the property if within 5km radius 
-                if (geodesic(where_lat_long, property_lat_long).meters < max_radius):
-                    searching.append(property)
-
+            # find property that is within 5km radius of "where" and list it
+            list_property = Property.objects.all()
+            searching = filter_by_distance(list_property, searching, where_lat_long)
             # get all properties that are booked in given date
             bookings = Booking.objects.all()
-            booked_properties = []
-            for b in bookings:
-                if (b.date_overlapping(check_in, check_out)):
-                   booked_properties.append(b.property.id) 
-
-            # remove property from list, if already booked at given date
-            for b in booked_properties:
-                for p in searching:
-                    if (p.id == b):
-                        searching.remove(p)
-
+            searching = filter_by_date(bookings, searching)
             # remove property from list, if number of rooms doesnt match
-            for p in searching:
-                if (not p.is_matching_num_rooms(num_room)):
-                    searching.remove(p)
-
+            searching = filter_by_room(num_room, searching)
             # remove property from list, if number of guests is less than num_guest
-            for p in searching:
-                if (not p.is_more_than_guests(num_guest)):
-                    searching.remove(p)
-
+            searching = filter_by_guest(num_guest, searching)
             searching = filter_by_facilities(filter_facilities_form, searching)
             searching = filter_by_disability_access(disability_access_form, searching)
             searching = filter_by_property_type(property_type_form, searching)
@@ -115,30 +91,6 @@ def about(response):
 def map(request, lat, lng):
     return render(request, "main/googlemap.html", {"lat":lat, "lng":lng})
 
-"""
-direct the user to their dashboard
-"""
-@login_required(login_url='/login')
-def dashboard(request):
-    current_user = request.user
-    dashboard = Dashboard.objects.get(user=current_user.id)
-
-    properties = Property.objects.filter(dashboard__id = dashboard.id)
-    display = get_display_images(Property.objects.filter(dashboard__id = dashboard.id))
-    properties = zip(properties, display)
-
-    bookings = Booking.objects.filter(dashboard__id=dashboard.id)
-    display = []
-    for b in bookings:
-        display.append(b.property)
-    display = get_display_images(display)
-    bookings = zip(bookings, display)
-
-    context = {
-        'properties': properties,
-        'bookings': bookings
-    }
-    return render(request, "main/dashboard.html", context)
 
 def moreinfo(request, which, property_id, i_year, i_month, i_day, o_year, o_month, o_day):
     # get property id 

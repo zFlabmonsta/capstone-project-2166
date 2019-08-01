@@ -193,7 +193,7 @@
                         <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.street}}, {{property.0.location.suburb}}, {{property.0.location.post_code}}, NSW</h5>
                         <div class="theme-search-results-item-hotel-rating">
                           <p class="theme-search-results-item-hotel-rating-title">
-                          <b>{{property.0.execellent_rating}} Excellent</b>&nbsp;({{property.0.times_reviewed}} reviews)
+                          <b>{{property.0.execellent_rating}} Excellent</b>&nbsp;({{property.0.num_of_reviews}} reviews)
                           </p>
                         </div>
                         <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
@@ -228,5 +228,5 @@
   </div>
 </div>
 
-<script src={% static "backup/js/pagination.js" %}></script>
+<script src={% static "createdTools/js/pagination.js" %}></script>
 {% endblock %}

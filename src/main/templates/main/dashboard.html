@@ -3,7 +3,7 @@
 {% block middle_page_2 %}{% endblock %}
 {% block vh %}{% endblock %}
 {% block content_1 %}
-<link rel="stylesheet" type="text/css" href="{% static 'backup/css/dashboard.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'createdTools/css/dashboard.css' %}">
 
 <div class="theme-page-section theme-page-section=dark theme-page-section-lg"> 
   <br>
@@ -99,7 +99,7 @@
                           <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{booking.0.property.location.num}} {{booking.0.property.location.street}}, {{booking.0.property.location.suburb}}, {{booking.0.property.location.post_code}}, NSW</h5>
                           <div class="theme-search-results-item-hotel-rating">
                             <p class="theme-search-results-item-hotel-rating-title">
-                              <b>{{booking.0.property.execellent_rating}} Excellent</b>&nbsp;({{booking.0.property.times_reviewed}} reviews)
+                              <b>{{booking.0.property.execellent_rating}} Excellent</b>&nbsp;({{booking.0.property.num_of_reviews}} reviews)
                               <b>8.5 Excellent</b>&nbsp;(8903 reviews)
                             </p>
                           </div>
@@ -139,7 +139,7 @@
   </div>
 </div>
 
-<script type="text/javascript" src="{% static 'backup/js/dashboard.js' %}"></script>
-<script type="text/javascript" src="{% static 'backup/js/pagination.js' %}"></script>
-<script type="text/javascript" src="{% static 'backup/js/pagination-booking.js' %}"></script>
+<script type="text/javascript" src="{% static 'createdTools/js/dashboard.js' %}"></script>
+<script type="text/javascript" src="{% static 'createdTools/js/pagination.js' %}"></script>
+<script type="text/javascript" src="{% static 'createdTools/js/pagination-booking.js' %}"></script>
 {% endblock %}

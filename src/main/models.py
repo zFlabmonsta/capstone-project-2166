@@ -74,7 +74,7 @@ class Property(models.Model):
         self.time_booked += 1
         self.save()
 
-    def times_reviewed(self):
+    def num_of_reviews(self):
         reviews = Property_review.objects.filter(property__id=self.id)
         return len(reviews)
 
