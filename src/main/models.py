@@ -56,6 +56,8 @@ class Property(models.Model):
     airconditioning = models.BooleanField(null=True, blank=True, default=False)
     bathroom = models.BooleanField(null=True, blank=True, default=False)
     tv = models.BooleanField(null=True, blank=True, default=False)
+    wifi = models.BooleanField(null=True, blank=True, default=False)
+    laundry = models.BooleanField(null=True, blank=True, default=False)
     
 
     def is_matching_num_rooms(self, _num_rooms):

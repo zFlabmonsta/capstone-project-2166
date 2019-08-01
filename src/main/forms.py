@@ -31,6 +31,8 @@ class Property_form (forms.Form):
     tv = forms.BooleanField(required=False, initial=False)
     bathroom = forms.BooleanField(required=False, initial=False)
     airconditioning = forms.BooleanField(required=False, initial=False)
+    wifi = forms.BooleanField(required=False, initial=False)
+    laundry = forms.BooleanField(required=False, initial=False)
 
 class Search_property_form (forms.Form):
     where = forms.CharField(label='Where', max_length=100)

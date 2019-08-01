@@ -19,28 +19,27 @@
                 <!-- Property Type-->
                 <div class="form-group theme-login-form-group">
                     <h4>Property Type</h4><hr>
-                    {% render_field form.apartment %}
+                    {% render_field form.apartment id="apartment-edit"%}
                     <label> Apartment </label>
-                    {% render_field form.hotel %}
+                    {% render_field form.hotel id="hotel-edit" %}
                     <label> Hotel </label>
-                    {% render_field form.house %}
+                    {% render_field form.house id="house-edit" %}
                     <label> House </label>
-                    {% render_field form.resort %}
+                    {% render_field form.resort id="resort-edit" %}
                     <label> Resort </label>
-                    {% render_field form.townhouse %}
+                    {% render_field form.townhouse id="townhouse-edit" %}
                     <label> Townhouse </label>
                 </div>
 
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
-                      {{obj.num}}
                       {% render_field form.num class="form-control" placeholder="Number/Unit" value=obj.location.num %}
                     </div>
                   </div>
                   <div class="col-md-9">   
                     <div class="form-group theme-login-form-group">
-                      {% render_field form.street class="form-control" placeholder="Street" value=obj.location.address %}
+                      {% render_field form.street class="form-control" placeholder="Street" value=obj.location.street %}
                     </div>
                   </div>
                 </div>
@@ -48,12 +47,12 @@
                 <div class="row">
                   <div class="col-md-7">
                     <div class="form-group theme-login-form-group">
-                      {% render_field form.suburb class="form-control" placeholder="Suburb" %}
+                      {% render_field form.suburb class="form-control" placeholder="Suburb" value=obj.location.suburb %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
-                      {% render_field form.post_code class="form-control" placeholder="Post Code" %}
+                      {% render_field form.post_code class="form-control" placeholder="Post Code" value=obj.location.post_code %}
                     </div>
                   </div>
                 </div>
@@ -61,70 +60,68 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
-                      {% render_field form.num_guests class="form-control" placeholder="Guests" %}
+                      {% render_field form.num_guests class="form-control" placeholder="Guests" value=obj.num_guests %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
-                      {% render_field form.num_rooms class="form-control" placeholder="Rooms" %}
+                      {% render_field form.num_rooms class="form-control" placeholder="Rooms" value=obj.num_rooms %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
-                      {% render_field form.price class="form-control" placeholder="Price" %}
+                      {% render_field form.price class="form-control" placeholder="Price" value=obj.price %}
                     </div>
                   </div>
                 </div>
 
-
-
                 <div class="form-group">
-                    {% render_field form.description class="form-control" placeholder="Description" %}
+                    {% render_field form.description class="form-control" placeholder="Description" id="edit-description" %}
                 </div>
                 
                 <!-- Facility Filtering -->
                 <div class="form-group theme-login-form-group">
                     <h4>Facilities</h4><hr>
-                    {% render_field form.free_parking %}
+                    {% render_field form.free_parking id="free_parking-edit" %}
                     <label> Free parking </label>
-                    {% render_field form.pool %}
+                    {% render_field form.pool id="pool-edit" %}
                     <label> Pool </label>
-                    {% render_field form.gym %}
+                    {% render_field form.gym id="gym-edit" %}
                     <label> Gym </label>
-                    {% render_field form.spa %}
+                    {% render_field form.spa id="spa-edit" %}
                     <label> Spa </label>
                 </div>
 
                 <!-- Disability Access -->
                 <div class="form-group theme-login-form-group">
                     <h4>Disability Access</h4><hr>
-                    {% render_field form.ramp %}
+                    {% render_field form.ramp id="ramp-edit" %}
                     <label> Ramp </label>
-                    {% render_field form.travelator %}
+                    {% render_field form.travelator id="travelator-edit" %}
                     <label> Travelator </label>
-                    {% render_field form.elevator %}
+                    {% render_field form.elevator id="elevator-edit" %}
                     <label> Elevator </label>
                 </div>
 
                 <div class="form-group theme-login-form-group">
                     <h4>Amenities</h4><hr>
-                    {% render_field form.tv%}
+                    {% render_field form.tv id="tv-edit" %}
                     <label> TV </label>
-                    {% render_field form.airconditioning%}
+                    {% render_field form.airconditioning id="airconditioning-edit" %}
                     <label> Air Conditioning </label>
-                    {% render_field form.bathroom%}
+                    {% render_field form.bathroom id="bathroom-edit" %}
                     <label> Bathroom </label>
-                    {% render_field form.kitchen%}
+                    {% render_field form.kitchen id="kitchen-edit" %}
                     <label> Kitchen </label>
-                    {% render_field form.kitchen%}
+                    {% render_field form.wifi id="wifi-edit"%}
                     <label> Wifi</label>
-                    {% render_field form.kitchen%}
+                    {% render_field form.laundry id="laundry-edit" %}
                     <label> Laundry</label>
                 </div>
 
                 {% render_field form.image %}
                 <br>
-                <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Add Property</button>
+                <button type="submit" class="btn btn-uc btn-dark btn-block btn-lg">Save</button>
               </form>
 
             </div>
@@ -134,5 +131,26 @@
     </div>
   </div>
 </div>
+<script src={% static "backup/js/edit-appear.js"%}></script>
+<script>
+    putDescriptionText({{obj.description}});
+    checkedBox("apartment-edit", "{{obj.apartment}}");
+    checkedBox("hotel-edit", "{{obj.hotel}}");
+    checkedBox("house-edit", "{{obj.house}}");
+    checkedBox("resort-edit", "{{obj.resort}}");
+    checkedBox("free_parking-edit", "{{obj.free_parking}}");
+    checkedBox("pool-edit", "{{obj.pool}}");
+    checkedBox("gym-edit", "{{obj.gym}}");
+    checkedBox("spa-edit", "{{obj.spa}}");
+    checkedBox("ramp-edit", "{{obj.ramp}}");
+    checkedBox("travelator-edit", "{{obj.travelator}}");
+    checkedBox("elevator-edit", "{{obj.elevator}}");
+    checkedBox("tv-edit", "{{obj.tv}}");
+    checkedBox("airconditioning-edit", "{{obj.airconditioning}}");
+    checkedBox("bathroom-edit", "{{obj.bathroom}}");
+    checkedBox("kitchen-edit", "{{obj.kitchen}}");
+    checkedBox("wifi-edit", "{{obj.wifi}}");
+    checkedBox("laundry-edit", "{{obj.laundry}}");
+</script>
 {% endblock %}
 

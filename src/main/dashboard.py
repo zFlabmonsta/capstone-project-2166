@@ -149,6 +149,41 @@ def edit_property_listing(request, id):
         'form': form,
         'obj': instance
     }
+
+    if (request.method == 'POST'):
+        form = Property_form(request.POST, request.FILES)
+        if form.is_valid():
+            property = Property.objects.get(id=id)
+            property.location.num = form.cleaned_data['num']
+            property.location.street = form.cleaned_data['street']
+            property.location.suburb = form.cleaned_data['suburb']
+            property.location.post_code = form.cleaned_data['post_code']
+            property.price= form.cleaned_data['price']
+            property.num_guests= form.cleaned_data['num_guests']
+            property.num_rooms= form.cleaned_data['num_rooms']
+            property.description= form.cleaned_data['description']
+            property.free_parking=form.cleaned_data['free_parking']
+            property.pool = form.cleaned_data['pool']
+            property.gym = form.cleaned_data['gym']
+            property.spa = form.cleaned_data['spa']
+            property.ramp = form.cleaned_data['ramp']
+            property.travelator = form.cleaned_data['travelator']
+            property.elevator = form.cleaned_data['elevator']
+                # property Type
+            property.apartment = form.cleaned_data['apartment']
+            property.hotel = form.cleaned_data['hotel']
+            property.house = form.cleaned_data['house']
+            property.resort = form.cleaned_data['resort']
+            property.townhouse = form.cleaned_data['townhouse']
+                # amenities
+            property.kitchen = form.cleaned_data['kitchen']
+            property.airconditioning = form.cleaned_data['airconditioning']
+            property.bathroom = form.cleaned_data['bathroom']
+            property.tv = form.cleaned_data['tv']
+            property.wifi = form.cleaned_data['wifi']
+            property.laundry = form.cleaned_data['laundry']
+            property.save()
+            return HttpResponseRedirect('/dashboard')
     
     return render(request, "main/edit_property_form.html", context)
 
