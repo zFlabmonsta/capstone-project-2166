@@ -62,36 +62,40 @@
               <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
                 <div class="theme-reviews">
                   <div class="theme-reviews-list">
-                    {% for review in reviews %}
-                    <article class="theme-reviews-item">
-                      <div class="row" data-gutter="10">
-                        <div class="col-md-3 ">
-                          <div class="theme-reviews-item-info">
-                            <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
-                            <p class="theme-reviews-item-date">Reviewed Tue, Jun 26</p>
-                            <p class="theme-reviews-item-author">by Ava McDonald</p>
+                    <div class="outer" id="page" data-n=28>
+                      {% for review in reviews %}
+                      <div class="inner">
+                        <article class="theme-reviews-item">
+                          <div class="row" data-gutter="10">
+                            <div class="col-md-3 ">
+                              <div class="theme-reviews-item-info">
+                                <img class="theme-reviews-item-avatar" src="./img/70x70.png" alt="Image Alternative text" title="Image Title"/>
+                                <p class="theme-reviews-item-date">Reviewed {{review.date}}</p>
+                                <p class="theme-reviews-item-author">by {{property.dashboard.user.username}}</p>
+                              </div>
+                            </div>
+                            <div class="col-md-9 ">
+                              <div class="theme-reviews-rating">
+                                <ul class="theme-reviews-rating-stars">
+                                  {% for i in review.range_rating %}
+                                  <li>
+                                    <i class="fa fa-star"></i>
+                                  </li>
+                                  {% endfor %}
+                                </ul>
+                              </div>
+                              <div class="theme-reviews-item-body">
+                                <p class="theme-reviews-item-text">{{review.review}}</p>
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                        <div class="col-md-9 ">
-                          <div class="theme-reviews-rating">
-                            <ul class="theme-reviews-rating-stars">
-                              {% for i in review.range_rating %}
-                              <li>
-                                <i class="fa fa-star"></i>
-                              </li>
-                              {% endfor %}
-                            </ul>
-                          </div>
-                          <div class="theme-reviews-item-body">
-                            <p class="theme-reviews-item-text">{{review.review}}</p>
-                          </div>
-                        </div>
+                        </article>
                       </div>
-                    </article>
-                    {% endfor %}
+                      {% endfor %}
+                    </div>
                     <div class="row">
                       <div class="col-md-9 col-md-offset-3">
-                        <a class="theme-reviews-more" href="#">&#x2b; More Reviews</a>
+                        <a id="showMore" class="theme-reviews-more" href="#">&#x2b; More Reviews</a>
                       </div>
                     </div>
                   </div>
@@ -148,4 +152,5 @@
     </div>
   </div>
 </div>
+<script src={% static "backup/js/pagination.js" %}></script>
 {% endblock %}

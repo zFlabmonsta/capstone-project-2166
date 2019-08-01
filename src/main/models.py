@@ -19,7 +19,9 @@ class Dashboard(models.Model):
 
 class Location(models.Model):
     num = models.IntegerField(null=True, blank=True, default=None)
-    address = models.CharField(max_length=200)
+    street = models.CharField(max_length=200)
+    suburb = models.CharField(max_length=200)
+    post_code = models.IntegerField()
     latitude = models.FloatField(null=True, blank=True, default=None)
     longitude = models.FloatField(null=True, blank=True, default=None)
 
@@ -85,6 +87,8 @@ class Property(models.Model):
             avg += r.rating
         if (len(reviews) == 0):
             avg = 5
+        else:
+            avg = avg / len(reviews)
         return range(int(avg))
             
 
@@ -107,6 +111,7 @@ class Property_review(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     review = models.CharField(max_length=10000000000)
     rating = models.IntegerField(default=0)
+    date = models.DateTimeField(default=datetime.now)
 
     def range_rating(self):
         return range(self.rating)

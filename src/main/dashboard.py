@@ -33,11 +33,10 @@ def create_property(request):
             geo_location = Nominatim(timeout=3)
             geo_location = geo_location.geocode(str(num)+" "+street+" "
                     +suburb+" "+str(post_code), "NSW")
-            full_address = street + ", " + suburb + ", " + str(post_code) +", NSW Australia"
             longitude = float(geo_location.longitude)
             latitude = float(geo_location.latitude)
 
-            l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
+            l = Location(num=num, street=street, post_code=post_code, suburb=suburb, longitude=longitude, latitude=latitude)
             l.save()
             
             p = Property(dashboard = d, 
@@ -142,5 +141,51 @@ def moreinfo(request, which, id):
     }
     return render(request, "main/moreinfo.html", context)
      
+@login_required(login_url='/login')
+def edit_property_listing(request, id):
+    instance = get_object_or_404(Property, id=id)
+    form = Property_form()
+    context = {
+        'form': form,
+        'obj': instance
+    }
+    
+    return render(request, "main/edit_property_form.html", context)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

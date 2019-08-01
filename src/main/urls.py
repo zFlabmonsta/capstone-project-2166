@@ -18,5 +18,6 @@ urlpatterns += [
     path("dashboard/delete-booking/<int:id>", dashboard.delete_booking, name="delete property"),
     path("dashboard/give-review/<int:id>", dashboard.give_review, name="give review"),
     path("moreinfo/<str:which>/<int:id>", dashboard.moreinfo, name="more info-dashboard"),
+    path("dashboard/edit-property-listing/<int:id>", dashboard.edit_property_listing, name="edit property listing"),
 ]
 

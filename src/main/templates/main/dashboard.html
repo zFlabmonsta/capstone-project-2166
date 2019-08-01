@@ -32,7 +32,7 @@
                       </div>
 
                       <div class="col-md-5 ">
-                        <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.address}}</h5>
+                        <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.street}}, {{property.0.location.suburb}}, {{property.0.location.post_code}}, NSW</h5>
                         <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
                       </div>
 
@@ -42,6 +42,10 @@
                             <p class="theme-search-results-item-price-tag">${{property.0.price}}</p>
                             <p class="theme-search-results-item-price-sign">/night</p>
                           </div>
+                          <form action="dashboard/edit-property-listing/{{property.0.id}}" method='GET' >
+                              <button class="btn btn-primary btn-block theme-search-results-item-price-btn" type='submit'>Give Review</button>
+                          </form>
+                          <br>
                           <form action="dashboard/delete-property/{{property.0.id}}" method='POST'>
                               {% csrf_token %}
                               <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'>Delete</button>
@@ -92,7 +96,7 @@
                             {% endfor %}
                           </ul>
 
-                          <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{booking.0.property.location.num}} {{booking.0.property.location.address}}</h5>
+                          <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{booking.0.property.location.num}} {{booking.0.property.location.street}}, {{booking.0.property.location.suburb}}, {{booking.0.property.location.post_code}}, NSW</h5>
                           <div class="theme-search-results-item-hotel-rating">
                             <p class="theme-search-results-item-hotel-rating-title">
                               <b>{{booking.0.property.execellent_rating}} Excellent</b>&nbsp;({{booking.0.property.times_reviewed}} reviews)
@@ -110,13 +114,13 @@
                             </div>
 
                             <!-- turn to cancel -->
+                            <form action="dashboard/give-review/{{booking.0.id}}" method='GET'>
+                              <button class="btn btn-primary btn-block theme-search-results-item-price-btn" type='submit'>Give Review</button>
+                            </form>
+                            <br>
                             <form action="dashboard/delete-booking/{{booking.0.id}}" method='POST' >
                                 {% csrf_token %}
                                <button class="btn btn-primary-inverse btn-block theme-search-results-item-price-btn" type='submit'> Cancel </button>
-                            </form>
-                            <br>
-                            <form action="dashboard/give-review/{{booking.0.id}}" method='GET'>
-                              <button class="btn btn-primary btn-block theme-search-results-item-price-btn" type='submit'>Give Review</a>
                             </form>
                           </div>
                         </div>
