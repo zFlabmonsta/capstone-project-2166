@@ -33,16 +33,13 @@ def create_property(request):
             geo_location = Nominatim(timeout=3)
             geo_location = geo_location.geocode(str(num)+" "+street+" "
                     +suburb+" "+str(post_code), "NSW")
-            full_address = str(geo_location.address)
+            full_address = street + ", " + suburb + ", " + str(post_code) +", NSW Australia"
             longitude = float(geo_location.longitude)
             latitude = float(geo_location.latitude)
 
             l = Location(num=num, address=full_address, longitude=longitude, latitude=latitude)
             l.save()
             
-
-            print(form.cleaned_data['free_parking'])
-
             p = Property(dashboard = d, 
                     location = l, 
                     price=price, 

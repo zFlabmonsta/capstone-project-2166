@@ -2,7 +2,6 @@ var itemsCount = 0,
     itemsMax = $('.outer div').length;
 $('.outer div').hide();
 
-
 const p = document.querySelector('#page');
 pag = p.dataset.n;
 

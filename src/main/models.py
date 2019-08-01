@@ -83,8 +83,8 @@ class Property(models.Model):
         avg = 0
         for r in reviews:
             avg += r.rating
-        if (len(reviews) != 0):
-            avg = avg/len(reviews)
+        if (len(reviews) == 0):
+            avg = 5
         return range(int(avg))
             
 
