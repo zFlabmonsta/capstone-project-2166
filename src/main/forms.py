@@ -50,7 +50,11 @@ RATING = [
 ]
 class Review_form(forms.Form):
     review = forms.CharField(label='Review', widget=forms.Textarea, max_length=1000000000)
-    rating = forms.CharField(label='Rate your experience' , widget=forms.Select(choices=RATING))
+    cleanliness = forms.CharField(label='Cleanliness' , widget=forms.Select(choices=RATING))
+    communication = forms.CharField(label='Communication' , widget=forms.Select(choices=RATING))
+    value = forms.CharField(label='Value' , widget=forms.Select(choices=RATING))
+    location = forms.CharField(label='Location' , widget=forms.Select(choices=RATING))
+    rating = forms.CharField(label='Rate overall experience' , widget=forms.Select(choices=RATING))
 
 class Filter_facilities(forms.Form):
     free_parking = forms.BooleanField(label="Free Parking", required=False, initial=False, widget=forms.CheckboxInput())

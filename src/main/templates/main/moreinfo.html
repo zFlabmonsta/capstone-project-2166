@@ -62,7 +62,49 @@
               <div class="tab-pane" id="HotelPageTabs-3" role="tab-panel">
                 <div class="theme-reviews">
                   <div class="theme-reviews-list">
-                    <div class="outer" id="page" data-n=28>
+                      <div class="row">
+                      <div class="col-md-9 ">
+                        <div class="theme-reviews-score-list">
+                          <div class="row">
+                            <div class="col-md-6 ">
+                              <div class="theme-reviews-score-item">
+                                <div class="theme-reviews-score-item-header">
+                                  <p class="theme-reviews-score-item-title">Cleanliness</p>
+                                </div>
+                                <div class="theme-reviews-score-item-bar">
+                                <div style="width:{{property.avg_cleanliness}}%;"></div>
+                                </div>
+                              </div>
+                              <div class="theme-reviews-score-item">
+                                <div class="theme-reviews-score-item-header">
+                                  <p class="theme-reviews-score-item-title">Communication</p>
+                                </div>
+                                <div class="theme-reviews-score-item-bar">
+                                  <div style="width:{{property.avg_communication}}%;"></div>
+                                </div>
+                              </div>
+                              <div class="theme-reviews-score-item">
+                                <div class="theme-reviews-score-item-header">
+                                  <p class="theme-reviews-score-item-title">Value</p>
+                                </div>
+                                <div class="theme-reviews-score-item-bar">
+                                  <div style="width:{{property.avg_value}}%;"></div>
+                                </div>
+                              </div>
+                              <div class="theme-reviews-score-item">
+                                <div class="theme-reviews-score-item-header">
+                                  <p class="theme-reviews-score-item-title">Location</p>
+                                </div>
+                                <div class="theme-reviews-score-item-bar">
+                                  <div style="width:{{property.avg_location}}%;"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      </div>
+                    <div class="outer" id="page" data-n=29>
                       {% for review in reviews %}
                       <div class="inner">
                         <article class="theme-reviews-item">

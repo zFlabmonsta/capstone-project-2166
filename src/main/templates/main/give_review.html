@@ -17,12 +17,28 @@
           <div class="theme-login-header">
             <h2 class="theme-login-title">Give Property Your Review</h2>
           </div>
-          <div class="theme-add-property-box" style="height: 500px">
+          <div class="theme-add-property-box" style="height: 700px">
             <div class="theme-login-box-inner">
               <form class="theme-login-form" method="POST">
                 {% csrf_token %}
                 <div class="form-group">
                     {% render_field form.review class="form-control" placeholder="Write your review on this property" %}
+                </div>
+                <div class="form-group">
+                    <h5>{%render_field form.cleanliness.field.label %}</h5>
+                    {% render_field form.cleanliness class="form-control" %}
+                </div>
+                <div class="form-group">
+                    <h5>{%render_field form.communication.field.label %}</h5>
+                    {% render_field form.communication class="form-control" %}
+                </div>
+                <div class="form-group">
+                    <h5>{%render_field form.value.field.label %}</h5>
+                    {% render_field form.value class="form-control" %}
+                </div>
+                <div class="form-group">
+                    <h5>{%render_field form.location.field.label %}</h5>
+                    {% render_field form.location class="form-control" %}
                 </div>
                 <div class="form-group">
                     <h5>{%render_field form.rating.field.label %}</h5>

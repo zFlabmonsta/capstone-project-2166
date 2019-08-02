@@ -56,7 +56,7 @@ def index(request):
             searching = filter_by_distance(list_property, searching, where_lat_long)
             # get all properties that are booked in given date
             bookings = Booking.objects.all()
-            searching = filter_by_date(bookings, searching)
+            searching = filter_by_date(bookings, searching, check_in, check_out)
             # remove property from list, if number of rooms doesnt match
             searching = filter_by_room(num_room, searching)
             # remove property from list, if number of guests is less than num_guest

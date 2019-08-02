@@ -45,7 +45,13 @@ def give_review(request, id):
         if form.is_valid():
             _review = form.cleaned_data['review']
             _rating = form.cleaned_data['rating']
-            obj = Property_review(property=booking.property, review=_review, rating=_rating)
+            _cleanliness = form.cleaned_data['cleanliness']
+            _communication = form.cleaned_data['communication']
+            _value = form.cleaned_data['value']
+            _location = form.cleaned_data['location']
+            obj = Property_review(property=booking.property, review=_review, 
+                    rating=_rating, cleanliness=_cleanliness, 
+                    communication=_communication, value=_value, location=_location)
             obj.save()
             return HttpResponseRedirect('/dashboard')
 

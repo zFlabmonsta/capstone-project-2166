@@ -11,7 +11,7 @@ def filter_by_distance(list_property, searching, where_lat_long):
             searching.append(property)
     return searching
 
-def filter_by_date(bookings, searching):
+def filter_by_date(bookings, searching, check_in, check_out):
     booked_properties = []
     for b in bookings:
         if (b.date_overlapping(check_in, check_out)):

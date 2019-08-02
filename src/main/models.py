@@ -92,7 +92,50 @@ class Property(models.Model):
         else:
             avg = avg / len(reviews)
         return range(int(avg))
+
+    def avg_cleanliness(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        avg = 0
+        for r in reviews:
+            avg += r.cleanliness
+        if (len(reviews) == 0):
+            avg = 5
+        else:
+            avg = avg / len(reviews)
+        return float(avg/5) * 100
             
+    def avg_communication(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        avg = 0
+        for r in reviews:
+            avg += r.communication
+        if (len(reviews) == 0):
+            avg = 5
+        else:
+            avg = avg / len(reviews)
+        return float(avg/5) * 100
+
+    def avg_value(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        avg = 0
+        for r in reviews:
+            avg += r.value
+        if (len(reviews) == 0):
+            avg = 5
+        else:
+            avg = avg / len(reviews)
+        return float(avg/5) * 100
+
+    def avg_location(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        avg = 0
+        for r in reviews:
+            avg += r.location
+        if (len(reviews) == 0):
+            avg = 5
+        else:
+            avg = avg / len(reviews)
+        return float(avg/5) * 100
 
 class Booking(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
@@ -113,6 +156,10 @@ class Property_review(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE)
     review = models.CharField(max_length=10000000000)
     rating = models.IntegerField(default=0)
+    cleanliness = models.IntegerField(default=0)
+    communication = models.IntegerField(default=0)
+    value = models.IntegerField(default=0)
+    location = models.IntegerField(default=0)
     date = models.DateTimeField(default=datetime.now)
 
     def range_rating(self):
