@@ -17,7 +17,7 @@ def register(request):
             dashboard = Dashboard(dashboard_name = user.username + "dashboard", user=user)
             dashboard.save()
             messages.success(request, "You have successfully created an account, please login")
-            return render(request, 'main/index.html', {})
+            return HttpResponseRedirect('/')
     return render(request, 'authentication/register.html', {'form': form})
 
 def login(request):

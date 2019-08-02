@@ -95,8 +95,8 @@ def map(request, lat, lng):
 
 def moreinfo(request, which, property_id, i_year, i_month, i_day, o_year, o_month, o_day):
     # get property id 
-    check_in = datetime(i_year, i_month, i_day)
-    check_out = datetime(o_year, o_month, o_day)
+    check_in = datetime(i_year, i_month, i_day).date
+    check_out = datetime(o_year, o_month, o_day).date
 
     search_property_form = Search_property_form()
 

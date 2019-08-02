@@ -11,8 +11,6 @@
       <div class="col-md-8 ">
         <div class="theme-search-area _desk-h _mb-30 theme-search-area-vert">
           <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
-            <h1 class="theme-search-area-title">Book Event</h1>
-            <p class="theme-search-area-subtitle">Arcu risus malesuada penatibus a</p>
           </div>
         </div>
         <div class="theme-item-page-tabs _mb-desk-30">
@@ -151,8 +149,21 @@
         <div class="sticky-col _mob-h">
           <div class="theme-search-area theme-search-area-vert">
             <div class="theme-search-area-header _mb-20 theme-search-area-header-sm">
-              <h1 class="theme-search-area-title">Book Event</h1>
-              <p class="theme-search-area-subtitle">Consectetur magnis facilisis donec metus</p>
+              <div class="theme-item-page-header _mt-0">
+              <div class="theme-item-page-header-body">
+                <div class="theme-item-page-header-rating">
+                  <ul class="theme-item-page-header-rating-stars">
+                    {% for r in property.range_avg_rating %}
+                    <li>
+                      <i class="fa fa-star"></i>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  <p class="theme-item-page-header-rating-title">{{property.num_of_reviews}} reviews</p>
+                </div>
+                <h1 class="theme-item-page-header-title theme-item-page-header-title-xs">{{property.location.num}} {{property.location.street}}, {{property.location.suburb}}, {{property.location.post_code}}, NSW</h1>
+              </div>
+            </div>
             </div>
 
             <div class="theme-search-results-sidebar-map-view _mb-10 theme-search-results-sidebar-map-view-primary">
@@ -162,6 +173,63 @@
                 <p class="theme-search-results-sidebar-map-view-sign">Official Google Maps</p>
               </div>
               <div class="theme-search-results-sidebar-map-view-mask"></div>
+            </div>
+            
+            <div class="sticky-col _pt-20 _mob-h" style="">
+              <div class="theme-search-area theme-search-area-vert">
+                <div class="theme-search-area-form">
+                  {% if which == 's' %}
+                  <div class="theme-search-area-section theme-search-area-section-sm">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                      <input class="theme-search-area-section-input" value="{{start_date}}" type="text">
+                    </div>
+                  </div>
+                  <div class="theme-search-area-section theme-search-area-section-sm">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                      <input class="theme-search-area-section-input" value="{{end_date}}" type="text">
+                    </div>
+                  </div>
+                 {% elif which == 'b' %}
+                  <div class="theme-search-area-section theme-search-area-section-sm">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                      <input class="theme-search-area-section-input" value="{{booking.start_date}}" type="text">
+                    </div>
+                  </div>
+                  <div class="theme-search-area-section theme-search-area-section-sm">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-calendar"></i>
+                      <input class="theme-search-area-section-input" value="{{booking.end_date}}" type="text">
+                    </div>
+                  </div>
+                 {% endif %}
+                  <div class="theme-search-area-section theme-search-area-section-sm quantity-selector">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-people"></i>
+                      <input class="theme-search-area-section-input" value="{{property.num_guests}} Guests" type="text">
+                    </div>
+                  </div>
+                  <div class="theme-search-area-section theme-search-area-section-sm quantity-selector">
+                    <div class="theme-search-area-section-inner">
+                      <i class="theme-search-area-section-icon lin lin-people"></i>
+                      <input class="theme-search-area-section-input" value="{{property.num_rooms}} Rooms" type="text">
+                    </div>
+                  </div>
+                  <div class="theme-item-page-summary-price _mb-20">
+                    {% if which == 's' or which == 'b' %}
+                    <p class="theme-item-page-summary-price-total">Total
+                      <span>${{property.price}}</span>
+                    </p>
+                    {% else %}
+                    <p class="theme-item-page-summary-price-total">Price 
+                      <span>${{property.price}}</span><span></span>
+                    </p>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Booking, Remove Listing, Cancel -->
