@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
+from django.template import RequestContext
 
 from main.models import Dashboard, Property, Location, Booking, image, Property_review
 from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
@@ -114,6 +115,9 @@ def moreinfo(request, which, property_id, i_year, i_month, i_day, o_year, o_mont
     }
     return render(request, "main/moreinfo.html", context)
      
+def handler404(request, exception):
+    context = {}
+    return render(request, "main/404.html", context)
 
 
 

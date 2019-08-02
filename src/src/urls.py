@@ -17,14 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
-from django.conf.urls import url
+from django.conf.urls import url, handler404
 from django.conf import settings
+
+from main import views as main_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("main.urls")),
     path('', include("authentication.urls")),
 ]
+
+handler404 = main_views.handler404
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
