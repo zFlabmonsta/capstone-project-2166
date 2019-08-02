@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib import messages
 from main.models import Dashboard
 
 # Create your views here.
@@ -15,7 +16,8 @@ def register(request):
             # create dashboard
             dashboard = Dashboard(dashboard_name = user.username + "dashboard", user=user)
             dashboard.save()
-            return HttpResponseRedirect("/")
+            messages.success(request, "You have successfully created an account, please login")
+            return render(request, 'main/index.html', {})
     return render(request, 'authentication/register.html', {'form': form})
 
 def login(request):
@@ -28,6 +30,7 @@ def login(request):
             dashboard_id = Dashboard.objects.get(user=user.id).id
             return HttpResponseRedirect("dashboard")
         else:
-            return HttpResponseRedirect('/')
+            messages.error(request, 'Username/Passowrd is incorrect')
+            return render(request, 'authentication/login.html')
     else:
         return render(request, 'authentication/login.html')
