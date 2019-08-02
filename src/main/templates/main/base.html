@@ -275,4 +275,11 @@
     <script src={% static "js/fitvid.js"%}></script>
     <script src={% static "js/youtube-bg.js"%}></script>
     <script src={% static "js/custom.js"%}></script>
+    <script>
+    {% if messages %}
+        {% for message in messages %}
+            alert('{{message}}');
+        {% endfor %}
+    {% endif %}
+    </script>
 </html>

@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerEr
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login as auth_login
 from django.template import RequestContext
+from django.contrib import messages
 
 from main.models import Dashboard, Property, Location, Booking, image, Property_review
 from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
@@ -46,9 +47,14 @@ def index(request):
             num_room = form.cleaned_data['num_rooms']
             
             # get the longitude and latitude of the where
-            where_geolocator = Nominatim(timeout=20)
-            where_geolocator = where_geolocator.geocode(where + " " + "NSW, AU")
-            where_lat_long = (where_geolocator.latitude, where_geolocator.longitude)
+            try:
+                where_geolocator = Nominatim(timeout=20)
+                where_geolocator = where_geolocator.geocode(where + " " + "NSW, AU")
+                where_lat_long = (where_geolocator.latitude, where_geolocator.longitude)
+            except AttributeError:
+                messages.error(request, "Cannot find location, try again")
+                return HttpResponseRedirect('/')
+
 
             searching = []
             # find property that is within 5km radius of "where" and list it
