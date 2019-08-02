@@ -6,7 +6,7 @@
   border-radius: 2px;
   overflow: hidden;
   width: 800px; 
-  height: 1045px;
+  min-height: 1045px;
   justify-content:center;
   display: inline-block;
 }

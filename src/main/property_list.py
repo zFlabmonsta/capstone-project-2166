@@ -65,7 +65,6 @@ def create_property(request):
             p.save()
 
             # create image models and save them to db
-            first_image = False 
             for f in request.FILES.getlist('image'):
                 img = image(property=p, image=f)
                 img.save()
@@ -79,7 +78,9 @@ def create_property(request):
 def edit_property_listing(request, id):
     instance = get_object_or_404(Property, id=id)
     form = Property_form()
+    imgs = image.objects.filter(property__id=id)
     context = {
+        'images':imgs,
         'form': form,
         'obj': instance
     }
@@ -117,6 +118,10 @@ def edit_property_listing(request, id):
             property.wifi = form.cleaned_data['wifi']
             property.laundry = form.cleaned_data['laundry']
             property.save()
+
+            for f in request.FILES.getlist('image'):
+                img = image(property=instance, image=f)
+                img.save()
             return HttpResponseRedirect('/dashboard')
     
     return render(request, "main/edit_property_form.html", context)
