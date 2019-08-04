@@ -83,24 +83,87 @@
           <div class="theme-testimonial-body">
             <blockquote>The holiday of a life time - our gulet adventure in the Dodecanese Greek Islands. Swimming in the most gorgeous coves, kayaking on crystal blue waters, hiking around ruins and into small remote villages and relaxing on the boat... it was the best trip ever.</blockquote>
           </div>
-          <img class="theme-testimonial-img" src={%static "img/70x70.png"%} alt="Image Alternative text" title="Image Title"/>
           <p class="theme-testimonial-author">Olivia Slater</p>
         </div>
         <div class="theme-testimonial _c-w">
           <div class="theme-testimonial-body">
             <blockquote>Our trip from Kos to Patmos was everything and more than expected. It was all one could hope for and a strong inducement to do another adventure very soon.</blockquote>
           </div>
-          <img class="theme-testimonial-img" src={%static "img/70x70.png"%} alt="Image Alternative text" title="Image Title"/>
           <p class="theme-testimonial-author">Alison Mackenzie</p>
         </div>
         <div class="theme-testimonial _c-w">
           <div class="theme-testimonial-body">
             <blockquote>What a wonderful experience! The two tour leaders who were archaeologists enthralled us with the history of the Islands. The food was bountiful. The staff was lovely and attentive. Excellent.</blockquote>
           </div>
-          <img class="theme-testimonial-img" src={%static "img/70x70.png" %} alt="Image Alternative text" title="Image Title"/>
           <p class="theme-testimonial-author">Carl Butler</p>
         </div>
       </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block content_2 %}
+<div class="theme-page-section theme-page-section-xxl theme-page-section-gray">
+  <div class="container">
+    <div class="row row-col-mob-gap">
+      <div class="col-md-3 ">
+        <div class="feature feature-white feature-center">
+          <i class="feature-icon feature-icon-box feature-icon-line feature-icon-round lin lin-directions"></i>
+          <div class="feature-caption">
+            <h5 class="feature-title _ff-d">Explore the World</h5>
+            <p class="feature-subtitle">Start to discrover. We will help you to visit any place you can imagine</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 ">
+        <div class="feature feature-white feature-center">
+          <i class="feature-icon feature-icon-box feature-icon-line feature-icon-round lin lin-trophy"></i>
+          <div class="feature-caption">
+            <h5 class="feature-title _ff-d">Gifts &amp; Rewards</h5>
+            <p class="feature-subtitle">Get even more from our service. Spend less and travel more</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 ">
+        <div class="feature feature-white feature-center">
+          <i class="feature-icon feature-icon-box feature-icon-line feature-icon-round lin lin-wallet"></i>
+          <div class="feature-caption">
+            <h5 class="feature-title _ff-d">Best prices</h5>
+            <p class="feature-subtitle">We are comparing hundreds travel websites to find best price for you</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 ">
+        <div class="feature feature-white feature-center">
+          <i class="feature-icon feature-icon-box feature-icon-line feature-icon-round lin lin-support"></i>
+          <div class="feature-caption">
+            <h5 class="feature-title _ff-d">27/7 Support</h5>
+            <p class="feature-subtitle">Contact us anytime, anywhere. We will resolve any issues ASAP</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="theme-page-section theme-page-section-xxl">
+  <div class="container">
+    <div class="theme-page-section-header _ta-l">
+      <h5 class="theme-page-section-title">Recent Blogs</h5>
+    </div>
+    <div class="row row-col-gap" data-gutter="10">
+      {% for property in top_properties %}
+      <div class="col-md-3 ">
+        <div class="banner _h-33vh _br-4 banner-animate banner-animate-mask-out banner-animate-zoom-in banner-animate-slow">
+          <div class="banner-bg" style="background-image:url(./img/400x360.png);"></div>
+          <div class="banner-mask"></div>
+          <a class="banner-link" href="#"></a>
+          <div class="banner-caption banner-caption-top">
+              <h5 class="banner-title">{{property.location.suburb}}</h5>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
   </div>
 </div>

@@ -4,6 +4,7 @@ from . import views, dashboard, booking, property_list     # from current path i
 urlpatterns=[
     path("", views.index, name="index"),        
     path("about", views.about, name="about"),
+    path("myaccount",views.myAccount, name="my account"),
 ]
 
 # dashboard

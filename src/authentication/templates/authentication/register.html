@@ -18,21 +18,38 @@
             <div class="theme-login-box-inner">
               <form class="theme-login-form" method="POST">
                 {% csrf_token %}
-                <div class="form-group theme-login-form-group">
-                  {% render_field form.username class="form-control" placeholder="Username" %}
-                </div>
-                <p> {{ form.username.errors }} </p>
 
                 <div class="form-group theme-login-form-group">
-                  {% render_field form.email class="form-control" placeholder="Email" %}
+                  <label> Email </label>
+                  {% render_field form.email class="form-control" placeholder="Enter Your Email" %}
                 </div>
                 <p> {{ form.email.errors }} </p>
 
+                <label> First Name</label>
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.first_name class="form-control" placeholder="Enter Your First Name" %}
+                </div>
+                <p> {{ form.first_name.errors }} </p>
+
+                <label> Last Name</label>
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.last_name class="form-control" placeholder="Enter Your Last Name" %}
+                </div>
+                <p> {{ form.last_name.errors }} </p>
+
+                <label> Username </label>
+                <div class="form-group theme-login-form-group">
+                  {% render_field form.username class="form-control" placeholder="Enter Your Username" %}
+                </div>
+                <p> {{ form.username.errors }} </p>
+
+                <label> Password </label>
                 <div class="form-group theme-login-form-group">
                   {% render_field form.password1 class="form-control" placeholder="Create Password" %}
                 </div>
                 <p> {{ form.password1.errors }} </p>
 
+                <label> Repeat Password </label>
                 <div class="form-group theme-login-form-group">
                   {% render_field form.password2 class="form-control" placeholder="Repeat Password" %}
                 </div>

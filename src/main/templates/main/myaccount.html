@@ -1,0 +1,150 @@
+{% extends 'main/base.html' %}
+
+{% load staticfiles %}
+{% load widget_tweaks %}
+
+{% block middle_page %}{% endblock %}
+{% block middle_page_2 %}{% endblock %}
+{% block vh %}{% endblock %}
+{% block content_2 %}
+<div class="theme-page-section theme-page-section-gray theme-page-section-lg" style="min-height: 800px;">
+  <br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2-5 ">
+        <div class="theme-account-sidebar">
+          <div class="theme-account-avatar">
+            <img class="theme-account-avatar-img" src="./img/70x70.png" alt="Image Alternative text" title="Image Title">
+            <p class="theme-account-avatar-name">Welcome,
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9-5 ">
+        <h1 class="theme-account-page-title">My Account</h1>
+        <div class="row">
+          <div class="col-md-9 ">
+            <div class="theme-account-preferences">
+              <div class="theme-account-preferences-item">
+                <div class="row">
+                  <div class="col-md-3 ">
+                    <h5 class="theme-account-preferences-item-title">Username</h5>
+                  </div>
+                  <div class="col-md-7 ">
+                    <p class="theme-account-preferences-item-value">{{user.username}}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="theme-account-preferences-item">
+                <div class="row">
+                  <div class="col-md-3 ">
+                    <h5 class="theme-account-preferences-item-title">Email Address</h5>
+                  </div>
+                  <div class="col-md-7 ">
+                    <p class="theme-account-preferences-item-value">{{user.email}}</p>
+                  </div>
+                </div>
+              </div>
+              <form method='POST'>
+              {% csrf_token %}
+              <div class="theme-account-preferences-item">
+                <div class="row">
+                  <div class="col-md-3 ">
+                    <h5 class="theme-account-preferences-item-title">First Name</h5>
+                  </div>
+                  <div class="col-md-7 ">
+                    <p class="theme-account-preferences-item-value">{{user.first_name}}</p>
+                    <div class="collapse" id="ChangeHomeAirportChange">
+                      <div class="theme-account-preferences-item-change">
+                        <p class="theme-account-preferences-item-change-description">Change first name here</p>
+                        <div class="form-group theme-account-preferences-item-change-form">
+                          <input name="firstName" class="form-control" type="text" value="{{user.first_name}}">
+                        </div>
+                        <div class="theme-account-preferences-item-change-actions">
+                          <button class="btn btn-sm btn-primary" type="submit">Save changes</button>
+                          <a class="btn btn-sm btn-default" href="#ChangeHomeAirportChange" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeAirportChange">Cancel</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 ">
+                    <a class="theme-account-preferences-item-change-link" href="#ChangeHomeAirportChange" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeAirportChange">
+                      <i class="fa fa-pencil"></i>edit
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="theme-account-preferences-item">
+                <div class="row">
+                  <div class="col-md-3 ">
+                    <h5 class="theme-account-preferences-item-title">Last Name</h5>
+                  </div>
+                  <div class="col-md-7 ">
+                    <p class="theme-account-preferences-item-value">{{user.last_name}}</p>
+                    <div class="collapse" id="ChangeHomeSite">
+                      <div class="theme-account-preferences-item-change">
+                        <p class="theme-account-preferences-item-change-description">Change last name here.</p>
+                        <div class="form-group theme-account-preferences-item-change-form">
+                          <input name="lastName" class="form-control" type="text" value="{{user.last_name}}">
+                        </div>
+                        <div class="theme-account-preferences-item-change-actions">
+                          <button class="btn btn-sm btn-primary" type="submit">Save changes</button>
+                          <a class="btn btn-sm btn-default" href="#ChangeHomeSite" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeSite">Cancel</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 ">
+                    <a class="theme-account-preferences-item-change-link" href="#ChangeHomeSite" data-toggle="collapse" aria-expanded="false" aria-controls="ChangeHomeSite">
+                      <i class="fa fa-pencil"></i>edit
+                    </a>
+                  </div>
+                </div>
+              </div>
+              </form>
+              <br>
+              <form method='POST'>
+              {% csrf_token %}
+              <div class="theme-account-preferences-item">
+                <div class="row">
+                  <div class="col-md-3 ">
+                    <h5 class="theme-account-preferences-item-title">Password</h5>
+                  </div>
+                  <div class="col-md-7 ">
+                    <p class="theme-account-preferences-item-value">********</p>
+                    <div class="collapse" id="ChangePassword">
+                      <div class="theme-account-preferences-item-change">
+                        <p class="theme-account-preferences-item-change-description">It's a good idea to use a strong password
+                          <br>that you're not using elsewhere
+                        </p>
+                        <div class="form-group theme-account-preferences-item-change-form">
+                          <label>Current Password</label>
+                          {% render_field pwd_change_form.old_password class="form-control" %}
+                          <label>New Password</label>
+                          {% render_field pwd_change_form.new_password1 class="form-control" %}
+                          <label>Re-type New Password</label>
+                          {% render_field pwd_change_form.new_password2 class="form-control" %}
+                        </div>
+                        <div class="theme-account-preferences-item-change-actions">
+                          <button class="btn btn-sm btn-primary" href="#">Save changes</button>
+                          <a class="btn btn-sm btn-default" href="#ChangePassword" data-toggle="collapse" aria-expanded="false" aria-controls="ChangePassword">Cancel</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-2 ">
+                    <a class="theme-account-preferences-item-change-link" href="#ChangePassword" data-toggle="collapse" aria-expanded="false" aria-controls="ChangePassword">
+                      <i class="fa fa-pencil"></i>edit
+                    </a>
+                  </div>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -4,13 +4,14 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib import messages
 from main.models import Dashboard
+from .forms import RegisterForm
 
 # Create your views here.
 
 def register(request):
-    form = UserCreationForm()
+    form = RegisterForm()
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = RegisterForm(request.POST)
         if form.is_valid():
             user = form.save()
             # create dashboard

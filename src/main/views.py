@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponseServerError
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth import authenticate, login as auth_login, update_session_auth_hash
 from django.template import RequestContext
 from django.contrib import messages
+from django.contrib.auth.forms import PasswordChangeForm
 
 from main.models import Dashboard, Property, Location, Booking, image, Property_review
 from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
@@ -22,7 +23,15 @@ def index(request):
     property_type_form = Filter_property_type()
     amenities_form = Filter_amenities()
 
+    top_properties=[]
+    for p in Property.objects.all():
+        print(p.range_avg_rating()[4])
+        if p.range_avg_rating()[-1] == 4:
+            top_properties.append(p)
+
+
     context = {
+        'top_properties': top_properties,
         'search_property_form': search_form, 
         'filter_facilities': filter_facilities_form,
         'disability_access_form': disability_access_form,
@@ -98,6 +107,31 @@ def about(response):
 def map(request, lat, lng):
     return render(request, "main/googlemap.html", {"lat":lat, "lng":lng})
 
+@login_required(login_url='/login')
+def myAccount(request):
+    user = request.user
+    if (request.method == 'POST'):
+        form = PasswordChangeForm(user, request.POST)
+        if (form.is_valid()):
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+        else:
+            try:
+                user.first_name = request.POST['firstName']
+                user.last_name = request.POST['lastName']
+                user.save()
+            except: 
+                messages.error(request, 'Incorrectly filled in, try again!')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    context = {
+        'pwd_change_form': form,
+        'user':user
+    }
+    return render(request, "main/myaccount.html", context)
+
 
 def moreinfo(request, which, property_id, i_year, i_month, i_day, o_year, o_month, o_day):
     # get property id 
@@ -124,8 +158,6 @@ def moreinfo(request, which, property_id, i_year, i_month, i_day, o_year, o_mont
 def handler404(request, exception):
     context = {}
     return render(request, "main/404.html", context)
-
-
 
 
 
