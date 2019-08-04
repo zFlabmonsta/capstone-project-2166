@@ -24,15 +24,7 @@ def index(request):
     property_type_form = Filter_property_type()
     amenities_form = Filter_amenities()
 
-    top_properties=[]
-    for p in Property.objects.all():
-        print(p.range_avg_rating()[4])
-        if p.range_avg_rating()[-1] == 4:
-            top_properties.append(p)
-
-
     context = {
-        'top_properties': top_properties,
         'search_property_form': search_form, 
         'filter_facilities': filter_facilities_form,
         'disability_access_form': disability_access_form,
@@ -106,8 +98,8 @@ def index(request):
 
     return render(request, "main/index.html", context)
 
-def about(response):
-    return HttpResponse("<h1> About! </h1>")
+def coming_out_soon(request):
+    return render(request, "main/coming_soon.html")
 
 def map(request, lat, lng):
     return render(request, "main/googlemap.html", {"lat":lat, "lng":lng})

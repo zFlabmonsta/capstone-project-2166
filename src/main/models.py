@@ -142,6 +142,7 @@ class Booking(models.Model):
     dashboard = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
     start_date = models.DateField(default=datetime.now)
     end_date = models.DateField(default=datetime.now)
+    reviewed = models.BooleanField(default=False)
 
     def date_overlapping(self, check_in, check_out):
         return (self.start_date <= check_out and self.end_date >= check_in)

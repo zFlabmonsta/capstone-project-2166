@@ -112,10 +112,11 @@
                               <p class="theme-search-results-item-price-sign">/night</p>
                             </div>
 
-                            <!-- turn to cancel -->
+                            {% if booking.0.reviewed == False %}
                             <form action="dashboard/give-review/{{booking.0.id}}" method='GET'>
                               <button class="btn btn-primary btn-block theme-search-results-item-price-btn" type='submit'>Give Review</button>
                             </form>
+                            {% endif %}
                             <br>
                             <form action="dashboard/delete-booking/{{booking.0.id}}" method='POST' >
                                 {% csrf_token %}

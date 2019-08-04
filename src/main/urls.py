@@ -3,8 +3,8 @@ from . import views, dashboard, booking, property_list     # from current path i
 
 urlpatterns=[
     path("", views.index, name="index"),        
-    path("about", views.about, name="about"),
     path("myaccount",views.myAccount, name="my account"),
+    path("coming-soon", views.coming_out_soon, name="coming out soon"),
 ]
 
 # dashboard

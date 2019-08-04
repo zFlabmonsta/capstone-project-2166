@@ -53,6 +53,8 @@ def give_review(request, id):
                     rating=_rating, cleanliness=_cleanliness, 
                     communication=_communication, value=_value, location=_location)
             obj.save()
+            booking.reviewed = True
+            booking.save()
             return HttpResponseRedirect('/dashboard')
 
     if (booking.dashboard.id == dashboard_id):

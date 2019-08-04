@@ -12,7 +12,7 @@
             <h1 class="theme-login-title">List a Home</h1>
           </div>
 
-          <div class="theme-add-property-box">
+          <div class="theme-add-property-box" style="height: 1150px;">
             <div class="theme-login-box-inner">
               <form class="theme-login-form" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
@@ -34,11 +34,13 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label>Unit/Number</label>
                       {% render_field form.num class="form-control" placeholder="Number/Unit" %}
                     </div>
                   </div>
                   <div class="col-md-9">   
                     <div class="form-group theme-login-form-group">
+                      <label>Street</label>
                       {% render_field form.street class="form-control" placeholder="Street" %}
                     </div>
                   </div>
@@ -47,11 +49,13 @@
                 <div class="row">
                   <div class="col-md-7">
                     <div class="form-group theme-login-form-group">
+                      <label>Suburb</label>
                       {% render_field form.suburb class="form-control" placeholder="Suburb" %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label>Post Code</label>
                       {% render_field form.post_code class="form-control" placeholder="Post Code" %}
                     </div>
                   </div>
@@ -60,16 +64,19 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label>Number of Guests </label>
                       {% render_field form.num_guests class="form-control" placeholder="Guests" %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label>Number of Rooms</label>
                       {% render_field form.num_rooms class="form-control" placeholder="Rooms" %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label> Price per Night</label>
                       {% render_field form.price class="form-control" placeholder="Price" %}
                     </div>
                   </div>
@@ -78,6 +85,7 @@
 
 
                 <div class="form-group">
+                    <label> Description</label>
                     {% render_field form.description class="form-control" placeholder="Description" %}
                 </div>
                 
