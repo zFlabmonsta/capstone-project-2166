@@ -10,8 +10,7 @@
   <div class="container">
     <div class="row row-col static" id="sticky-parent" data-gutter="20">
         <button class="tablink" onclick="openPage('property-list-page', this, 'grey')">Property Listing</button>
-        <button class="tablink" onclick="openPage('bookings-page', this, 'grey')">Bookings</button>
-        <button class="tablink" onclick="window.location='/create_property'">Add Property</button>
+        <button class="tablink" onclick="openPage('bookings-page', this, 'grey')" id="DefaultOpen">Bookings</button>
 
         <!-- Page for Listed Property for others to accommodate --!>
         <div style="background-color: grey" id="property-list-page" class="tabcontent">
@@ -138,7 +137,6 @@
     </div>
   </div>
 </div>
-
 <script type="text/javascript" src="{% static 'createdTools/js/dashboard.js' %}"></script>
 <script type="text/javascript" src="{% static 'createdTools/js/pagination.js' %}"></script>
 <script type="text/javascript" src="{% static 'createdTools/js/pagination-booking.js' %}"></script>

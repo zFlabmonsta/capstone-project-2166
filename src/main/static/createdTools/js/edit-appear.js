@@ -1,4 +1,5 @@
 function putDescriptionText(text) {
+    console.log(text)
     document.getElementById('edit-description').innerHTML = text;
 }
 

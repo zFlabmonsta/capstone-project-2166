@@ -35,11 +35,13 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label> Unit/Number </label>
                       {% render_field form.num class="form-control" placeholder="Number/Unit" value=obj.location.num %}
                     </div>
                   </div>
                   <div class="col-md-9">   
                     <div class="form-group theme-login-form-group">
+                      <label> Street </label>
                       {% render_field form.street class="form-control" placeholder="Street" value=obj.location.street %}
                     </div>
                   </div>
@@ -48,11 +50,13 @@
                 <div class="row">
                   <div class="col-md-7">
                     <div class="form-group theme-login-form-group">
+                      <label> Suburb </label>
                       {% render_field form.suburb class="form-control" placeholder="Suburb" value=obj.location.suburb %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label> Post Code </label>
                       {% render_field form.post_code class="form-control" placeholder="Post Code" value=obj.location.post_code %}
                     </div>
                   </div>
@@ -61,22 +65,26 @@
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label> Number of Guests </label>
                       {% render_field form.num_guests class="form-control" placeholder="Guests" value=obj.num_guests %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label> Number of Rooms </label>
                       {% render_field form.num_rooms class="form-control" placeholder="Rooms" value=obj.num_rooms %}
                     </div>
                   </div>
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
+                      <label> Price per night ($)</label>
                       {% render_field form.price class="form-control" placeholder="Price" value=obj.price %}
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
+                    <label> Description </label>
                     {% render_field form.description class="form-control" placeholder="Description" id="edit-description" %}
                 </div>
                 
@@ -140,7 +148,7 @@
 <script src={% static "createdTools/js/edit-appear.js"%}></script>
 
 <script>
-    putDescriptionText({{obj.description}});
+    putDescriptionText("{{obj.description}}");
     checkedBox("apartment-edit", "{{obj.apartment}}");
     checkedBox("hotel-edit", "{{obj.hotel}}");
     checkedBox("house-edit", "{{obj.house}}");

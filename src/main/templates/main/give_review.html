@@ -6,8 +6,6 @@
 {% block middle_page_2 %}{% endblock %}
 
 {% block content_1 %}
-<link rel="stylesheet" href="{% static 'star-ratings/css/star-ratings.css' %}">
-<script type="text/javascript" src="{% static 'star-ratings/js/dist/star-ratings.min.js' %}"></script>
 
 <div class="theme-page-section _pt-100 theme-page-section-xl">
   <div class="container">
@@ -17,7 +15,7 @@
           <div class="theme-login-header">
             <h2 class="theme-login-title">Give Property Your Review</h2>
           </div>
-          <div class="theme-add-property-box" style="height: 700px">
+          <div class="theme-login-box" style="height: 700px; width: 800px">
             <div class="theme-login-box-inner">
               <form class="theme-login-form" method="POST">
                 {% csrf_token %}

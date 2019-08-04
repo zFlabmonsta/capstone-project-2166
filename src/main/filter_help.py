@@ -11,6 +11,14 @@ def filter_by_distance(list_property, searching, where_lat_long):
             searching.append(property)
     return searching
 
+def filter_by_price(values, searching):
+    _min = int(values[0])
+    _max = int(values[1])
+    for s in  searching:
+        if s.price < _min or s.price > _max:
+            searching.remove(s)
+    return searching
+
 def filter_by_date(bookings, searching, check_in, check_out):
     booked_properties = []
     for b in bookings:

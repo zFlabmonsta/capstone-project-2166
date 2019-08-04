@@ -14,6 +14,7 @@ from .filter_help import *
 from datetime import datetime, date, time
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
+from bs4 import BeautifulSoup
 
 def index(request):
     # forms
@@ -66,15 +67,19 @@ def index(request):
 
 
             searching = []
-            # find property that is within 5km radius of "where" and list it
             list_property = Property.objects.all()
             searching = filter_by_distance(list_property, searching, where_lat_long)
-            # get all properties that are booked in given date
             bookings = Booking.objects.all()
+
+            try:
+                values = request.POST['price-slider']
+                values = values.split(';')
+                searching = filter_by_price(values, searching)
+            except:
+                pass
+
             searching = filter_by_date(bookings, searching, check_in, check_out)
-            # remove property from list, if number of rooms doesnt match
             searching = filter_by_room(num_room, searching)
-            # remove property from list, if number of guests is less than num_guest
             searching = filter_by_guest(num_guest, searching)
             searching = filter_by_facilities(filter_facilities_form, searching)
             searching = filter_by_disability_access(disability_access_form, searching)

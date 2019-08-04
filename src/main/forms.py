@@ -6,7 +6,7 @@ class Property_form (forms.Form):
     street = forms.CharField(label='Street', max_length=50)
     post_code = forms.IntegerField(label='Post Code', max_value=9999)
     suburb = forms.CharField(label='Suburb', max_length=50)
-    price = forms.IntegerField(label='Price')
+    price = forms.IntegerField(label='Price', min_value=100, max_value=1000)
     num_guests = forms.IntegerField(label='Guests')
     num_rooms = forms.IntegerField(label='Rooms')
     description = forms.CharField(label='description', widget=forms.Textarea, max_length=1000000000)

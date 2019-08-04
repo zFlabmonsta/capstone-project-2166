@@ -4,8 +4,6 @@ $('.outerBooking div').hide();
 const pg = document.querySelector('#pageBooking');
 pag = pg.dataset.n;
 
-console.log(itemsMaxBooking);
-
 function showNextItemsBooking() {
     var pagination = pag;
     
