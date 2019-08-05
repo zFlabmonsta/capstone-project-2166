@@ -14,7 +14,6 @@ from .filter_help import *
 from datetime import datetime, date, time
 from geopy.geocoders import Nominatim
 from geopy.distance import geodesic
-from bs4 import BeautifulSoup
 
 def index(request):
     # forms
