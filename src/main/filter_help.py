@@ -4,7 +4,7 @@ reviews = {'Excellent', 'Good', 'Okay', 'Mediocre', 'Poor'}
 
 def filter_by_distance(list_property, searching, where_lat_long):
     for property in list_property:
-        max_radius = 5000
+        max_radius = 3000
         property_lat_long = (property.location.latitude, property.location.longitude)
         # add the property if within 5km radius 
         if (geodesic(where_lat_long, property_lat_long).meters < max_radius):
