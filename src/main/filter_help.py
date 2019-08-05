@@ -14,10 +14,11 @@ def filter_by_distance(list_property, searching, where_lat_long):
 def filter_by_price(values, searching):
     _min = int(values[0])
     _max = int(values[1])
+    filtered = []
     for s in  searching:
-        if s.price < _min or s.price > _max:
-            searching.remove(s)
-    return searching
+        if (s.price >= _min) and (s.price <= _max):
+            filtered.add(s)
+    return filtered
 
 def filter_by_date(bookings, searching, check_in, check_out):
     booked_properties = []
@@ -91,6 +92,46 @@ def filter_by_facilities(filter_facilities_form, searching):
 
     return filtered
 
+def filter_by_rating(filter_rating_form, searching):
+    filter_rating_form.is_valid()
+    # checkbox boolean
+    execellent = filter_rating_form.cleaned_data['execellent']
+    good = filter_rating_form.cleaned_data['good']
+    okay = filter_rating_form.cleaned_data['okay']
+    mediocre = filter_rating_form.cleaned_data['mediocre']
+    poor = filter_rating_form.cleaned_data['poor']
+
+    #special case: all false return list as normal
+    change_list = False
+    if (execellent == True):
+        change_list = True
+    if (good == True):
+        change_list = True
+    if (okay == True):
+        change_list = True
+    if (mediocre == True):
+        change_list = True
+    if (poor == True):
+        change_list = True
+
+    if (not change_list):
+        return searching
+  
+    # filtering when there is atleast 1 true
+    filtered = []
+    for s in searching:
+        if (execellent == True and s.avg_rating() == 5):
+            filtered.append(s)
+        if (good == True and s.avg_rating() == 4):
+            filtered.append(s)
+        if (okay == True and s.avg_rating() == 3):
+            filtered.append(s)
+        if (mediocre == True and s.avg_rating() == 2):
+            filtered.append(s)
+        if (poor == True and s.avg_rating() == 1):
+            filtered.append(s)
+    return filtered
+
 def filter_by_disability_access(disability_access_form, searching):
     disability_access_form.is_valid()
     # checkbox boolean
@@ -141,24 +182,20 @@ def filter_by_property_type(property_type_form, searching):
 
     #special case: all false return list as normal
     change_list = False
-    i = 0
-    while (i < 1):
-        if (apartment == True):
-            change_list = True
-            break
-        if (hotel == True):
-            change_list = True
-            break
-        if (resort == True):
-            change_list = True
-            break
-        if (house == True):
-            change_list = True
-            break
-        if (townhouse == True):
-            change_list = True
-            break
-        i += 1
+    if (apartment == True):
+        change_list = True
+
+    if (hotel == True):
+        change_list = True
+
+    if (resort == True):
+        change_list = True
+
+    if (house == True):
+        change_list = True
+
+    if (townhouse == True):
+        change_list = True
 
     if (not change_list):
         return searching
@@ -166,19 +203,19 @@ def filter_by_property_type(property_type_form, searching):
     # filtering when there is atleast 1 true
     filtered = []
     for s in searching:
-        if (apartment == True and s.property_type == "Apartment"):
+        if (apartment == True and s.property_type == "0"):
             filtered.append(s)
             continue
-        if (hotel == True and  s.property_type == "Hotel"):
+        if (hotel == True and  s.property_type == "1"):
             filtered.append(s)
             continue
-        if (resort == True and s.property_type == "Resort"):
+        if (house == True and s.property_type == "2"):
             filtered.append(s)
             continue
-        if (house == True and s.property_type == "House"):
+        if (resort == True and s.property_type == "3"):
             filtered.append(s)
             continue
-        if (townhouse == True and s.property_type == "Townhouse"):
+        if (townhouse == True and s.property_type == "4"):
             filtered.append(s)
             continue
     return filtered

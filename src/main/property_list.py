@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
 
 from main.models import Dashboard, Property, Location, Booking, image 
@@ -28,11 +29,16 @@ def create_property(request):
             desc = form.cleaned_data['description']
 
             # get full address, longitude and latitude 
-            geo_location = Nominatim(timeout=3)
-            geo_location = geo_location.geocode(str(num)+" "+street+" "
-                    +suburb+" "+str(post_code), "NSW")
-            longitude = float(geo_location.longitude)
-            latitude = float(geo_location.latitude)
+            try: 
+                geo_location = Nominatim(timeout=10)
+                geo_location = geo_location.geocode(str(num)+" "+street+" "
+                        +suburb+" "+str(post_code), "NSW")
+                longitude = float(geo_location.longitude)
+                latitude = float(geo_location.latitude)
+            except AttributeError: 
+                messages.error(request, "Cannot find location, try again")
+                return HttpResponseRedirect('/create_property')
+
 
             l = Location(num=num, street=street, post_code=post_code, suburb=suburb, longitude=longitude, latitude=latitude)
             l.save()

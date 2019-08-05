@@ -84,4 +84,9 @@ class Filter_amenities(forms.Form):
     kitchen = forms.BooleanField(label="Kitchen", required=False, initial=False, widget=forms.CheckboxInput())
     airconditioning = forms.BooleanField(label="Air Conditioning", required=False, initial=False, widget=forms.CheckboxInput())
 
-
+class Filter_review(forms.Form):
+    execellent = forms.BooleanField(label="Execellent", required=False, initial=False, widget=forms.CheckboxInput())
+    good = forms.BooleanField(label="Good", required=False, initial=False, widget=forms.CheckboxInput())
+    okay = forms.BooleanField(label="Okay", required=False, initial=False, widget=forms.CheckboxInput())
+    mediocre = forms.BooleanField(label="Mediocre", required=False, initial=False, widget=forms.CheckboxInput())
+    poor = forms.BooleanField(label="Poor", required=False, initial=False, widget=forms.CheckboxInput())

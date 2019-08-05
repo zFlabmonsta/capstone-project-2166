@@ -82,6 +82,18 @@ class Property(models.Model):
             avg = avg / len(reviews)
         return range(int(avg))
 
+    def avg_rating(self):
+        reviews = Property_review.objects.filter(property__id=self.id)
+        avg = 0
+        for r in reviews:
+            avg += r.rating
+        if (len(reviews) == 0):
+            avg = 5
+        else:
+            avg = avg / len(reviews)
+        return int(avg)
+
+
     def avg_cleanliness(self):
         reviews = Property_review.objects.filter(property__id=self.id)
         avg = 0

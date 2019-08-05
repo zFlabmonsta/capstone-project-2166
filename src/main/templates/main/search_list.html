@@ -79,15 +79,14 @@
 
               <div class="theme-search-results-sidebar-section">
                 <h5 class="theme-search-results-sidebar-section-title">Review Score</h5>
-                {% for review in reviews %}
+                {% for review in review_form%}
                 <div class="theme-search-results-sidebar-section-checkbox-list">
                   <div class="theme-search-results-sidebar-section-checkbox-list-items">
                     <div class="checkbox theme-search-results-sidebar-section-checkbox-list-item">
                       <label class="icheck-label">
-                        <input class="icheck" type="checkbox"/>
-                        <span class="icheck-title">{{review}}</span>
+                        {% render_field review class="icheck" %}
+                        <span class="icheck-title">{{review.field.label}}</span>
                       </label>
-                      <span class="theme-search-results-sidebar-section-checkbox-list-amount">314</span>
                     </div>
                   </div>
                 </div>

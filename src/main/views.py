@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 
 from main.models import Dashboard, Property, Location, Booking, image, Property_review, Activities
-from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
+from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities, Filter_review
 
 from .filter_help import *
 
@@ -39,6 +39,7 @@ def index(request):
         # forms
         form = Search_property_form(request.POST)
         filter_facilities_form = Filter_facilities(request.POST)
+        filter_review_form = Filter_review(request.POST)
         disability_access_form = Filter_disability_access(request.POST)
         property_type_form = Filter_property_type(request.POST)
         amenities_form = Filter_amenities(request.POST)
@@ -72,6 +73,7 @@ def index(request):
             except:
                 pass
 
+            searching = filter_by_rating(filter_review_form, searching)
             searching = filter_by_date(bookings, searching, check_in, check_out)
             searching = filter_by_room(num_room, searching)
             searching = filter_by_guest(num_guest, searching)
@@ -89,6 +91,7 @@ def index(request):
                 'start_date': check_in,
                 'end_date': check_out,
                 'search_property_form': form,
+                'review_form': filter_review_form,
                 'property_type_form': property_type_form,
                 'disability_access_form': disability_access_form,
                 'filter_facilities': filter_facilities_form,
