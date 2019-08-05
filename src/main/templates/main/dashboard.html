@@ -31,8 +31,22 @@
                       </div>
 
                       <div class="col-md-5 ">
+                        <ul class="theme-search-results-item-hotel-stars">
+                          {% for n in property.0.range_avg_rating %}
+                          <li>
+                            <i class="fa fa-star"></i>
+                          </li>
+                          {% endfor %}
+                        </ul>
                         <h5 class="theme-search-results-item-title _fw-b _mb-20 _fs theme-search-results-item-title-lg">{{property.0.location.num}} {{property.0.location.street}}, {{property.0.location.suburb}}, {{property.0.location.post_code}}, NSW</h5>
+                        <div class="theme-search-results-item-hotel-rating">
+                          <p class="theme-search-results-item-hotel-rating-title">
+                            <b>{{property.0.execellent_rating}} Excellent</b>&nbsp;({{property.0.num_of_reviews}} reviews)
+                          </p>
+                        </div>
                         <p class="theme-search-results-item-hotel-book-count">Booked: {{property.0.time_booked}}</p>
+                        <i class="fa fa-bed theme-item-page-rooms-table-type-feature-list-icon"></i> {{property.0.num_rooms}} <br>
+                        <i class="fa fa-male theme-item-page-rooms-table-type-feature-list-icon"></i>{{property.0.num_guests}}<br>
                       </div>
 
                       <div class="col-md-2 ">
@@ -99,10 +113,11 @@
                           <div class="theme-search-results-item-hotel-rating">
                             <p class="theme-search-results-item-hotel-rating-title">
                               <b>{{booking.0.property.execellent_rating}} Excellent</b>&nbsp;({{booking.0.property.num_of_reviews}} reviews)
-                              <b>8.5 Excellent</b>&nbsp;(8903 reviews)
                             </p>
                           </div>
                           <p class="theme-search-results-item-hotel-book-count">Booked: {{booking.0.property.time_booked}}</p>
+                          <i class="fa fa-bed theme-item-page-rooms-table-type-feature-list-icon"></i> {{booking.0.property.num_rooms}} <br>
+                          <i class="fa fa-male theme-item-page-rooms-table-type-feature-list-icon"></i>{{booking.0.property.num_guests}}<br>
                         </div>
 
                         <div class="col-md-2 ">
