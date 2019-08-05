@@ -138,7 +138,7 @@
 <script src={% static "createdTools/js/edit-appear.js"%}></script>
 
 <script>
-    putDescriptionText("{{obj.description}}");
+    document.getElementById('edit-description').value = '{{description}}';
     checkedBox("free_parking-edit", "{{obj.free_parking}}");
     checkedBox("pool-edit", "{{obj.pool}}");
     checkedBox("gym-edit", "{{obj.gym}}");

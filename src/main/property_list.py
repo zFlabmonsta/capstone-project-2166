@@ -81,10 +81,13 @@ def edit_property_listing(request, id):
     instance = get_object_or_404(Property, id=id)
     form = Property_form()
     imgs = image.objects.filter(property__id=id)
+    description = instance.description.replace('\r\n', '\\n')
+    print(description)
     context = {
         'images':imgs,
         'form': form,
-        'obj': instance
+        'obj': instance,
+        'description': description
     }
 
     if (request.method == 'POST'):
