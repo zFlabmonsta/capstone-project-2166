@@ -8,3 +8,5 @@ function checkedBox(id, is_checked) {
         document.getElementById(id).checked = true;
     }
 }
+
+

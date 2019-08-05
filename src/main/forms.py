@@ -1,6 +1,14 @@
 from django import forms
 from datetime import datetime, date, time
 
+PROPERTY_TYPE = [
+    (0, "Apartment"),
+    (1, "Hotel"),
+    (2, "House"),
+    (3, "Resort"),
+    (4, "Townhouse")
+]
+
 class Property_form (forms.Form):
     num = forms.IntegerField(label="Number/Unit")
     street = forms.CharField(label='Street', max_length=50)
@@ -11,6 +19,8 @@ class Property_form (forms.Form):
     num_rooms = forms.IntegerField(label='Rooms')
     description = forms.CharField(label='description', widget=forms.Textarea, max_length=1000000000)
     image = forms.FileField(required=False, widget=forms.ClearableFileInput(attrs={'multiple': True}))
+    #Property Type
+    property_type = forms.CharField(label='Property Type' , widget=forms.Select(choices=PROPERTY_TYPE))
     #facilities
     free_parking = forms.BooleanField(required=False, initial=False)
     pool = forms.BooleanField(required=False, initial=False)
@@ -20,12 +30,6 @@ class Property_form (forms.Form):
     ramp = forms.BooleanField(required=False, initial=False)
     travelator = forms.BooleanField(required=False, initial=False)
     elevator = forms.BooleanField(required=False, initial=False)
-    #Property Type
-    apartment = forms.BooleanField(required=False, initial=False)
-    hotel = forms.BooleanField(required=False, initial=False)
-    house = forms.BooleanField(required=False, initial=False)
-    resort = forms.BooleanField(required=False, initial=False)
-    townhouse = forms.BooleanField(required=False, initial=False)
     #amenities    
     kitchen = forms.BooleanField(required=False, initial=False)
     tv = forms.BooleanField(required=False, initial=False)

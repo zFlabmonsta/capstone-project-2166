@@ -1,0 +1,38 @@
+[
+    {
+        "model": "main.Activities",
+        "pk": 1,
+        "fields": {
+            "url": "https://www.vividsydney.com/",
+            "image_url": "https://www.vividsydney.com/sites/default/files/2019-03/SOH-BLUE-main_0.jpg",
+            "title": "Sydney Vivid"
+        }
+    },
+    {
+        "model": "main.Activities",
+        "pk": 2,
+        "fields": {
+            "url": "https://www.bestsydneywalks.com/coastal-walks/",
+            "image_url": "https://www.bestsydneywalks.com/wp-content/uploads/2017/05/sydney-coastal-walks.jpg",
+            "title": "Take Sydney's Finest Coastal Walks"
+        }
+    },
+    {
+        "model": "main.Activities",
+        "pk": 3,
+        "fields": {
+            "url": "https://www.sydneyaquarium.com.au/",
+            "image_url": "https://res.cloudinary.com/adrenalinecomau/image/upload/q_auto/v1540876247/adventures/eps_687.jpg",
+            "title": "Sydney Aquarium"
+        }
+    },
+    {
+        "model": "main.Activities",
+        "pk": 4,
+        "fields": {
+            "url": "https://res.klook.com/images/fl_lossy.progressive,q_65/c_fill,w_1295,h_720,f_auto/w_80,x_15,y_15,g_south_west,l_klook_water/activities/0c647d5b-/TarongaZooSydneyEntryTicket(byGoldenDragon).jpg",
+            "image_url":"https://taronga.org.au/sydney-zoo",
+            "title": "Taronga Zoo"
+        }
+    }
+]

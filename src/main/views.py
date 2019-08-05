@@ -6,7 +6,7 @@ from django.template import RequestContext
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 
-from main.models import Dashboard, Property, Location, Booking, image, Property_review
+from main.models import Dashboard, Property, Location, Booking, image, Property_review, Activities
 from .forms import Property_form, Search_property_form, Filter_facilities, Filter_disability_access, Filter_property_type, Filter_amenities
 
 from .filter_help import *
@@ -24,12 +24,15 @@ def index(request):
     property_type_form = Filter_property_type()
     amenities_form = Filter_amenities()
 
+    activities = Activities.objects.all()
+
     context = {
         'search_property_form': search_form, 
         'filter_facilities': filter_facilities_form,
         'disability_access_form': disability_access_form,
         'property_type_form': property_type_form,
-        'amenities_form': amenities_form
+        'amenities_form': amenities_form,
+        'activities': activities,
     }
 
     if (request.method == 'POST'):

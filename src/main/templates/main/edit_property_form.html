@@ -13,25 +13,15 @@
             <h1 class="theme-login-title">List a Home</h1>
           </div>
 
-          <div class="theme-add-property-box" style="height: 1150px">
+          <div class="theme-add-property-box" style="height: 1200px">
             <div class="theme-login-box-inner">
               <form class="theme-login-form" enctype="multipart/form-data" method="POST">
                 {% csrf_token %}
                 <!-- Property Type-->
                 <div class="form-group theme-login-form-group">
                     <h4>Property Type</h4><hr>
-                    {% render_field form.apartment id="apartment-edit"%}
-                    <label> Apartment </label>
-                    {% render_field form.hotel id="hotel-edit" %}
-                    <label> Hotel </label>
-                    {% render_field form.house id="house-edit" %}
-                    <label> House </label>
-                    {% render_field form.resort id="resort-edit" %}
-                    <label> Resort </label>
-                    {% render_field form.townhouse id="townhouse-edit" %}
-                    <label> Townhouse </label>
+                    {% render_field form.property_type class="form-control" id="property-type-edit"%}
                 </div>
-
                 <div class="row">
                   <div class="col-md-3">
                     <div class="form-group theme-login-form-group">
@@ -149,10 +139,6 @@
 
 <script>
     putDescriptionText("{{obj.description}}");
-    checkedBox("apartment-edit", "{{obj.apartment}}");
-    checkedBox("hotel-edit", "{{obj.hotel}}");
-    checkedBox("house-edit", "{{obj.house}}");
-    checkedBox("resort-edit", "{{obj.resort}}");
     checkedBox("free_parking-edit", "{{obj.free_parking}}");
     checkedBox("pool-edit", "{{obj.pool}}");
     checkedBox("gym-edit", "{{obj.gym}}");
@@ -166,6 +152,7 @@
     checkedBox("kitchen-edit", "{{obj.kitchen}}");
     checkedBox("wifi-edit", "{{obj.wifi}}");
     checkedBox("laundry-edit", "{{obj.laundry}}");
+    document.getElementById("property-type-edit").value = {{obj.property_type}};
 </script>
 {% endblock %}
 

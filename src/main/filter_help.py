@@ -166,19 +166,19 @@ def filter_by_property_type(property_type_form, searching):
     # filtering when there is atleast 1 true
     filtered = []
     for s in searching:
-        if (apartment == True and s.apartment == True):
+        if (apartment == True and s.property_type == "Apartment"):
             filtered.append(s)
             continue
-        if (hotel == True and  s.hotel == True):
+        if (hotel == True and  s.property_type == "Hotel"):
             filtered.append(s)
             continue
-        if (resort == True and s.resort == True):
+        if (resort == True and s.property_type == "Resort"):
             filtered.append(s)
             continue
-        if (house == True and s.house == True):
+        if (house == True and s.property_type == "House"):
             filtered.append(s)
             continue
-        if (townhouse == True and s.townhouse == True):
+        if (townhouse == True and s.property_type == "Townhouse"):
             filtered.append(s)
             continue
     return filtered

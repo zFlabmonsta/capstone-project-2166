@@ -149,17 +149,17 @@
 <div class="theme-page-section theme-page-section-xxl">
   <div class="container">
     <div class="theme-page-section-header _ta-l">
-      <h5 class="theme-page-section-title">Things to Do</h5>
+      <h5 class="theme-page-section-title">Activities</h5>
     </div>
     <div class="row row-col-gap" data-gutter="10">
-      {% for property in top_properties %}
+      {% for a in activities %}
       <div class="col-md-3 ">
         <div class="banner _h-33vh _br-4 banner-animate banner-animate-mask-out banner-animate-zoom-in banner-animate-slow">
-          <div class="banner-bg" style="background-image:url(./img/400x360.png);"></div>
+          <div class="banner-bg" style="background-image:url({{a.image_url}});"></div>
           <div class="banner-mask"></div>
-          <a class="banner-link" href="#"></a>
+          <a class="banner-link" onclick='window.open("{{a.url}}")'></a>
           <div class="banner-caption banner-caption-top">
-              <h5 class="banner-title">{{property.location.suburb}}</h5>
+              <h5 class="banner-title">{{a.title}}</h5>
           </div>
         </div>
       </div>

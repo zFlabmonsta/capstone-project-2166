@@ -10,10 +10,6 @@ def image_directory_path_display(instance, filename):
 
 # Create your models here.
 class Dashboard(models.Model):
-    """
-    Each user that signs up will be assigned their on Dashboard
-    containing their property they have announced for rent
-    """
     dashboard_name = models.CharField(max_length=200)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -26,9 +22,6 @@ class Location(models.Model):
     longitude = models.FloatField(null=True, blank=True, default=None)
 
 class Property(models.Model):
-    """
-    Links Location of the property and dashboard
-    """
     dashboard = models.ForeignKey(Dashboard, on_delete=models.CASCADE)
     location = models.ForeignKey(Location, on_delete=models.CASCADE)
     price = models.IntegerField(null=True, blank=True)
@@ -36,6 +29,8 @@ class Property(models.Model):
     num_rooms = models.IntegerField(null=True, blank=True)
     time_booked = models.IntegerField(default=0)
     description = models.CharField(null=True, blank=True, max_length=10000000000)
+    # property Type
+    property_type = models.CharField(null=True, blank=True, max_length=30)
     # facilities
     free_parking = models.BooleanField(null=True, blank=True, default=False)
     pool = models.BooleanField(null=True, blank=True, default=False)
@@ -45,12 +40,6 @@ class Property(models.Model):
     ramp = models.BooleanField(null=True, blank=True, default=False)
     travelator = models.BooleanField(null=True, blank=True, default=False)
     elevator = models.BooleanField(null=True, blank=True, default=False)
-    # property Type
-    apartment = models.BooleanField(null=True, blank=True, default=False)
-    hotel = models.BooleanField(null=True, blank=True, default=False)
-    house = models.BooleanField(null=True, blank=True, default=False)
-    resort = models.BooleanField(null=True, blank=True, default=False)
-    townhouse = models.BooleanField(null=True, blank=True, default=False)
     # amenities
     kitchen = models.BooleanField(null=True, blank=True, default=False)
     airconditioning = models.BooleanField(null=True, blank=True, default=False)
@@ -165,3 +154,8 @@ class Property_review(models.Model):
 
     def range_rating(self):
         return range(self.rating)
+
+class Activities(models.Model):
+    url = models.CharField(max_length=100000)
+    image_url = models.CharField(max_length=100000)
+    title = models.CharField(max_length=20)

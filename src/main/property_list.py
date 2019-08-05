@@ -51,11 +51,7 @@ def create_property(request):
                     travelator = form.cleaned_data['travelator'],
                     elevator = form.cleaned_data['elevator'],
                     # property Type
-                    apartment = form.cleaned_data['apartment'],
-                    hotel = form.cleaned_data['hotel'],
-                    house = form.cleaned_data['house'],
-                    resort = form.cleaned_data['resort'],
-                    townhouse = form.cleaned_data['townhouse'],
+                    property_type = form.cleaned_data['property_type'],
                     # amenities
                     kitchen = form.cleaned_data['kitchen'],
                     airconditioning = form.cleaned_data['airconditioning'],
@@ -105,11 +101,7 @@ def edit_property_listing(request, id):
             property.travelator = form.cleaned_data['travelator']
             property.elevator = form.cleaned_data['elevator']
                 # property Type
-            property.apartment = form.cleaned_data['apartment']
-            property.hotel = form.cleaned_data['hotel']
-            property.house = form.cleaned_data['house']
-            property.resort = form.cleaned_data['resort']
-            property.townhouse = form.cleaned_data['townhouse']
+            property.property_type= form.cleaned_data['property_type']
                 # amenities
             property.kitchen = form.cleaned_data['kitchen']
             property.airconditioning = form.cleaned_data['airconditioning']
