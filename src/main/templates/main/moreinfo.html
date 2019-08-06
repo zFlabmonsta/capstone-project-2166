@@ -248,7 +248,7 @@
                 </div>
             </form>
             {% elif which == 'b' %}
-            <form action="dashboard/delete-booking/{{booking.id}}" method='POST' >
+            <form action="/dashboard/delete-booking/{{booking.id}}" method='POST' >
                 {% csrf_token %}
                 <div class="theme-search-area-form" >
                   <button class="theme-search-area-submit _mt-0 _tt-uc theme-search-area-submit-curved">Cancel</button>
