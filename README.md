@@ -19,5 +19,7 @@ BOTH:
 8. run: "python manage.py makemigrations"
 9. run: "python manage.py migrate"
 10. run: "python manage.py loaddata fixtures.json"
-11. run: "python manage.py runserver"
+11. run: "python manage.py runserver --insecure" NOTE: staticfiles will not be served when DEBUG = False, since production web server takes care of these files. --insecure mode allows to access staticfiles during development. 
 12. copy url given in the terminal and paste it in browser to open web application
+
+#NOTE: if layout is plain, cd src (contains setting.py) and change the variable DEBUG = TRUE. Currently off to display 404 page
