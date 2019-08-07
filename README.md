@@ -14,9 +14,9 @@ if (Windows10):
 BOTH:
 
 4. Install "pipenv". run: "python -m pip install pipenv"
-5. go to the project's directory where it contains the "requirements.txt" file. run: "cd .../PATH-TO-FILE/capstone-project-2166" (linux) -- Windows uses "\" instead of "/"
+5. go to the project's directory where it contains the "requirements.txt" file. run: "cd .../PATH-TO-FILE/capstone-project-2166"
 6. run: "pip install -r requirements.txt"
-7. run: "cd src"
+7. run: "cd src" (has manage.py)
 8. run: "python manage.py makemigrations"
 9. run: "python manage.py migrate"
 10. run: "python manage.py loaddata fixtures.json"
