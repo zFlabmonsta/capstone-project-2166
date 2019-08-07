@@ -12,7 +12,8 @@ if (Windows10):
 3. Open Command Prompt (Easiest through search bar) and run python --version, outputs "Python 3.6.8" - working
 
 BOTH:
-4. Install "pipenv". run: "python3 -m pip install pipenv"
+
+4. Install "pipenv". run: "python -m pip install pipenv"
 5. go to the project's directory where it contains the "requirements.txt" file. run: "cd .../PATH-TO-FILE/capstone-project-2166" (linux) -- Windows uses "\" instead of "/"
 6. run: "pip install -r requirements.txt"
 7. run: "cd src"
