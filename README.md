@@ -1,18 +1,23 @@
-#Property Rental System
+# COMP3900 Project - Property Rental System
 
-##Prerequisites: Python3, pip, pipenv
-###If installing on a Linux machine:
+Peter Nguyen z5019537
+
+Michael Thanh Tran z5062007
+
+## Prerequisites: Python3, pip, pipenv
+
+### If installing on a Linux machine:
 
 1. `Python3` not installed? run: `sudo apt-get install python3.6` in the terminal
 2. `pip` not installed? run: `sudo apt-get install python3-pip`
 
-###If installing on a Windows machine: 
+### If installing on a Windows machine: 
 
 1. `Python3` not installed? Download at: "https://www.python.org/ftp/python/3.6.8/python-3.6.8-amd64.exe"
 2. Upon starting installation, click checkbox "Add Path 3.6 to PATH" to run in Command Prompt
 3. Open Command Prompt (Easiest through search bar) and run `python --version`, the output should be `Python 3.6.8` if the installation was successful
 
-###The following steps apply for both Linux and Windows machines:
+### The following steps apply for both Linux and Windows machines:
 
 4. Install `pipenv` by running `python3 -m pip install pipenv`
 5. Go to the root directory of the project folder. run `cd .../.../capstone-project-216`  (Linux)  (The directory which contains `requirements.txt`)
