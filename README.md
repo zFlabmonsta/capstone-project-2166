@@ -24,13 +24,13 @@ Michael Thanh Tran z5062007
    - Windows uses "\\" instead of "/"
 6. run: `pip install -r requirements.txt`
 7. run: `cd src`
-8. run: `python manage.py makemigrations`
+8. run: `python manage.py makemigrations main` and `python manage.py makemigrations authentication`
 9. run: `python manage.py migrate`
 10. run: `python manage.py loaddata fixtures.json`
 11. run: `python manage.py runserver --insecure` 
-    - NOTE: staticfiles will not be served when `DEBUG = False`, since production web server takes care of these files. `--insecure` mode allows to access staticfiles during development. 
+    - NOTE: staticfiles will not be served when `DEBUG = False`, since production web server takes care of these files. `--insecure` mode allows to access staticfiles files during development. 
 12. Copy url given in the terminal and paste it in browser to open web application
     - e.g. http://127.0.0.1:8000/ or something like that
 
-*Note: Database will be empty and registering accounts and listing property is needed to populate searched results, property listing  and list of bookings. if the layout is plain, `cd src` and within `settings.py`, change  `DEBUG=FALSE` into  `DEBUG = TRUE`. It is currently set to off to display the 404 page.*
+*Note: Database will be empty and registering accounts and listing property is needed to populate searched results, property listing  and list of bookings. if the layout is plain or no images are displayed when uploaded due to `DEBUG = False`, `cd src` and within `settings.py`, change  `DEBUG=FALSE` into  `DEBUG = TRUE`. It is currently set to off to display the 404 page.*
 
