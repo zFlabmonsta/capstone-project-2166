@@ -26,7 +26,7 @@ def make_booking(request, property_id, i_year, i_month, i_day, o_year, o_month, 
 @login_required(login_url='/login')
 def delete_booking(request, id):
     if request.method =='POST':
-        Booking.objects.get(id=id).delete()
+        booking = Booking.objects.get(id=id)
         current_user = request.user
         dashboard_id = Dashboard.objects.get(user=current_user.id).id
     return HttpResponseRedirect('/dashboard')
@@ -59,4 +59,5 @@ def give_review(request, id):
 
     if (booking.dashboard.id == dashboard_id):
         return render(request, "main/give_review.html", context)
+
     return HttpResponseRedirect('/dashboard')

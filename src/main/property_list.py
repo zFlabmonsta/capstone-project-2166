@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth import authenticate, login as auth_login
@@ -124,13 +124,17 @@ def edit_property_listing(request, id):
                 img = image(property=instance, image=f)
                 img.save()
             return HttpResponseRedirect('/dashboard')
+
+    if request.user.id != instance.dashboard.user.id:
+        raise Http404
     
     return render(request, "main/edit_property_form.html", context)
 
 @login_required(login_url='/login')
 def delete_property(request, id):
     if request.method == 'POST':
-        Property.objects.get(id=id).delete()
+        property = Property.objects.get(id=id).delete()
         current_user = request.user
         dashboard_id = Dashboard.objects.get(user=current_user.id).id
+
     return HttpResponseRedirect('/dashboard')
