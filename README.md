@@ -32,5 +32,5 @@ Michael Thanh Tran z5062007
 12. Copy url given in the terminal and paste it in browser to open web application
     - e.g. http://127.0.0.1:8000/ or something like that
 
-*Note: Database will be empty and registering accounts and listing property is needed to populate searched results, property listing  and list of bookings. if the layout is plain or no images are displayed when uploaded due to `DEBUG = False`, `cd src` and within `settings.py`, change  `DEBUG=FALSE` into  `DEBUG = TRUE`. It is currently set to off to display the 404 page.*
+*Note: Database will be empty and registering accounts and listing property is needed to populate searched results, property listing  and list of bookings. If the layout is plain or no images are displayed when uploaded due to `DEBUG = False`, `cd src` and within `settings.py`, change  `DEBUG=FALSE` into  `DEBUG = TRUE`. It is currently set to off to handle 404 pages.*
 
