@@ -27,8 +27,8 @@ Michael Thanh Tran z5062007
 8. run: `python manage.py makemigrations main` and `python manage.py makemigrations authentication`
 9. run: `python manage.py migrate`
 10. run: `python manage.py loaddata fixtures.json`
-11. run: `python manage.py runserver --insecure` 
-    - NOTE: staticfiles will not be served when `DEBUG = False`, since production web server takes care of these files. `--insecure` mode allows to access staticfiles files during development. 
+11. run: `python manage.py runserver [OPTION: --insecure]`
+    - NOTE: 404 pages will not be handled because debug mode is currently set to `DEBUG=True`, for the sake of displaying property images when uploaded. To see how 404 pages are handled debug mode needs to be off `DEBUG=False` and ran with `--insecure` in the command. Staticfiles will not be served when `DEBUG = False`, since production web server takes care of these files. `--insecure` mode allows to access staticfiles files during development. Follow the note below to help change `DEBUG` mode
 12. Copy url given in the terminal and paste it in browser to open web application
     - e.g. http://127.0.0.1:8000/ or something like that
 
