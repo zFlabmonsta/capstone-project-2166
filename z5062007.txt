@@ -12,5 +12,23 @@ No tutorial this week but we still decided to show up to uni to discuss progress
 Week 4 
 This week, we were given early feedback on our proposal and it was really positive. We were able to clarify with the tutor our intentions and goals for the project and what outcomes he was expecting. Although, there were a few parts of the proposal where we and our tutor were a bit misaligned in our understanding, overall, the proposal seemed adequate in his eyes. I plan to spend the rest of the week brushing up on Python/Django as well as creating a wireframe UI to show to our tutor the next time we have a tutorial. 
 
+Week 5
+Nothing was done this week as one of our group members was attending the RoboCup competition and the rest of us are busy with assignments and other courses
+
+Week 6
+A bit of trouble in paradise this week as one of our four team members had decided to drop the subject and another member is considering the same.This meant that we had to reconsider our approach to the project should we lost two team members. 
+
+Week 7 
+So we found out that we are now down two team members. Due to this, we have decided that it's best to move onto another project, especially one that is less technically difficult since the current project (Learning Outcomes Generator) requires knowledge of Natural Language Processing, of which the remaining team members have little to no experience with. 
+
+Week 8
+After consulting with our tutor numerous times over the past few weeks, we feel that we now have a strong understanding as what our expected outcome is in terms of our project. This week was a demo week and I feel that although we are still behind the other groups in the class, our tutor was quite impressed with what we were able to scrap together given that we only had a few weeks to prepare for this tutorial demonstration. The next demonstration we have will be the final demo of the project. 
+
+Week 9
+This week, a lot of late nights were spentworking on the project + other committments for other subjects. Not much to say here other than not much sleep was had this week.  
+
+Week 10
+We made it to the final stretch with a pretty complete project. I'm pretty happy with what my group member and I have been able to achieve given the obstacles that we faced. Really excited to say that we have something presentable for the demonstration!
+
 
  
