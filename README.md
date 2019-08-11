@@ -4,6 +4,10 @@ Peter Nguyen z5019537
 
 Michael Thanh Tran z5062007
 
+Tutorial Time: Tuesday 11am - 1pm
+
+Tutor: Ali Darejeh
+
 ## Prerequisites: Python3, pip, pipenv
 
 ### If installing on a Linux machine:
