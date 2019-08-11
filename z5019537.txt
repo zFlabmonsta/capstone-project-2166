@@ -25,3 +25,22 @@ Week6:
 - It was unfortunate that 2 of our team members dropped the course during this week due to fustrataion of our project, and with fear of  not being able to complete  the project with working features in time (4 week left)
 - Immediately change the dashboard feature to fit the context of our new project (property rental system)
 
+Week7:
+- Down 2 members, we contacted ali for a consultation about our project change, tip and our disadvantage in number of team members. Ali noted that he discussed the problem with the lecturer and our marks will be scaled (not sure how much). A tip that was noted down was to find a html template within our project field.
+- We found template on themeforest, and started to make the transistion from our old html to new html template we obtained.
+
+Week8:
+- Our last demo week before presentation, we were able to put up significant amount of work to catch up with the other group.
+- Application contains most of the features we implemented booking, property listing, login, register and searching (without filter), working well along with the template
+
+Week9:
+- Lots of late nights coding this week since next week was presentation
+- We implemeneted filtering, review, pagination and my profile
+
+Week10:
+- Demo Week, at this point in time we just touched up on the code and made sure every feature that were required as well as the extras we had time for were implemented.
+- With only 2 member, I am happy with the outcome of our product and as a result have further extended my knowledge on computer science, programming and design. 
+
+Week11:
+- Report
+- The end. :)
